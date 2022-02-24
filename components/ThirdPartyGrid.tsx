@@ -91,7 +91,7 @@ const LoggedInGroup = ({
 }) => {
   return loaded ? (
     <ButtonGroup>
-      <StyledLoggedInButton type='button' style={{ color: brand }}>
+      <StyledLoggedInButton style={{ color: brand }}>
         {children}
       </StyledLoggedInButton>
       <SecondarySection>
@@ -112,7 +112,7 @@ const LoggedInGroup = ({
       </SecondarySection>
     </ButtonGroup>
   ) : (
-    <Placeholder height='2.5rem' margin='0.5rem 0' />
+    <Placeholder height='2.5rem' margin='0.5rem 0' width={undefined} />
   );
 };
 
@@ -150,8 +150,10 @@ const ThirdPartyGrid = ({ connectedAccs, contentLoaded }) => {
       const { external_connections } = data[0];
       setEnabled(external_connections);
     };
-    fetchExternalConnections();
-  }, [user.id]);
+    if (user !== null) {
+      fetchExternalConnections();
+    }
+  }, [user]);
 
   const toggleAppearance = async (e) => {
     const alteredConnections = enabled.map((acc) => {
@@ -178,12 +180,12 @@ const ThirdPartyGrid = ({ connectedAccs, contentLoaded }) => {
   };
 
   const saveChanges = async () => {
-    clearTimeout(newTimer);
-    setButtonDisabled(true);
-    await sendToDb();
     const newTimer = setTimeout(() => {
       setButtonDisabled(false);
     }, 2000);
+    clearTimeout(newTimer);
+    setButtonDisabled(true);
+    await sendToDb();
     setTimer(newTimer);
   };
 
@@ -234,6 +236,8 @@ const ThirdPartyGrid = ({ connectedAccs, contentLoaded }) => {
         onClick={() => saveChanges()}
         version='reverse'
         disabled={buttonDisabled}
+        type={undefined}
+        loading={undefined}
       >
         {strings.account.save}
       </Button>
