@@ -27,9 +27,9 @@ function UserPage({ user, avatar, postData }) {
         <PublicCard name={user} avatar={avatar} />
 
         {postData
-          .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
+          .sort((a, b) => +new Date(b.updated_at) - +new Date(a.updated_at))
           .map((post) => (
-            <PublicArticle key={post.id} post={post} />
+            <PublicArticle key={post.id} post={post} makePrivate={undefined} />
           ))}
       </BaseLayout>
     );
@@ -48,7 +48,6 @@ export default UserPage;
 
 export async function getServerSideProps(context) {
   const userName = context.query.user;
-  console.log(context, userName);
   // Why am I even looking at the cookie? Because it's a public page so even logged out users should be able to see it...
   // const all = await supabase.auth.api.getUserByCookie(context.req);
   // console.log(all);
@@ -59,11 +58,12 @@ export async function getServerSideProps(context) {
     .eq('pubName', userName);
 
   // We need to get only the external_connections from data[0] that have enabled set to true
-  const externalConnections = data[0].external_connections.filter(
-    (account) => account.enabled
-  );
-  const connectionName = externalConnections.map((account) => account.id);
-  console.log(connectionName);
+  if (data[0] !== undefined) {
+    const externalConnections = data[0].external_connections.filter(
+      (account) => account.enabled
+    );
+    const connectionName = externalConnections.map((account) => account.id);
+  }
 
   // // we need to loop through user.identities and filter the connection that matches the connectionName
   // const connection = user.identities.filter((provider) =>
