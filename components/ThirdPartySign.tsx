@@ -13,7 +13,7 @@ const LoginButton = styled('button', {
   fontWeight: 'bold',
 });
 
-const ThirdPartySign = ({ name, brand }) => {
+const ThirdPartySign = ({ id, name, brand }) => {
   const [loading, setLoading] = useState(false);
 
   const handleThirdPartyLogin = async (provider) => {
