@@ -92,7 +92,6 @@ const MockUploadButton = styled('label', {
   color: '$gray1',
   minHeight: '2rem',
   borderRadius: '$button',
-  cursor: 'pointer',
   fontSize: '1em',
   minWidth: '$button',
   padding: '$button',
@@ -299,7 +298,7 @@ export default function Account({ session }) {
             <UploadButton onUpload={uploadAvatar} loading={uploading} />
           </AvatarField>
         ) : (
-          <Placeholder height='150px' width='120px' />
+          <Placeholder height='150px' width='120px' margin={undefined} />
         )}
       </SubsectionGroup>
 
@@ -319,7 +318,7 @@ export default function Account({ session }) {
               />
             </StaticEmailBox>
           ) : (
-            <Placeholder height='2rem' margin='0' />
+            <Placeholder height='2rem' margin='0' width={undefined} />
           )}
         </FormGroup>
       </SubsectionGroup>
@@ -335,7 +334,7 @@ export default function Account({ session }) {
             onChange={(e) => setPubName(e.target.value)}
           />
         ) : (
-          <Placeholder height='2rem' margin='0 0 0.5rem 0' />
+          <Placeholder height='2rem' margin='0 0 0.5rem 0' width={undefined} />
         )}
         {contentLoaded ? (
           <InputGroup
@@ -345,7 +344,7 @@ export default function Account({ session }) {
             onChange={(e) => setDescription(e.target.value)}
           />
         ) : (
-          <Placeholder height='2rem' margin='0 0 0.5rem 0' />
+          <Placeholder height='2rem' margin='0 0 0.5rem 0' width={undefined} />
         )}
         {contentLoaded ? (
           <InputGroup
@@ -355,7 +354,7 @@ export default function Account({ session }) {
             onChange={(e) => setWebsite(e.target.value)}
           />
         ) : (
-          <Placeholder height='2rem' margin='0 0 0.5rem 0' />
+          <Placeholder height='2rem' margin='0 0 0.5rem 0' width={undefined} />
         )}
 
         <ButtonGroup>
@@ -364,11 +363,13 @@ export default function Account({ session }) {
               onClick={() => updateProfile()}
               version='reverse'
               loading={loading}
+              type={undefined}
+              disabled={undefined}
             >
               {loading ? strings.account.loading : strings.account.save}
             </Button>
           ) : (
-            <Placeholder height='2.5rem' width='10rem' />
+            <Placeholder height='2.5rem' width='10rem' margin={undefined} />
           )}
         </ButtonGroup>
       </SubsectionGroup>
@@ -384,9 +385,17 @@ export default function Account({ session }) {
 
       <SignOutSection>
         {contentLoaded ? (
-          <Button onClick={() => signOut()}>{strings.account.signOut}</Button>
+          <Button
+            onClick={() => signOut()}
+            type={undefined}
+            disabled={undefined}
+            version={undefined}
+            loading={undefined}
+          >
+            {strings.account.signOut}
+          </Button>
         ) : (
-          <Placeholder height='2.5rem' width='10rem' />
+          <Placeholder height='2.5rem' width='10rem' margin={undefined} />
         )}
       </SignOutSection>
     </AccountBox>
