@@ -103,10 +103,34 @@ const MockUploadButton = styled('label', {
 });
 
 function UploadButton(props) {
+  if (props.first) {
+    return (
+      <>
+        <MockUploadButton htmlFor='single'>
+          {props.loading
+            ? strings.account.avatarInProgress
+            : strings.account.avatarUpload}
+        </MockUploadButton>
+        <input
+          style={{
+            visibility: 'hidden',
+            position: 'absolute',
+          }}
+          type='file'
+          id='single'
+          accept='image/*'
+          onChange={props.onUpload}
+          disabled={props.loading}
+        />
+      </>
+    );
+  }
   return (
     <>
       <MockUploadButton htmlFor='single'>
-        {props.loading ? 'Replacing...' : 'Replace Avatar'}
+        {props.loading
+          ? strings.account.avatarInProgress
+          : strings.account.avatarReplace}
       </MockUploadButton>
       <input
         style={{
@@ -134,6 +158,7 @@ const InputGroup = ({ type, label, value, onChange }) => {
 
 export default function Account({ session }) {
   const router = useRouter();
+  const user = supabase.auth.user();
   const [loading, setLoading] = useState(true);
   const [contentLoaded, setContentLoaded] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -142,6 +167,7 @@ export default function Account({ session }) {
   const [website, setWebsite] = useState(null);
   const [description, setDescription] = useState(null);
   const [connectedAccs, setConnectedAccs] = useState([]);
+  console.log(user);
 
   useEffect(() => {
     getProfile();
@@ -280,6 +306,81 @@ export default function Account({ session }) {
     }
   }
 
+  if (session === null) {
+    return (
+      <AccountBox>
+        <h2 style={{ textAlign: 'center' }}>
+          Please fill out your account info
+        </h2>
+
+        <SubsectionTitle>{strings.account.avatar}</SubsectionTitle>
+        <SubsectionGroup>
+          {contentLoaded ? (
+            <AvatarField>
+              <Avatar
+                url={avatar}
+                size={120}
+                type='square'
+                initials={
+                  pubName
+                    ? pubName.charAt(0)
+                    : `${user.email.charAt(0)}${user.email.charAt(1)}`
+                }
+              />
+              <UploadButton
+                onUpload={uploadAvatar}
+                loading={uploading}
+                first={true}
+              />
+            </AvatarField>
+          ) : (
+            <Placeholder height='150px' width='120px' margin={undefined} />
+          )}
+        </SubsectionGroup>
+
+        <SubsectionTitle>{strings.account.linksAlt}</SubsectionTitle>
+        <SubsectionGroup>
+          {contentLoaded ? (
+            <InputGroup
+              type='pub-name'
+              label='Public Name'
+              value={pubName || ''}
+              onChange={(e) => setPubName(e.target.value)}
+            />
+          ) : (
+            <Placeholder
+              height='2rem'
+              margin='0 0 0.5rem 0'
+              width={undefined}
+            />
+          )}
+        </SubsectionGroup>
+
+        <SignOutSection>
+          {contentLoaded ? (
+            <ButtonGroup>
+              {contentLoaded ? (
+                <Button
+                  onClick={() => updateProfile()}
+                  version='reverse'
+                  loading={loading}
+                  type={undefined}
+                  disabled={undefined}
+                >
+                  {loading ? strings.account.loading : strings.account.save}
+                </Button>
+              ) : (
+                <Placeholder height='2.5rem' width='10rem' margin={undefined} />
+              )}
+            </ButtonGroup>
+          ) : (
+            <Placeholder height='2.5rem' width='10rem' margin={undefined} />
+          )}
+        </SignOutSection>
+      </AccountBox>
+    );
+  }
+
   return (
     <AccountBox>
       <SubsectionTitle>{strings.account.avatar}</SubsectionTitle>
@@ -295,7 +396,11 @@ export default function Account({ session }) {
                 initials={pubName && pubName.charAt(0)}
               />
             )}
-            <UploadButton onUpload={uploadAvatar} loading={uploading} />
+            <UploadButton
+              onUpload={uploadAvatar}
+              loading={uploading}
+              first={false}
+            />
           </AvatarField>
         ) : (
           <Placeholder height='150px' width='120px' margin={undefined} />
