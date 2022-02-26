@@ -206,31 +206,30 @@ const ThirdPartyGrid = ({ connectedAccs, contentLoaded }) => {
 
   return (
     <ThirdPartyGroup>
-      {initialState.map((acc) =>
-        connectedAccs.find((account) => account.service === acc.id) !==
-        undefined ? (
-          <LoggedInGroup
-            key={acc.id}
-            id={acc.id}
-            brand={acc.brand}
-            username={
-              connectedAccs.find((account) => account.service === acc.id).name
-            }
-            onClick={(e) => toggleAppearance(e)}
-            enabled={enabled.find((el) => el.id === acc.id).enabled}
-            loaded={contentLoaded}
-          >
-            <BrandName>{acc.id}</BrandName>
-          </LoggedInGroup>
-        ) : (
-          <ThirdPartySign
-            key={acc.id}
-            id={acc.id}
-            name={acc.id}
-            brand={acc.brand}
-          />
-        )
-      )}
+      {initialState.map((acc) => (
+        // connectedAccs.find((account) => account.service === acc.id) !==
+        // undefined ? (
+        //   <LoggedInGroup
+        //     key={acc.id}
+        //     id={acc.id}
+        //     brand={acc.brand}
+        //     username={
+        //       connectedAccs.find((account) => account.service === acc.id).name
+        //     }
+        //     onClick={(e) => toggleAppearance(e)}
+        //     enabled={enabled.find((el) => el.id === acc.id).enabled}
+        //     loaded={contentLoaded}
+        //   >
+        //     <BrandName>{acc.id}</BrandName>
+        //   </LoggedInGroup>
+        // ) : (
+        <ThirdPartySign
+          key={acc.id}
+          id={acc.id}
+          name={acc.id}
+          brand={acc.brand}
+        />
+      ))}
 
       <Button
         onClick={() => saveChanges()}
