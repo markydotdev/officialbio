@@ -83,11 +83,15 @@ module.exports = {
   account: {
     avatar: 'Avatar Image',
     avatarDesc: 'Change your public facing display image',
+    avatarUpload: 'Add your profile image',
+    avatarReplace: 'Replace your profile image',
+    avatarInProgress: 'Replacing...',
     info: 'Profile Information',
     infoDesc:
       'Your email cannot be changed without making a new account, and it will never be shown to anyone else',
     links: 'Public Links',
     linksDesc: 'Customize which links show up on your public profile',
+    linksAlt: 'Basic information',
     connected: 'Connected Accounts',
     save: 'Save Changes',
     loading: 'Loading...',
