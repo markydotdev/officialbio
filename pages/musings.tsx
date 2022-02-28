@@ -91,7 +91,6 @@ export default function Musings({ user, guest }) {
         onSubmit={onSubmit}
         inputText={inputText}
         setInputText={setInputText}
-        uploads={uploads}
         setUploads={setUploads}
       />
 

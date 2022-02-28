@@ -420,6 +420,7 @@ export default function Account({ session }) {
                 value={session.email}
                 disabled
                 readOnly
+                tabIndex={-1}
               />
             </StaticEmailBox>
           ) : (

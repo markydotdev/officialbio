@@ -73,7 +73,7 @@ export function Musing({ posts, removePost, publishPost, privatePost }) {
 
   useEffect(() => {
     const orderedListOfPosts = posts.sort(
-      (a, b) => new Date(b.created_at) - new Date(a.created_at)
+      (a, b) => +new Date(b.created_at) - +new Date(a.created_at)
     );
     setContent(orderedListOfPosts);
   }, [posts]);
@@ -95,7 +95,10 @@ export function Musing({ posts, removePost, publishPost, privatePost }) {
                       placeholder='blur'
                       blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkOAYAAMwAyBFrrNoAAAAASUVORK5CYII='
                       src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${url}`}
-                      onError={(e) => (e.target.src = './missing.jpg')}
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = './missing.jpg';
+                      }}
                       alt='image here'
                     />
                   </ImageContainer>
@@ -106,11 +109,26 @@ export function Musing({ posts, removePost, publishPost, privatePost }) {
             <PostDate date={post.created_at} />
             <ButtonGroup>
               {post.public ? (
-                <Alert privatePost={privatePost} postId={post.id} />
+                <Alert
+                  privatePost={privatePost}
+                  postId={post.id}
+                  publishPost={undefined}
+                  removePost={undefined}
+                />
               ) : (
-                <Alert publishPost={publishPost} postId={post.id} />
+                <Alert
+                  publishPost={publishPost}
+                  postId={post.id}
+                  removePost={undefined}
+                  privatePost={undefined}
+                />
               )}
-              <Alert removePost={removePost} postId={post.id} />
+              <Alert
+                removePost={removePost}
+                postId={post.id}
+                publishPost={undefined}
+                privatePost={undefined}
+              />
             </ButtonGroup>
           </StyledPostBox>
         ))}

@@ -47,7 +47,6 @@ const AddImagesButton = styled('input', {
     backgroundColor: '$gray12',
     color: '$gray1',
     borderRadius: '$button',
-    cursor: 'pointer',
     fontSize: '1.2em',
     minWidth: '$button',
     padding: '0.5rem 1rem 0.5rem 1.15rem',
@@ -60,7 +59,7 @@ const AddImagesButton = styled('input', {
     },
   },
 });
-const StyledLabel = styled(Label, {
+const StyledLabel = styled(Label.Root, {
   fontSize: 15,
   fontWeight: 500,
   userSelect: 'none',
@@ -70,7 +69,7 @@ const ButtonGroup = styled('div', {
   justifyContent: 'space-between',
   marginTop: '0.5rem',
 });
-const PostButton = styled(Button, {
+const PostButton = styled('button', {
   cursor: 'pointer',
   height: '100%',
   color: '$gray1',

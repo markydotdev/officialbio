@@ -15,7 +15,7 @@ export default function Profile() {
     } else {
       router.push('/');
     }
-  }, []);
+  }, [router]);
 
   return (
     <BaseLayout>
