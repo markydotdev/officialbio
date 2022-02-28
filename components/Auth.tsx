@@ -74,14 +74,15 @@ export default function Auth({}) {
         disabled={loading}
       >
         {loading ? (
-          <img className='loader' src='loader.svg' />
+          // eslint-disable-next-line @next/next/no-img-element
+          <img className='loader' src='loader.svg' alt='loading bar' />
         ) : (
           <span>Send magic link</span>
         )}
       </EmailSubmit>
       <Subtitle>{strings.sign.alternative}</Subtitle>
       <ThirdPartySpacer>
-        <ThirdPartyGrid />
+        <ThirdPartyGrid connectedAccs={undefined} contentLoaded={undefined} />
       </ThirdPartySpacer>
     </AuthContainer>
   );

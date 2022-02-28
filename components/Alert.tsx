@@ -15,7 +15,6 @@ const StyledTrigger = styled(AlertPrompt.Trigger, {
   color: '$gray1',
   minHeight: '2rem',
   borderRadius: '$button',
-  cursor: 'pointer',
   fontSize: '1em',
   minWidth: '$button',
   padding: '$button',
@@ -66,7 +65,6 @@ const AlertCancelButton = styled(AlertPrompt.Cancel, {
   backgroundColor: '$gray1',
   color: '$gray12',
   minHeight: '2rem',
-  cursor: 'pointer',
   fontSize: '1em',
   transition: '$main',
   '&:hover': {
@@ -80,7 +78,6 @@ const AlertDeleteButton = styled(AlertPrompt.Action, {
   color: '$gray1',
   minHeight: '2rem',
   borderRadius: '$button',
-  cursor: 'pointer',
   fontSize: '1em',
   minWidth: '$button',
   padding: '$button',
@@ -91,7 +88,7 @@ const AlertDeleteButton = styled(AlertPrompt.Action, {
   },
 });
 
-function Overlay({ children, props }) {
+function Overlay({ children }) {
   return (
     <AlertPrompt.Root>
       <StyledOverlay />
@@ -142,9 +139,7 @@ export function Alert({ publishPost, removePost, privatePost, postId }) {
         <AlertTitle>{strings.delete.prompt}</AlertTitle>
         <AlertDescription>{strings.delete.description}</AlertDescription>
         <AlertButtons>
-          <AlertCancelButton type='cancel'>
-            {strings.delete.deny}
-          </AlertCancelButton>
+          <AlertCancelButton>{strings.delete.deny}</AlertCancelButton>
           <AlertDeleteButton onClick={() => removePost(postId)}>
             {strings.delete.confirm}
           </AlertDeleteButton>

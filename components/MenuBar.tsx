@@ -128,7 +128,14 @@ export function MenuBar() {
           <Link href={`/user/${name}`} passHref>
             <AvatarGroup>
               {name && <AvatarLabel>{name}</AvatarLabel>}
-              {avatar && <Avatar url={avatar} size={30} />}
+              {avatar && (
+                <Avatar
+                  url={avatar}
+                  size={30}
+                  type={undefined}
+                  initials={undefined}
+                />
+              )}
             </AvatarGroup>
           </Link>
         )}

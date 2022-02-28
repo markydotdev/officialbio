@@ -101,11 +101,12 @@ export function PublicArticle({ makePrivate, post }) {
 
       <ImageBlock>
         {post.files &&
-          post.files.map((image, index) => (
+          post.files.map((image) => (
             <ImageItem key={image}>
               <Image
                 onClick={() => handleImageZoom(image)}
                 src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${image}`}
+                alt='User uploaded image'
               />
             </ImageItem>
           ))}

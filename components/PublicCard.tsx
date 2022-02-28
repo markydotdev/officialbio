@@ -33,7 +33,7 @@ const ShareSection = styled('div', {
   alignItems: 'center',
   marginTop: '0.5rem',
 });
-const ShareButton = styled(Button, {});
+const ShareButton = styled('button', {});
 const TempMessage = styled('span', {
   color: 'green',
   marginLeft: '0.5rem',
@@ -81,7 +81,7 @@ export const PublicCard = ({ name, avatar }) => {
   return (
     <CardFlex>
       <div>
-        <Avatar url={avatar} size={120} type='square' />
+        <Avatar url={avatar} size={120} type='square' initials={undefined} />
       </div>
       <CardArticle>
         <Title>{name}</Title>
