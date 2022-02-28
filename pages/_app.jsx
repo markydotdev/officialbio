@@ -5,6 +5,32 @@ import { useEffect, useState } from 'react';
 import { globalCss } from '../stitches.config';
 
 const globalStyles = globalCss({
+  '@font-face': [
+    {
+      fontFamily: 'Public Sans',
+      src: `url('/fonts/PublicSans/PublicSans-VariableFont_wght.ttf')`,
+      fontWeight: '125 900',
+      fontStyle: 'normal',
+    },
+    {
+      fontFamily: 'Public Sans',
+      src: `url('/fonts/PublicSans/PublicSans-Italic-VariableFont_wght.ttf')`,
+      fontWeight: '125 900',
+      fontStyle: 'italic',
+    },
+    {
+      fontFamily: 'Syncopate',
+      src: `url('/fonts/Syncopate/Syncopate-Regular.ttf')`,
+      fontWeight: 'normal',
+      fontStyle: 'normal',
+    },
+    {
+      fontFamily: 'Syncopate',
+      src: `url('/fonts/Syncopate/Syncopate-Bold.ttf')`,
+      fontWeight: 'bold',
+      fontStyle: 'normal',
+    },
+  ],
   html: {
     boxSizing: 'border-box',
     backgroundColor: '$gray4',

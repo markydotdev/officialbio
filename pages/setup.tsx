@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import { BaseLayout } from '../components/BaseLayout';
+import { Button } from '../components/Button';
 import { styled } from '../stitches.config';
 import strings from '../locales/en/strings';
+import { supabase } from '../lib/supabaseClient';
 
-const SubsectionTitle = styled('h2', {
-  margin: '2rem 0 0 0',
-  '&:first-of-type': {
-    marginTop: '1rem',
-  },
-  '@media (min-width: 800px)': {
-    margin: '2rem 0 0 1rem',
-  },
+const SetupTitle = styled('h2', {});
+const Subsection = styled('section', {
+  display: 'flex',
+  paddingBottom: '1rem',
+});
+const SubsectionTitle = styled('h3', {
+  flex: 1,
 });
 const Form = styled('form', {
   borderRadius: '$button',
@@ -22,21 +23,32 @@ const HiddenInput = styled('input', {
   color: 'transparent',
   opacity: 0,
   pointerEvents: 'auto',
-  width: '10rem',
-  height: '4rem',
+  width: '100%',
+  height: '100%',
   position: 'absolute',
   top: 0,
   left: 0,
 });
 const UploadButton = styled('button', {
+  flex: 2,
   position: 'relative',
   pointerEvents: 'none',
-  width: '10rem',
-  height: '4rem',
+  margin: 0,
+  padding: '0.5rem',
+  border: 'none',
+  borderRadius: '$button',
+  transition: 'all ease-in-out 0.1s',
+  '&:hover': {
+    filter: 'brightness(0.9)',
+  },
+  '&:active': {
+    transform: 'scale(0.99)',
+    filter: 'brightness(0.8)',
+  },
 });
 const InputBox = styled('input', {
+  flex: 2,
   margin: 0,
-  width: '100%',
   border: 'none',
   padding: '0.5rem',
   backgroundColor: '$gray4',
@@ -51,43 +63,91 @@ const InputBox = styled('input', {
     },
   },
 });
+const SubmitSection = styled('section', {
+  display: 'flex',
+  justifyContent: 'center',
+});
+const ImagePreview = styled('img', {
+  width: '100px',
+  height: '100px',
+  objectFit: 'cover',
+  borderRadius: '999px',
+  margin: '0rem 1rem',
+});
 
 const SetupForm = () => {
+  const user = supabase.auth.user();
   const [form, setForm] = useState({
     name: undefined,
     image: undefined,
   });
+  const [preview, setPreview] = useState('');
 
-  const submitForm = async () => {
-    // handle uploading the image
-    // handle setting the name in db with the avatar link in the storage
-    console.log(form);
+  const handleImageChange = async (e) => {
+    setForm({ ...form, image: e.target.files[0] });
+    setPreview(URL.createObjectURL(e.target.files[0]));
+  };
+
+  const submitForm = async (e) => {
+    e.preventDefault();
+
+    if (form.image !== null) {
+      console.log('only one image');
+      const avatarImage = form.image;
+      const { data, error } = await supabase.storage
+        .from('avatars')
+        .upload(`${user.id}/avatar1.jpg`, avatarImage, {
+          cacheControl: '3600',
+        });
+      console.log(data || error);
+    }
+
+    // TODO: image size check before uploading
+    // TODO: image type check (jpg/png/etc) and setting that as the upload section
+    // TODO: redirect to musings page once done
   };
 
   return (
-    <Form onSubmit={() => submitForm()}>
-      <SubsectionTitle>{strings.account.name}</SubsectionTitle>
-      <InputBox
-        type='text'
-        value={form.name}
-        onChange={(e) => setForm({ ...form, name: e.target.value })}
-        required={true}
-        aria-label={strings.account.nameAria}
-      />
-
-      <SubsectionTitle>{strings.account.avatarUpload}</SubsectionTitle>
-      <UploadButton type='button'>
-        Add profile image
-        <HiddenInput
-          type='file'
-          value={form.image}
-          onChange={(e) => setForm({ ...form, image: e.target.value })}
+    <Form onSubmit={(e) => submitForm(e)}>
+      <Subsection>
+        <SubsectionTitle>1. {strings.account.name}</SubsectionTitle>
+        <InputBox
+          type='text'
+          value={form.name}
+          onChange={(e) => setForm({ ...form, name: e.target.value })}
           required={true}
-          aria-label={strings.account.avatarUpload}
+          aria-label={strings.account.nameAria}
         />
-      </UploadButton>
+      </Subsection>
+      <Subsection>
+        <SubsectionTitle>2. {strings.account.avatarUpload}</SubsectionTitle>
+        {preview.length > 1 && <ImagePreview src={preview} />}
+        <UploadButton type='button'>
+          {preview.length > 1
+            ? `Replace your profile picture`
+            : `Upload a profile image (you can change this later)`}
+          <HiddenInput
+            type='file'
+            value={undefined}
+            onChange={(e) => handleImageChange(e)}
+            required={true}
+            aria-label={strings.account.avatarUpload}
+            accept='image/*'
+          />
+        </UploadButton>
+      </Subsection>
 
-      <button type='submit'>Save</button>
+      <SubmitSection>
+        <Button
+          type='submit'
+          onClick={(e) => submitForm(e)}
+          disabled={false}
+          version={undefined}
+          loading={false}
+        >
+          Save
+        </Button>
+      </SubmitSection>
     </Form>
   );
 };
@@ -95,6 +155,7 @@ const SetupForm = () => {
 const SetupPage = () => {
   return (
     <BaseLayout>
+      <SetupTitle>Initial Setup</SetupTitle>
       <SetupForm />
     </BaseLayout>
   );

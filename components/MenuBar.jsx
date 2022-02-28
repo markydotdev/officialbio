@@ -23,7 +23,7 @@ const Title = styled('h1', {
   minWidth: '100%',
   fontFamily: '$accent',
   fontSize: '1.8em',
-  fontWeight: '800',
+  fontWeight: '700',
   '& > a': {
     color: '$gray12',
     padding: '0.5rem 0',
