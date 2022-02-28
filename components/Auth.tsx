@@ -10,6 +10,7 @@ const AuthContainer = styled('section', {
 });
 const Header = styled('h2', {});
 const Subtitle = styled('h3', {
+  fontFamily: '$body',
   fontWeight: 'normal',
   fontSize: 'medium',
 });

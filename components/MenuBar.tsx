@@ -13,7 +13,7 @@ const Menu = styled('nav', {
   gridTemplateColumns: '2fr 1fr',
   gridTemplateRows: '1fr 1fr',
   '@md': {
-    gridTemplateColumns: '10fr 5fr 4rem',
+    gridTemplateColumns: '10fr 5fr',
     gridTemplateRows: '1fr',
   },
 });
@@ -66,6 +66,7 @@ const AvatarGroup = styled('a', {
     order: 1,
   },
   '@md': {
+    paddingRight: '1rem',
     '& > span:last-of-type': {
       order: 2,
     },
@@ -147,9 +148,11 @@ export function MenuBar() {
         ) : null}
       </AvatarItem>
 
-      <SettingsItem>
-        <Settings />
-      </SettingsItem>
+      {userId !== null && (
+        <SettingsItem>
+          <Settings />
+        </SettingsItem>
+      )}
     </Menu>
   );
 }

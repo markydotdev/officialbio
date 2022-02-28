@@ -34,9 +34,6 @@ const StyledContent = styled(DropdownMenu.Content, {
   borderRadius: '$button',
   boxShadow: '$medium',
 });
-// const StyledLabel = styled(DropdownMenu.Label, {
-//   color: '$gray12',
-// });
 const StyledItem = styled(DropdownMenu.Item, {
   display: 'block',
 });
@@ -113,11 +110,13 @@ export function Settings() {
           </StyledItem>
         )}
 
-        <StyledItem>
-          <Link href='/musings' passHref>
-            <StyledLink>Musings</StyledLink>
-          </Link>
-        </StyledItem>
+        {userId !== null && (
+          <StyledItem>
+            <Link href='/musings' passHref>
+              <StyledLink>Musings</StyledLink>
+            </Link>
+          </StyledItem>
+        )}
 
         {userId !== null && (
           <StyledItem>
