@@ -8,7 +8,7 @@ import {
   greenDark,
 } from '@radix-ui/colors';
 
-export const { styled, globalCss, keyframes, theme } = createStitches({
+export const { styled, globalCss, keyframes, theme, css } = createStitches({
   theme: {
     colors: {
       ...blue,
@@ -30,7 +30,7 @@ export const { styled, globalCss, keyframes, theme } = createStitches({
       main: 'all 0.1s ease-in-out',
     },
     fonts: {
-      accent: "'Syne', system-ui, sans-serif",
+      accent: 'Syncopate, system-ui, sans-serif',
       body: "'Public Sans', system-ui, sans-serif",
     },
     fontSizes: {
