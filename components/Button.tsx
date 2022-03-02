@@ -40,6 +40,9 @@ const StyledButton = styled('button', {
     backgroundColor: 'transparent',
     border: '1px solid $gray12',
   },
+  '&:active': {
+    transform: 'scale(0.95)',
+  },
 });
 
 export const Button = ({

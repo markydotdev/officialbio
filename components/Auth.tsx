@@ -3,6 +3,7 @@ import { supabase } from '../lib/supabaseClient';
 import ThirdPartyGrid from './ThirdPartyGrid';
 import strings from '../locales/en/strings';
 import { styled } from '../stitches.config';
+import GenericPrompt from './GenericPrompt';
 
 const AuthContainer = styled('section', {
   display: 'flex',
@@ -28,6 +29,7 @@ const EmailSubmit = styled('button', {
   fontWeight: 'bold',
   marginTop: '1rem',
   padding: '1rem',
+  cursor: 'pointer',
 });
 const ThirdPartySpacer = styled('div', {
   display: 'flex',
@@ -37,9 +39,25 @@ const ThirdPartySpacer = styled('div', {
   },
 });
 
+function AlertMessage({ active, message, error, handleClose }) {
+  return (
+    <GenericPrompt
+      active={active}
+      message={message}
+      error={error}
+      handleClose={handleClose}
+    />
+  );
+}
+
 export default function Auth({}) {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
+  const [prompt, setPrompt] = useState({
+    enabled: false,
+    message: '',
+    error: false,
+  });
 
   const handleLogin = async (email) => {
     try {
@@ -49,13 +67,21 @@ export default function Auth({}) {
         { redirectTo: 'http://localhost:3000/setup' }
       );
       if (error) throw error;
-      alert('Check your email for the login link!');
+      setPrompt({
+        enabled: true,
+        message: 'Check your email for the magic link',
+        error: false,
+      });
     } catch (error) {
       console.log('Error thrown:', error.message);
-      alert(error.error_description || error.message);
+      setPrompt({ enabled: true, message: error.message, error: true });
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleClose = () => {
+    setPrompt({ enabled: false, message: '', error: false });
   };
 
   return (
@@ -88,6 +114,13 @@ export default function Auth({}) {
       <ThirdPartySpacer>
         <ThirdPartyGrid connectedAccs={undefined} contentLoaded={undefined} />
       </ThirdPartySpacer>
+
+      <AlertMessage
+        active={prompt.enabled}
+        message={prompt.message}
+        error={prompt.error}
+        handleClose={handleClose}
+      />
     </AuthContainer>
   );
 }
