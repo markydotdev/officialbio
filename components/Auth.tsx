@@ -24,6 +24,7 @@ const EmailInput = styled('input', {
   backgroundColor: '$gray5',
   border: 'none',
   padding: '1rem 0.75rem',
+  borderRadius: '$button',
 });
 const EmailSubmit = styled('button', {
   backgroundColor: '$gray12',
