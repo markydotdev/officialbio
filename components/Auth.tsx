@@ -28,12 +28,17 @@ const EmailInput = styled('input', {
 const EmailSubmit = styled('button', {
   backgroundColor: '$gray12',
   color: '$gray1',
-  border: 'none',
+  border: '1px solid transparent',
   borderRadius: '$button',
   fontWeight: 'bold',
   marginTop: '1rem',
   padding: '1rem',
   cursor: 'pointer',
+  '&:hover': {
+    color: '$gray12',
+    backgroundColor: 'transparent',
+    border: '1px solid $gray12',
+  },
 });
 const ThirdPartySpacer = styled('div', {
   display: 'flex',
