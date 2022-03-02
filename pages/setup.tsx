@@ -4,6 +4,7 @@ import { Button } from '../components/Button';
 import { styled } from '../stitches.config';
 import strings from '../locales/en/strings';
 import { supabase } from '../lib/supabaseClient';
+import { useRouter } from 'next/router';
 
 const SetupTitle = styled('h2', {});
 const Subsection = styled('section', {
@@ -77,6 +78,7 @@ const ImagePreview = styled('img', {
 
 const SetupForm = () => {
   const user = supabase.auth.user();
+  const router = useRouter();
   const [form, setForm] = useState({
     name: undefined,
     image: undefined,
@@ -100,11 +102,17 @@ const SetupForm = () => {
           cacheControl: '3600',
         });
       console.log(data || error);
+      if (data) {
+        const { data, error } = await supabase
+          .from('profiles')
+          .update({ avatar_url: `${user.id}/avatar1.jpg`, pubName: form.name })
+          .eq('id', user.id);
+        console.log(data || error);
+        if (data) {
+          router.push('/musings');
+        }
+      }
     }
-
-    // TODO: image size check before uploading
-    // TODO: image type check (jpg/png/etc) and setting that as the upload section
-    // TODO: redirect to musings page once done
   };
 
   return (
