@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { supabase } from '../lib/supabaseClient';
 import { useEffect, useState, useContext } from 'react';
 import { UserContext } from '../pages/_app';
+import { useRouter } from 'next/router';
+import strings from '../locales/en/strings';
 
 const StyledTrigger = styled(DropdownMenu.Trigger, {
   height: 50,
@@ -41,6 +43,27 @@ const StyledLink = styled('a', {
   display: 'block',
   color: '$gray12',
   padding: '0.5rem',
+  userSelect: 'none',
+  '&:hover': {
+    color: '$gray1',
+    backgroundColor: '$gray12',
+    borderRadius: '$button',
+  },
+});
+const StyledButton = styled('button', {
+  border: 'none',
+  backgroundColor: 'initial',
+  width: '100%',
+  fontFamily: 'inherit',
+  fontSize: 'inherit',
+  textAlign: 'unset',
+  cursor: 'pointer',
+  font: 'inherit',
+  outline: 'inherit',
+  display: 'block',
+  color: '$gray12',
+  padding: '0.5rem',
+  userSelect: 'none',
   '&:hover': {
     color: '$gray1',
     backgroundColor: '$gray12',
@@ -49,6 +72,7 @@ const StyledLink = styled('a', {
 });
 
 export function Settings() {
+  const router = useRouter();
   const [name, setName] = useState(null);
   const userId = useContext(UserContext);
 
@@ -68,6 +92,11 @@ export function Settings() {
       getName();
     }
   }, [userId]);
+
+  const handleSignOut = async () => {
+    const { error } = await supabase.auth.signOut();
+    router.push('/');
+  };
 
   return (
     <DropdownMenu.Root>
@@ -97,7 +126,7 @@ export function Settings() {
         {userId !== null && (
           <StyledItem>
             <Link href={`/user/${name}`} passHref>
-              <StyledLink>Profile</StyledLink>
+              <StyledLink>{strings.settings.publicProfile}</StyledLink>
             </Link>
           </StyledItem>
         )}
@@ -105,7 +134,7 @@ export function Settings() {
         {userId === null && (
           <StyledItem>
             <Link href='/sign_in' passHref>
-              <StyledLink>Sign In</StyledLink>
+              <StyledLink>{strings.settings.signIn}</StyledLink>
             </Link>
           </StyledItem>
         )}
@@ -113,7 +142,7 @@ export function Settings() {
         {userId !== null && (
           <StyledItem>
             <Link href='/musings' passHref>
-              <StyledLink>Musings</StyledLink>
+              <StyledLink>{strings.settings.posts}</StyledLink>
             </Link>
           </StyledItem>
         )}
@@ -121,8 +150,16 @@ export function Settings() {
         {userId !== null && (
           <StyledItem>
             <Link href='/settings' passHref>
-              <StyledLink>Settings</StyledLink>
+              <StyledLink>{strings.settings.settings}</StyledLink>
             </Link>
+          </StyledItem>
+        )}
+
+        {userId !== null && (
+          <StyledItem>
+            <StyledButton onClick={() => handleSignOut()}>
+              {strings.settings.signOut}
+            </StyledButton>
           </StyledItem>
         )}
       </StyledContent>

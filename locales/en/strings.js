@@ -1,6 +1,13 @@
 module.exports = {
   title: 'OfficialBio',
   menu: 'Menu',
+  settings: {
+    publicProfile: 'Profile page',
+    posts: 'Musings page',
+    settings: 'Settings',
+    signIn: 'Sign in',
+    signOut: 'Sign out',
+  },
   // General delete actions
   delete: {
     button: 'Delete',
