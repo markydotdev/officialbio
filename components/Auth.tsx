@@ -8,6 +8,10 @@ import GenericPrompt from './GenericPrompt';
 const AuthContainer = styled('section', {
   display: 'flex',
   flexDirection: 'column',
+  backgroundColor: '$gray1',
+  padding: '1rem',
+  borderRadius: '$button',
+  boxShadow: '$low',
 });
 const Header = styled('h2', {});
 const Subtitle = styled('h3', {

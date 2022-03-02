@@ -1,16 +1,19 @@
 import { useState } from 'react';
 import { supabase } from '../lib/supabaseClient';
-import { styled } from '../stitches.config';
+import { styled, css } from '../stitches.config';
 
 const LoginButton = styled('button', {
   textTransform: 'capitalize',
-  border: 'none',
+  border: '1px solid transparent',
   borderRadius: '$button',
   padding: '1rem',
   margin: '0.5rem 0',
   color: '$gray1',
   cursor: 'pointer',
   fontWeight: 'bold',
+  '&:hover': {
+    backgroundColor: 'transparent',
+  },
 });
 
 const ThirdPartySign = ({ id, name, brand }) => {
@@ -34,7 +37,13 @@ const ThirdPartySign = ({ id, name, brand }) => {
     <LoginButton
       onClick={() => handleThirdPartyLogin(name)}
       type='button'
-      style={{ backgroundColor: brand }}
+      css={{
+        backgroundColor: brand,
+        '&:hover': {
+          color: brand,
+          border: `1px solid ${brand}`,
+        },
+      }}
     >
       {name}
     </LoginButton>
