@@ -79,7 +79,7 @@ export const Hero = ({ title, subtitle, prompt }) => {
         </Link>
       </HeroText>
 
-      <HeroImage src='/03.png' alt='hero' />
+      <HeroImage src='/hero-images/explore.png' alt='hero' />
     </HeroContainer>
   );
 };

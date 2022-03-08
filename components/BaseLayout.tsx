@@ -1,4 +1,5 @@
 import { MenuBar } from './MenuBar';
+import { Footer } from './Footer';
 import { styled } from '../stitches.config';
 
 const Container = styled('main', {
@@ -18,6 +19,7 @@ export function BaseLayout({ children }) {
     <>
       <MenuBar />
       <Container>{children}</Container>
+      <Footer />
     </>
   );
 }
