@@ -3,16 +3,18 @@ import Link from 'next/link';
 
 const HeroContainer = styled('div', {
   display: 'grid',
-  gridTemplateColumns: 'repeat(5, 1fr)',
+  gridTemplateColumns: 'repeat(6, 1fr)',
   gridTemplateRows: 'repeat(2, 1fr)',
+  marginTop: '5vh',
   marginBottom: '10vh',
+  minHeight: '40vh',
   '@media (min-width: 800px)': {},
 });
 const HeroText = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
-  gridColumn: '1 / span 3',
+  gridColumn: '1 / span 2',
   gridRow: '1 / span 2',
   zIndex: '1',
 });
@@ -26,16 +28,30 @@ const HeroTitle = styled('h2', {
     fontSize: '$maxFluid',
   },
 });
+const ImageSection = styled('div', {
+  position: 'relative',
+  gridColumn: '3 / -1',
+  gridRow: '1 / span 2',
+  justifySelf: 'center',
+});
 const HeroImage = styled('img', {
+  marginLeft: '2rem',
   width: '100%',
   height: '100%',
   objectFit: 'contain',
   objectPosition: 'center',
-  gridColumn: '4 / -1',
-  gridRow: '1 / span 2',
+
   '@media (min-width: 800px)': {
     width: '40vw',
   },
+});
+const HeroBackground = styled('svg', {
+  zIndex: -1,
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '60vw',
+  transform: 'rotate(190deg)',
 });
 const HeroButton = styled('a', {
   width: 'fit-content',
@@ -79,7 +95,19 @@ export const Hero = ({ title, subtitle, prompt }) => {
         </Link>
       </HeroText>
 
-      <HeroImage src='/hero-images/explore.png' alt='hero' />
+      <ImageSection>
+        <HeroImage src='/hero-images/explore.png' alt='hero' />
+        <HeroBackground
+          viewBox='0 0 200 200'
+          xmlns='http://www.w3.org/2000/svg'
+        >
+          <path
+            fill='#FFD6E8'
+            d='M53.1,-65C67.6,-62.5,77.4,-45.4,75,-29.8C72.6,-14.2,58,0,51.6,15.9C45.2,31.8,47,49.5,39.8,62.2C32.5,75,16.3,82.7,0.3,82.3C-15.7,81.9,-31.3,73.3,-37.5,60.2C-43.7,47.1,-40.3,29.6,-38.7,16.8C-37.1,4,-37.2,-4.1,-34.8,-11.2C-32.4,-18.4,-27.4,-24.7,-21.2,-29.8C-15,-35,-7.5,-39.1,5.9,-47.2C19.3,-55.3,38.5,-67.4,53.1,-65Z'
+            transform='translate(100 100)'
+          />
+        </HeroBackground>
+      </ImageSection>
     </HeroContainer>
   );
 };
