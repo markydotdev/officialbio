@@ -3,6 +3,11 @@ import { styled } from '../stitches.config';
 const StyledFooter = styled('footer', {
   display: 'flex',
   justifyContent: 'center',
+  marginTop: '4rem',
+  marginBottom: '2rem',
+  '@supports (margin-bottom: env(safe-area-inset-bottom))': {
+    marginBottom: 'calc(1.5rem + env(safe-area-inset-bottom))',
+  },
 });
 const FooterLink = styled('a', {
   margin: '0 0.25rem',
