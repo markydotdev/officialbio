@@ -29,14 +29,5 @@ export default function Home({ error }) {
 }
 
 export async function getServerSideProps({ req }) {
-  const { user, error } = await supabase.auth.api.getUserByCookie(req);
-
-  if (user) {
-    return {
-      props: {},
-      redirect: { destination: '/musings', permanent: false },
-    };
-  }
-
   return { props: {} };
 }
