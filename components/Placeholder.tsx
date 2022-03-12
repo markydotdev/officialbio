@@ -21,6 +21,7 @@ const Placeholder = ({ height, margin, width }) => {
   return (
     <StyledPlaceholder
       style={{ height: height, margin: margin, width: width || '100%' }}
+      data-testid='placeholder'
     />
   );
 };
