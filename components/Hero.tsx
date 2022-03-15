@@ -40,7 +40,6 @@ const HeroImage = styled('img', {
   height: '100%',
   objectFit: 'contain',
   objectPosition: 'center',
-
   '@media (min-width: 800px)': {
     width: '40vw',
   },
@@ -60,6 +59,7 @@ const HeroButton = styled('a', {
   textAlign: 'center',
   padding: '0.5rem 0',
   transition: 'all 0.1s ease-in-out',
+  fontWeight: '500',
   '&:hover': {
     backgroundColor: '$gray12',
     padding: '0.5rem 0.15rem 0.5rem 0.5rem',

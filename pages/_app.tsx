@@ -10,16 +10,22 @@ import React from 'react';
 const globalStyles = globalCss({
   '@font-face': [
     {
-      fontFamily: 'Public Sans',
-      src: `url('/fonts/PublicSans/PublicSans-VariableFont_wght.ttf')`,
-      fontWeight: '125 900',
+      fontFamily: 'Quicksand',
+      src: `url('/fonts/Quicksand/Quicksand-Regular.ttf')`,
+      fontWeight: 'normal',
       fontStyle: 'normal',
     },
     {
-      fontFamily: 'Public Sans',
-      src: `url('/fonts/PublicSans/PublicSans-Italic-VariableFont_wght.ttf')`,
-      fontWeight: '125 900',
-      fontStyle: 'italic',
+      fontFamily: 'Quicksand',
+      src: `url('/fonts/Quicksand/Quicksand-Bold.ttf')`,
+      fontWeight: 'bold',
+      fontStyle: 'normal',
+    },
+    {
+      fontFamily: 'Quicksand',
+      src: `url('/fonts/Quicksand/Quicksand-Medium.ttf')`,
+      fontWeight: '500',
+      fontStyle: 'normal',
     },
     {
       fontFamily: 'Syncopate',
@@ -48,9 +54,6 @@ const globalStyles = globalCss({
   },
   a: {
     textDecoration: 'none',
-  },
-  'h1, h2, h3, h4': {
-    fontFamily: '$accent',
   },
 });
 
