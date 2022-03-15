@@ -89,6 +89,7 @@ const AvatarLabel = styled('span', {
 const SignInLabel = styled('a', {
   color: '$gray12',
   borderBottom: '2px solid transparent',
+  fontWeight: '500',
   '&:hover': {
     borderBottom: '2px solid $gray12',
   },
