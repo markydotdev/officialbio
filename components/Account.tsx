@@ -5,7 +5,7 @@ import { DEFAULT_AVATARS_BUCKET } from '../lib/constants';
 import { useRouter } from 'next/router';
 import { styled } from '../stitches.config';
 import { Button } from './Button';
-import ThirdPartyGrid from './ThirdPartyGrid';
+import ExternalSignIn from './ExternalSignIn';
 import Placeholder from './Placeholder';
 import strings from '../locales/en/strings';
 
@@ -483,7 +483,7 @@ export default function Account({ session }) {
       <SubsectionTitle>{strings.account.connected}</SubsectionTitle>
       <SubsectionDesc>{strings.account.connectedAccsDesc}</SubsectionDesc>
       <SubsectionGroup>
-        <ThirdPartyGrid
+        <ExternalSignIn
           connectedAccs={connectedAccs}
           contentLoaded={contentLoaded}
         />

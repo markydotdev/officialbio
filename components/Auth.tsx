@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { supabase } from '../lib/supabaseClient';
-import ThirdPartyGrid from './ThirdPartyGrid';
 import strings from '../locales/en/strings';
 import { styled } from '../stitches.config';
+import ExternalSignIn from './ExternalSignIn';
 import GenericPrompt from './GenericPrompt';
 
 const AuthContainer = styled('section', {
@@ -122,7 +122,7 @@ export default function Auth({}) {
       </EmailSubmit>
       <Subtitle>{strings.sign.alternative}</Subtitle>
       <ThirdPartySpacer>
-        <ThirdPartyGrid connectedAccs={undefined} contentLoaded={undefined} />
+        <ExternalSignIn connectedAccs={undefined} contentLoaded={undefined} />
       </ThirdPartySpacer>
 
       <AlertMessage
