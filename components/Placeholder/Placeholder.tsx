@@ -1,4 +1,4 @@
-import { keyframes, styled } from '../stitches.config';
+import { keyframes, styled } from '../../stitches.config';
 
 const loading = keyframes({
   from: { backgroundPosition: '100% 50%' },
