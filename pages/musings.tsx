@@ -1,8 +1,8 @@
 import { supabase } from '../lib/supabaseClient';
 import { BaseLayout } from '../components/BaseLayout';
-import { Post } from '../components/Post';
 import { useState, useEffect } from 'react';
-import { Musing } from '../components/Musing';
+import Message from '../components/Message';
+import PostForm from '../components/PostForm';
 import Auth from '../components/Auth';
 import {
   fetchMusings,
@@ -87,7 +87,7 @@ export default function Musings({ user, guest }) {
 
   return (
     <BaseLayout>
-      <Post
+      <PostForm
         onSubmit={onSubmit}
         inputText={inputText}
         setInputText={setInputText}
@@ -95,7 +95,7 @@ export default function Musings({ user, guest }) {
       />
 
       {posts && (
-        <Musing
+        <Message
           removePost={removePost}
           publishPost={publishPost}
           privatePost={privatePost}
