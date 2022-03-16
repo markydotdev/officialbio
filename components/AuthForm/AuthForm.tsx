@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-import { supabase } from '../lib/supabaseClient';
-import strings from '../locales/en/strings';
-import { styled } from '../stitches.config';
-import ExternalSignIn from './ExternalSignIn';
-import GenericPrompt from './GenericPrompt';
+import { supabase } from '../../lib/supabaseClient';
+import strings from '../../locales/en/strings';
+import { styled } from '../../stitches.config';
+import ExternalSignIn from '../ExternalSignIn';
+import Prompt from '../Prompt';
 
 const AuthContainer = styled('section', {
   display: 'flex',
@@ -52,7 +52,7 @@ const ThirdPartySpacer = styled('div', {
 
 function AlertMessage({ active, message, error, handleClose }) {
   return (
-    <GenericPrompt
+    <Prompt
       active={active}
       message={message}
       error={error}
@@ -61,7 +61,7 @@ function AlertMessage({ active, message, error, handleClose }) {
   );
 }
 
-export default function Auth({}) {
+function AuthForm({}) {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [prompt, setPrompt] = useState({
@@ -135,3 +135,5 @@ export default function Auth({}) {
     </AuthContainer>
   );
 }
+
+export default AuthForm;

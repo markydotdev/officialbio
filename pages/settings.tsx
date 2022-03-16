@@ -1,8 +1,9 @@
-import Account from '../components/Account';
-import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { supabase } from '../lib/supabaseClient';
+import { useEffect, useState } from 'react';
+
+import AccountSettings from '../components/AccountSettings';
 import Layout from '../components/Layout';
+import { supabase } from '../lib/supabaseClient';
 
 export default function Profile() {
   const router = useRouter();
@@ -18,6 +19,8 @@ export default function Profile() {
   }, [router]);
 
   return (
-    <Layout>{session && <Account key={session.id} session={session} />}</Layout>
+    <Layout>
+      {session && <AccountSettings key={session.id} session={session} />}
+    </Layout>
   );
 }

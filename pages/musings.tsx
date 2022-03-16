@@ -1,17 +1,13 @@
-import { supabase } from '../lib/supabaseClient';
+import { useEffect, useState } from 'react';
+
+import AuthForm from '../components/AuthForm';
 import Layout from '../components/Layout';
-import { useState, useEffect } from 'react';
 import Message from '../components/Message';
 import PostForm from '../components/PostForm';
-import Auth from '../components/Auth';
 import {
-  fetchMusings,
-  deleteMusing,
-  postMusing,
-  postMusingImage,
-  publishMusing,
-  removePublicMusing,
+    deleteMusing, fetchMusings, postMusing, postMusingImage, publishMusing, removePublicMusing
 } from '../lib/post';
+import { supabase } from '../lib/supabaseClient';
 
 export default function Musings({ user, guest }) {
   const [posts, setPosts] = useState(null);
@@ -80,7 +76,7 @@ export default function Musings({ user, guest }) {
   if (guest) {
     return (
       <Layout>
-        <Auth />
+        <AuthForm />
       </Layout>
     );
   }

@@ -1,14 +1,14 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
-import { DEFAULT_AVATARS_BUCKET } from '../lib/constants';
-import { supabase } from '../lib/supabaseClient';
-import strings from '../locales/en/strings';
-import { styled } from '../stitches.config';
-import Avatar from './Avatar';
-import Button from './Button';
-import ExternalSignIn from './ExternalSignIn';
-import Placeholder from './Placeholder';
+import { DEFAULT_AVATARS_BUCKET } from '../../lib/constants';
+import { supabase } from '../../lib/supabaseClient';
+import strings from '../../locales/en/strings';
+import { styled } from '../../stitches.config';
+import Avatar from '../Avatar';
+import Button from '../Button';
+import ExternalSignIn from '../ExternalSignIn';
+import Placeholder from '../Placeholder';
 
 const AccountBox = styled('div', {});
 const AvatarField = styled('div', {
@@ -157,7 +157,7 @@ const InputGroup = ({ type, label, value, onChange }) => {
   );
 };
 
-export default function Account({ session }) {
+function AccountSettings({ session }) {
   const router = useRouter();
   const user = supabase.auth.user();
   const [loading, setLoading] = useState(true);
@@ -508,3 +508,5 @@ export default function Account({ session }) {
     </AccountBox>
   );
 }
+
+export default AccountSettings;

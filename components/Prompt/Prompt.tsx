@@ -1,15 +1,15 @@
 import { useState } from 'react';
 
-import * as Prompt from '@radix-ui/react-dialog';
+import * as RadixPrompt from '@radix-ui/react-dialog';
 
-import { styled } from '../stitches.config';
+import { styled } from '../../stitches.config';
 
-const StyledOverlay = styled(Prompt.Overlay, {
+const StyledOverlay = styled(RadixPrompt.Overlay, {
   backgroundColor: '$gray11',
   position: 'fixed',
   inset: 0,
 });
-const Content = styled(Prompt.Content, {
+const Content = styled(RadixPrompt.Content, {
   backgroundColor: 'white',
   borderRadius: 6,
   boxShadow:
@@ -23,7 +23,7 @@ const Content = styled(Prompt.Content, {
   maxHeight: '85vh',
   padding: 25,
 });
-const CloseButton = styled(Prompt.Close, {
+const CloseButton = styled(RadixPrompt.Close, {
   cursor: 'pointer',
   border: '1px solid transparent',
   backgroundColor: '$gray12',
@@ -50,24 +50,19 @@ type PromptTypes = {
   handleClose: () => void;
 };
 
-const GenericPrompt = ({
-  active,
-  message,
-  error,
-  handleClose,
-}: PromptTypes) => {
+const Prompt = ({ active, message, error, handleClose }: PromptTypes) => {
   return (
-    <Prompt.Root open={active}>
-      <Prompt.Portal>
+    <RadixPrompt.Root open={active}>
+      <RadixPrompt.Portal>
         <StyledOverlay></StyledOverlay>
         <Content>
-          <Prompt.Title>{error ? 'Error' : 'Heads up'}</Prompt.Title>
-          <Prompt.Description>{message}</Prompt.Description>
+          <RadixPrompt.Title>{error ? 'Error' : 'Heads up'}</RadixPrompt.Title>
+          <RadixPrompt.Description>{message}</RadixPrompt.Description>
           <CloseButton onClick={() => handleClose()}>Close</CloseButton>
         </Content>
-      </Prompt.Portal>
-    </Prompt.Root>
+      </RadixPrompt.Portal>
+    </RadixPrompt.Root>
   );
 };
 
-export default GenericPrompt;
+export default Prompt;
