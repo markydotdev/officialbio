@@ -1,4 +1,4 @@
-import { styled } from '../stitches.config';
+import { styled } from '../../stitches.config';
 
 const StyledButton = styled('button', {
   cursor: 'pointer',
@@ -45,14 +45,7 @@ const StyledButton = styled('button', {
   },
 });
 
-export const Button = ({
-  children,
-  onClick,
-  type,
-  disabled,
-  version,
-  loading,
-}) => {
+const Button = ({ children, onClick, type, disabled, version, loading }) => {
   return (
     <StyledButton
       onClick={onClick}
@@ -65,3 +58,5 @@ export const Button = ({
     </StyledButton>
   );
 };
+
+export default Button;

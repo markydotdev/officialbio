@@ -1,12 +1,13 @@
-import { Settings } from './Settings';
-import { styled } from '../../stitches.config';
 import Link from 'next/link';
-import { useState, useContext, useEffect } from 'react';
-import { UserContext } from '../../pages/_app';
-import { supabase } from '../../lib/supabaseClient';
-import Avatar from '../Avatar';
 import { useRouter } from 'next/router';
+import { useContext, useEffect, useState } from 'react';
+
+import { supabase } from '../../lib/supabaseClient';
+import { UserContext } from '../../pages/_app';
+import { styled } from '../../stitches.config';
+import Avatar from '../Avatar';
 import Logo from './Logo';
+import Settings from './Settings';
 
 const Menu = styled('nav', {
   display: 'grid',

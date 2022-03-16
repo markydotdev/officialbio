@@ -71,7 +71,7 @@ const StyledButton = styled('button', {
   },
 });
 
-export function Settings() {
+function Settings() {
   const router = useRouter();
   const [name, setName] = useState(null);
   const userId = useContext(UserContext);
@@ -166,3 +166,5 @@ export function Settings() {
     </DropdownMenu.Root>
   );
 }
+
+export default Settings;

@@ -1,6 +1,7 @@
 import * as AlertPrompt from '@radix-ui/react-alert-dialog';
-import { styled } from '../../stitches.config';
+
 import strings from '../../locales/en/strings';
+import { styled } from '../../stitches.config';
 
 const StyledOverlay = styled(AlertPrompt.Overlay, {
   backgroundColor: 'rgba(0, 0, 0, 0.90)',

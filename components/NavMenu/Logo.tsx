@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import { styled } from '../../stitches.config';
+
 import Globals from '../../locales/en/strings';
+import { styled } from '../../stitches.config';
 
 const Title = styled('h1', {
   gridColumn: '1 / span 2',

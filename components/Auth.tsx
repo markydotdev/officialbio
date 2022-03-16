@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import { supabase } from '../lib/supabaseClient';
 import strings from '../locales/en/strings';
 import { styled } from '../stitches.config';

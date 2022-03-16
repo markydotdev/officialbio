@@ -1,5 +1,7 @@
 import { useState } from 'react';
+
 import * as Prompt from '@radix-ui/react-dialog';
+
 import { styled } from '../stitches.config';
 
 const StyledOverlay = styled(Prompt.Overlay, {

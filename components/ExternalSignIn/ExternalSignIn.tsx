@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
-import ThirdPartySign from './ThirdPartySign';
-import { styled } from '../../stitches.config';
+import { useEffect, useState } from 'react';
+
 import { supabase } from '../../lib/supabaseClient';
 import strings from '../../locales/en/strings';
-import { Button } from '../Button';
+import { styled } from '../../stitches.config';
+import Button from '../Button';
+import ThirdPartySign from './ThirdPartySign';
 
 const ThirdPartyGroup = styled('ul', {
   display: 'flex',

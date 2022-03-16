@@ -1,6 +1,6 @@
-import Hero from './Hero';
-import Feature from './Feature';
 import strings from '../../locales/en/strings';
+import Feature from './Feature';
+import Hero from './Hero';
 
 function Landing() {
   return (

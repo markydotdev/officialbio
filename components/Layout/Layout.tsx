@@ -1,6 +1,6 @@
+import { styled } from '../../stitches.config';
 import NavMenu from '../NavMenu';
 import Footer from './Footer';
-import { styled } from '../../stitches.config';
 
 const Container = styled('main', {
   marginTop: '1rem',

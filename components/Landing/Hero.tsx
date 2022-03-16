@@ -1,5 +1,6 @@
-import { styled } from '../../stitches.config';
 import Link from 'next/link';
+
+import { styled } from '../../stitches.config';
 
 const HeroContainer = styled('div', {
   marginTop: '5vh',

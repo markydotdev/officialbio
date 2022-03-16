@@ -1,8 +1,9 @@
+import { useEffect, useState } from 'react';
+
 import { styled } from '../../stitches.config';
 import MessageAlert from './MessageAlert';
 import MessageDate from './MessageDate';
 import MessageImage from './MessageImage';
-import { useState, useEffect } from 'react';
 
 const StyledPostBox = styled('div', {
   display: 'flex',

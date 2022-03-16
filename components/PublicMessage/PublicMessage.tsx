@@ -1,5 +1,6 @@
-import { styled } from '../../stitches.config';
 import { useState } from 'react';
+
+import { styled } from '../../stitches.config';
 
 const ArticleContainer = styled('article', {
   marginTop: '1.5rem',

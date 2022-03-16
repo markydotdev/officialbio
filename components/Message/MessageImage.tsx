@@ -1,5 +1,6 @@
-import { styled } from '../../stitches.config';
 import Image from 'next/image';
+
+import { styled } from '../../stitches.config';
 
 const ImageContainer = styled('div', {
   flex: 1,

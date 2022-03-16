@@ -1,7 +1,9 @@
-import { styled } from '../../stitches.config';
-import * as Label from '@radix-ui/react-label';
 import { useState } from 'react';
+
+import * as Label from '@radix-ui/react-label';
+
 import strings from '../../locales/en/strings';
+import { styled } from '../../stitches.config';
 
 const FormBox = styled('div', {
   backgroundColor: '$gray1',

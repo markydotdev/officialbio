@@ -1,13 +1,14 @@
-import { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabaseClient';
-import Avatar from './Avatar';
-import { DEFAULT_AVATARS_BUCKET } from '../lib/constants';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+
+import { DEFAULT_AVATARS_BUCKET } from '../lib/constants';
+import { supabase } from '../lib/supabaseClient';
+import strings from '../locales/en/strings';
 import { styled } from '../stitches.config';
-import { Button } from './Button';
+import Avatar from './Avatar';
+import Button from './Button';
 import ExternalSignIn from './ExternalSignIn';
 import Placeholder from './Placeholder';
-import strings from '../locales/en/strings';
 
 const AccountBox = styled('div', {});
 const AvatarField = styled('div', {
