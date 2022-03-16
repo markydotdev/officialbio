@@ -1,6 +1,6 @@
 import { BaseLayout } from '../../components/BaseLayout';
 import { supabase } from '../../lib/supabaseClient';
-import { PublicArticle } from '../../components/PublicArticle';
+import PublicMessage from '../../components/PublicMessage';
 import Link from 'next/link';
 import ContactCard from '../../components/ContactCard';
 import strings from '../../locales/en/strings';
@@ -29,7 +29,7 @@ function UserPage({ user, avatar, postData }) {
         {postData
           .sort((a, b) => +new Date(b.updated_at) - +new Date(a.updated_at))
           .map((post) => (
-            <PublicArticle key={post.id} post={post} makePrivate={undefined} />
+            <PublicMessage key={post.id} post={post} makePrivate={undefined} />
           ))}
       </BaseLayout>
     );

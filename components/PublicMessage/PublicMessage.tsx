@@ -1,4 +1,4 @@
-import { styled } from '../stitches.config';
+import { styled } from '../../stitches.config';
 import { useState } from 'react';
 
 const ArticleContainer = styled('article', {
@@ -81,10 +81,11 @@ function PostDate({ date }) {
   return <StyledDate>{daysString}</StyledDate>;
 }
 
-export function PublicArticle({ makePrivate, post }) {
+function PublicMessage({ makePrivate, post }) {
   const [open, setOpen] = useState(false);
   const [imageShown, setImageShown] = useState('');
 
+  // TODO: Convert into react hook to reuse ?
   const handleImageZoom = (image) => {
     if (open) {
       setOpen(false);
@@ -123,3 +124,5 @@ export function PublicArticle({ makePrivate, post }) {
     </ArticleContainer>
   );
 }
+
+export default PublicMessage;
