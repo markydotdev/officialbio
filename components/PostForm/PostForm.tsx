@@ -1,8 +1,7 @@
-import { styled } from '../stitches.config';
+import { styled } from '../../stitches.config';
 import * as Label from '@radix-ui/react-label';
 import { useState } from 'react';
-import { Button } from './Button';
-import strings from '../locales/en/strings';
+import strings from '../../locales/en/strings';
 
 const FormBox = styled('div', {
   backgroundColor: '$gray1',
@@ -115,7 +114,7 @@ const CharacterCount = styled('span', {
   },
 });
 
-export function Post({ onSubmit, inputText, setInputText, setUploads }) {
+function PostForm({ onSubmit, inputText, setInputText, setUploads }) {
   const [preview, setPreview] = useState(null);
 
   function handleSubmit(e) {
@@ -193,3 +192,5 @@ export function Post({ onSubmit, inputText, setInputText, setUploads }) {
     </FormBox>
   );
 }
+
+export default PostForm;
