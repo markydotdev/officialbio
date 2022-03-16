@@ -1,11 +1,11 @@
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { styled } from '../stitches.config';
+import { styled } from '../../stitches.config';
 import Link from 'next/link';
-import { supabase } from '../lib/supabaseClient';
+import { supabase } from '../../lib/supabaseClient';
 import { useEffect, useState, useContext } from 'react';
-import { UserContext } from '../pages/_app';
+import { UserContext } from '../../pages/_app';
 import { useRouter } from 'next/router';
-import strings from '../locales/en/strings';
+import strings from '../../locales/en/strings';
 
 const StyledTrigger = styled(DropdownMenu.Trigger, {
   height: 50,

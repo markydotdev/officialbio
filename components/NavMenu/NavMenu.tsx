@@ -1,12 +1,12 @@
 import { Settings } from './Settings';
-import { styled } from '../stitches.config';
+import { styled } from '../../stitches.config';
 import Link from 'next/link';
-import Globals from '../locales/en/strings';
 import { useState, useContext, useEffect } from 'react';
-import { UserContext } from '../pages/_app';
-import { supabase } from '../lib/supabaseClient';
-import Avatar from './Avatar';
+import { UserContext } from '../../pages/_app';
+import { supabase } from '../../lib/supabaseClient';
+import Avatar from '../Avatar';
 import { useRouter } from 'next/router';
+import Logo from './Logo';
 
 const Menu = styled('nav', {
   display: 'grid',
@@ -15,29 +15,6 @@ const Menu = styled('nav', {
   '@md': {
     gridTemplateColumns: '10fr 5fr',
     gridTemplateRows: '1fr',
-  },
-});
-const Title = styled('h1', {
-  gridColumn: '1 / span 2',
-  margin: '0.5rem 0',
-  minWidth: '100%',
-  fontFamily: '$accent',
-  fontSize: '1.1em',
-  fontWeight: '700',
-  '& > a': {
-    color: '$gray12',
-    padding: '0.5rem 0',
-    '&:hover': {
-      color: '$gray1',
-      backgroundColor: '$gray12',
-      borderRadius: '$button',
-    },
-  },
-  '@md': {
-    gridColumn: '1',
-    gridRow: '1',
-    alignSelf: 'center',
-    fontSize: '1.5em',
   },
 });
 const AvatarItem = styled('div', {
@@ -96,7 +73,7 @@ const SignInLabel = styled('a', {
   },
 });
 
-export function MenuBar() {
+function NavMenu() {
   const router = useRouter();
   const [avatar, setAvatar] = useState(null);
   const [name, setName] = useState(null);
@@ -121,11 +98,7 @@ export function MenuBar() {
 
   return (
     <Menu>
-      <Title>
-        <Link href='/'>
-          <a>{Globals.title}</a>
-        </Link>
-      </Title>
+      <Logo />
       <AvatarItem>
         {userId !== null && (
           <Link href={`/user/${name}`} passHref>
@@ -158,3 +131,5 @@ export function MenuBar() {
     </Menu>
   );
 }
+
+export default NavMenu;

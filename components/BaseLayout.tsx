@@ -1,4 +1,4 @@
-import { MenuBar } from './MenuBar';
+import NavMenu from './NavMenu';
 import { Footer } from './Footer';
 import { styled } from '../stitches.config';
 
@@ -17,7 +17,7 @@ const Container = styled('main', {
 export function BaseLayout({ children }) {
   return (
     <>
-      <MenuBar />
+      <NavMenu />
       <Container>{children}</Container>
       <Footer />
     </>
