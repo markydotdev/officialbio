@@ -22,7 +22,7 @@ const Title = styled('h1', {
   margin: '0.5rem 0',
   minWidth: '100%',
   fontFamily: '$accent',
-  fontSize: '1.8em',
+  fontSize: '1.1em',
   fontWeight: '700',
   '& > a': {
     color: '$gray12',
@@ -37,6 +37,7 @@ const Title = styled('h1', {
     gridColumn: '1',
     gridRow: '1',
     alignSelf: 'center',
+    fontSize: '1.5em',
   },
 });
 const AvatarItem = styled('div', {
