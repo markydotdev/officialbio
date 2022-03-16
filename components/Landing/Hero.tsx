@@ -1,4 +1,4 @@
-import { styled } from '../stitches.config';
+import { styled } from '../../stitches.config';
 import Link from 'next/link';
 
 const HeroContainer = styled('div', {
@@ -53,7 +53,7 @@ const HeroButton = styled('a', {
   },
 });
 
-export const Hero = ({ title, subtitle, prompt }) => {
+const Hero = ({ title, subtitle, prompt }) => {
   return (
     <HeroContainer>
       <HeroBox>
@@ -86,3 +86,5 @@ export const Hero = ({ title, subtitle, prompt }) => {
     </HeroContainer>
   );
 };
+
+export default Hero;

@@ -1,8 +1,5 @@
 import { BaseLayout } from '../components/BaseLayout';
-import { Feature } from '../components/Feature';
-import { Hero } from '../components/Hero';
-import strings from '../locales/en/strings';
-import { supabase } from '../lib/supabaseClient';
+import Landing from '../components/Landing';
 
 export default function Home({ error }) {
   if (error) {
@@ -15,15 +12,7 @@ export default function Home({ error }) {
 
   return (
     <BaseLayout>
-      <Hero
-        title={strings.landing.title}
-        subtitle={strings.landing.subtitle}
-        prompt={strings.landing.prompt}
-      />
-
-      {strings.features.map((feature) => (
-        <Feature key={feature.id} {...feature} />
-      ))}
+      <Landing />
     </BaseLayout>
   );
 }

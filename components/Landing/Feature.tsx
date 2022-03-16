@@ -1,4 +1,4 @@
-import { styled } from '../stitches.config';
+import { styled } from '../../stitches.config';
 
 const FeatureContainer = styled('div', {
   display: 'flex',
@@ -30,7 +30,7 @@ const FeatureImage = styled('img', {
   objectFit: 'contain',
 });
 
-export const Feature = ({ name, summary, image }) => {
+const Feature = ({ name, summary, image }) => {
   return (
     <FeatureContainer>
       <FeatureText>
@@ -44,3 +44,5 @@ export const Feature = ({ name, summary, image }) => {
     </FeatureContainer>
   );
 };
+
+export default Feature;
