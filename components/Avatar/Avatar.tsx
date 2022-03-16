@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { supabase } from '../lib/supabaseClient';
-import { DEFAULT_AVATARS_BUCKET } from '../lib/constants';
+import { supabase } from '../../lib/supabaseClient';
+import { DEFAULT_AVATARS_BUCKET } from '../../lib/constants';
 import * as BaseAvatar from '@radix-ui/react-avatar';
-import { styled } from '../stitches.config';
+import { styled } from '../../stitches.config';
 
 const StyledBase = styled(BaseAvatar.Root, {
   display: 'inline-flex',
@@ -32,7 +32,7 @@ const StyledFallback = styled(BaseAvatar.Fallback, {
   color: '$gray12',
 });
 
-export default function Avatar({ url, size, type, initials }) {
+function Avatar({ url, size, type, initials }) {
   const [avatarUrl, setAvatarUrl] = useState(null);
 
   useEffect(() => {
@@ -66,3 +66,5 @@ export default function Avatar({ url, size, type, initials }) {
     </StyledBase>
   );
 }
+
+export default Avatar;
