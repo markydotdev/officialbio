@@ -1,9 +1,8 @@
-import { styled } from '../stitches.config';
+import { styled } from '../../stitches.config';
 import { useState, useEffect } from 'react';
-import Avatar from './Avatar';
-import { Button } from './Button';
-import strings from '../locales/en/strings';
-import { supabase } from '../lib/supabaseClient';
+import Avatar from '../Avatar';
+import strings from '../../locales/en/strings';
+import { supabase } from '../../lib/supabaseClient';
 
 const CardFlex = styled('div', {
   display: 'flex',
@@ -39,7 +38,7 @@ const TempMessage = styled('span', {
   marginLeft: '0.5rem',
 });
 
-export const PublicCard = ({ name, avatar }) => {
+const ContactCard = ({ name, avatar }) => {
   const [status, setStatus] = useState(false);
   const [description, setDescription] = useState('');
 
@@ -94,3 +93,5 @@ export const PublicCard = ({ name, avatar }) => {
     </CardFlex>
   );
 };
+
+export default ContactCard;

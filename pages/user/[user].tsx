@@ -2,7 +2,7 @@ import { BaseLayout } from '../../components/BaseLayout';
 import { supabase } from '../../lib/supabaseClient';
 import { PublicArticle } from '../../components/PublicArticle';
 import Link from 'next/link';
-import { PublicCard } from '../../components/PublicCard';
+import ContactCard from '../../components/ContactCard';
 import strings from '../../locales/en/strings';
 import { styled } from '../../stitches.config';
 
@@ -24,7 +24,7 @@ function UserPage({ user, avatar, postData }) {
   if (postData) {
     return (
       <BaseLayout>
-        <PublicCard name={user} avatar={avatar} />
+        <ContactCard name={user} avatar={avatar} />
 
         {postData
           .sort((a, b) => +new Date(b.updated_at) - +new Date(a.updated_at))
