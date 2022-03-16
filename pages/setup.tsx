@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BaseLayout } from '../components/BaseLayout';
+import Layout from '../components/Layout';
 import { Button } from '../components/Button';
 import { styled } from '../stitches.config';
 import strings from '../locales/en/strings';
@@ -162,10 +162,10 @@ const SetupForm = () => {
 
 const SetupPage = () => {
   return (
-    <BaseLayout>
+    <Layout>
       <SetupTitle>Initial Setup</SetupTitle>
       <SetupForm />
-    </BaseLayout>
+    </Layout>
   );
 };
 

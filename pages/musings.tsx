@@ -1,5 +1,5 @@
 import { supabase } from '../lib/supabaseClient';
-import { BaseLayout } from '../components/BaseLayout';
+import Layout from '../components/Layout';
 import { useState, useEffect } from 'react';
 import Message from '../components/Message';
 import PostForm from '../components/PostForm';
@@ -79,14 +79,14 @@ export default function Musings({ user, guest }) {
 
   if (guest) {
     return (
-      <BaseLayout>
+      <Layout>
         <Auth />
-      </BaseLayout>
+      </Layout>
     );
   }
 
   return (
-    <BaseLayout>
+    <Layout>
       <PostForm
         onSubmit={onSubmit}
         inputText={inputText}
@@ -102,7 +102,7 @@ export default function Musings({ user, guest }) {
           posts={posts}
         />
       )}
-    </BaseLayout>
+    </Layout>
   );
 }
 

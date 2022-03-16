@@ -1,4 +1,4 @@
-import { BaseLayout } from '../../components/BaseLayout';
+import Layout from '../../components/Layout';
 import { supabase } from '../../lib/supabaseClient';
 import PublicMessage from '../../components/PublicMessage';
 import Link from 'next/link';
@@ -23,7 +23,7 @@ const ReturnHome = styled('a', {
 function UserPage({ user, avatar, postData }) {
   if (postData) {
     return (
-      <BaseLayout>
+      <Layout>
         <ContactCard name={user} avatar={avatar} />
 
         {postData
@@ -31,16 +31,16 @@ function UserPage({ user, avatar, postData }) {
           .map((post) => (
             <PublicMessage key={post.id} post={post} makePrivate={undefined} />
           ))}
-      </BaseLayout>
+      </Layout>
     );
   }
   return (
-    <BaseLayout>
+    <Layout>
       <h1>{strings.public.missingUser}</h1>
       <Link href='/' passHref>
         <ReturnHome>{strings.public.returnHome}</ReturnHome>
       </Link>
-    </BaseLayout>
+    </Layout>
   );
 }
 

@@ -1,22 +1,18 @@
-import { BaseLayout } from '../components/BaseLayout';
+import Layout from '../components/Layout';
 import Landing from '../components/Landing';
 
 export default function Home({ error }) {
   if (error) {
     return (
-      <BaseLayout>
+      <Layout>
         <h1>{error.message}</h1>
-      </BaseLayout>
+      </Layout>
     );
   }
 
   return (
-    <BaseLayout>
+    <Layout>
       <Landing />
-    </BaseLayout>
+    </Layout>
   );
-}
-
-export async function getServerSideProps({ req }) {
-  return { props: {} };
 }

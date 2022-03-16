@@ -1,10 +1,10 @@
 import Auth from '../components/Auth';
-import { BaseLayout } from '../components/BaseLayout';
+import Layout from '../components/Layout';
 
 export default function SignIn() {
   return (
-    <BaseLayout>
+    <Layout>
       <Auth />
-    </BaseLayout>
+    </Layout>
   );
 }

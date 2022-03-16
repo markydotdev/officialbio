@@ -1,4 +1,4 @@
-import { styled } from '../stitches.config';
+import { styled } from '../../stitches.config';
 
 const StyledFooter = styled('footer', {
   display: 'flex',
@@ -22,7 +22,7 @@ const FooterLink = styled('a', {
   },
 });
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <StyledFooter>
       Illustration by
@@ -34,3 +34,5 @@ export const Footer = () => {
     </StyledFooter>
   );
 };
+
+export default Footer;

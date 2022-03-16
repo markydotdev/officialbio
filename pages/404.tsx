@@ -1,4 +1,4 @@
-import { BaseLayout } from '../components/BaseLayout';
+import Layout from '../components/Layout';
 import Image from 'next/image';
 import { styled } from '../stitches.config';
 
@@ -12,7 +12,7 @@ const Styled404 = styled('section', {
 
 export default function Custom404() {
   return (
-    <BaseLayout>
+    <Layout>
       <Styled404>
         <h2>404 - Page cannot be found</h2>
         <Image
@@ -23,6 +23,6 @@ export default function Custom404() {
           layout={'fixed'}
         />
       </Styled404>
-    </BaseLayout>
+    </Layout>
   );
 }

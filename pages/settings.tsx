@@ -2,7 +2,7 @@ import Account from '../components/Account';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { supabase } from '../lib/supabaseClient';
-import { BaseLayout } from '../components/BaseLayout';
+import Layout from '../components/Layout';
 
 export default function Profile() {
   const router = useRouter();
@@ -18,8 +18,6 @@ export default function Profile() {
   }, [router]);
 
   return (
-    <BaseLayout>
-      {session && <Account key={session.id} session={session} />}
-    </BaseLayout>
+    <Layout>{session && <Account key={session.id} session={session} />}</Layout>
   );
 }
