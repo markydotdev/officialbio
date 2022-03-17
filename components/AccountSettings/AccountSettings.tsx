@@ -10,6 +10,7 @@ import Button from '../Button';
 import ExternalSignIn from '../ExternalSignIn';
 import Placeholder from '../Placeholder';
 import InputGroup from './InputGroup';
+import Subsection from './Subsection';
 import UploadButton from './UploadButton';
 
 const AccountBox = styled('div', {});
@@ -17,30 +18,6 @@ const AvatarField = styled('div', {
   display: 'flex',
   alignItems: 'center',
   height: '150px',
-});
-const SubsectionTitle = styled('h2', {
-  margin: '2rem 0 0 0',
-  '&:first-of-type': {
-    marginTop: '1rem',
-  },
-  '@media (min-width: 800px)': {
-    margin: '2rem 0 0 1rem',
-  },
-});
-const SubsectionDesc = styled('h3', {
-  margin: '0 0 1rem 0',
-  fontFamily: '$body',
-  fontWeight: 'normal',
-  fontSize: 'small',
-  '@media (min-width: 800px)': {
-    margin: '0 0 1rem 1rem',
-  },
-});
-const SubsectionGroup = styled('div', {
-  borderRadius: '$button',
-  backgroundColor: '$gray1',
-  padding: '1rem',
-  boxShadow: '$low',
 });
 const FormGroup = styled('div', {
   display: 'flex',
@@ -67,7 +44,6 @@ const EmailBox = styled('input', {
     },
   },
 });
-
 const StaticEmailBox = styled('div', {
   cursor: 'not-allowed',
   display: 'flex',
@@ -240,8 +216,7 @@ function AccountSettings({ session }) {
           Please fill out your account info
         </h2>
 
-        <SubsectionTitle>{strings.account.avatar}</SubsectionTitle>
-        <SubsectionGroup>
+        <Subsection title={strings.account.avatar} description={null}>
           {contentLoaded ? (
             <AvatarField>
               <Avatar
@@ -263,10 +238,9 @@ function AccountSettings({ session }) {
           ) : (
             <Placeholder height='150px' width='120px' margin={undefined} />
           )}
-        </SubsectionGroup>
+        </Subsection>
 
-        <SubsectionTitle>{strings.account.linksAlt}</SubsectionTitle>
-        <SubsectionGroup>
+        <Subsection title={strings.account.linksAlt} description={null}>
           {contentLoaded ? (
             <InputGroup
               type='pub-name'
@@ -281,7 +255,7 @@ function AccountSettings({ session }) {
               width={undefined}
             />
           )}
-        </SubsectionGroup>
+        </Subsection>
 
         <SignOutSection>
           {contentLoaded ? (
@@ -310,9 +284,10 @@ function AccountSettings({ session }) {
 
   return (
     <AccountBox>
-      <SubsectionTitle>{strings.account.avatar}</SubsectionTitle>
-      <SubsectionDesc>{strings.account.avatarDesc}</SubsectionDesc>
-      <SubsectionGroup>
+      <Subsection
+        title={strings.account.avatar}
+        description={strings.account.avatarDesc}
+      >
         {contentLoaded ? (
           <AvatarField>
             {avatar && (
@@ -332,11 +307,12 @@ function AccountSettings({ session }) {
         ) : (
           <Placeholder height='150px' width='120px' margin={undefined} />
         )}
-      </SubsectionGroup>
+      </Subsection>
 
-      <SubsectionTitle>{strings.account.info}</SubsectionTitle>
-      <SubsectionDesc>{strings.account.infoDesc}</SubsectionDesc>
-      <SubsectionGroup>
+      <Subsection
+        title={strings.account.info}
+        description={strings.account.infoDesc}
+      >
         <FormGroup>
           {contentLoaded ? (
             <StaticEmailBox>
@@ -354,11 +330,12 @@ function AccountSettings({ session }) {
             <Placeholder height='2rem' margin='0' width={undefined} />
           )}
         </FormGroup>
-      </SubsectionGroup>
+      </Subsection>
 
-      <SubsectionTitle>{strings.account.links}</SubsectionTitle>
-      <SubsectionDesc>{strings.account.linksDesc}</SubsectionDesc>
-      <SubsectionGroup>
+      <Subsection
+        title={strings.account.links}
+        description={strings.account.linksDesc}
+      >
         {contentLoaded ? (
           <InputGroup
             type='pub-name'
@@ -405,16 +382,17 @@ function AccountSettings({ session }) {
             <Placeholder height='2.5rem' width='10rem' margin={undefined} />
           )}
         </ButtonGroup>
-      </SubsectionGroup>
+      </Subsection>
 
-      <SubsectionTitle>{strings.account.connected}</SubsectionTitle>
-      <SubsectionDesc>{strings.account.connectedAccsDesc}</SubsectionDesc>
-      <SubsectionGroup>
+      <Subsection
+        title={strings.account.connected}
+        description={strings.account.connectedAccsDesc}
+      >
         <ExternalSignIn
           connectedAccs={connectedAccs}
           contentLoaded={contentLoaded}
         />
-      </SubsectionGroup>
+      </Subsection>
 
       <SignOutSection>
         {contentLoaded ? (
