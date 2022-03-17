@@ -9,6 +9,8 @@ import Avatar from '../Avatar';
 import Button from '../Button';
 import ExternalSignIn from '../ExternalSignIn';
 import Placeholder from '../Placeholder';
+import InputGroup from './InputGroup';
+import UploadButton from './UploadButton';
 
 const AccountBox = styled('div', {});
 const AvatarField = styled('div', {
@@ -44,7 +46,11 @@ const FormGroup = styled('div', {
   display: 'flex',
   flexDirection: 'column',
 });
-const InputBox = styled('input', {
+const EmailLabel = styled('label', {
+  width: '8em',
+  fontSize: 'small',
+});
+const EmailBox = styled('input', {
   margin: 0,
   width: '100%',
   border: 'none',
@@ -61,20 +67,11 @@ const InputBox = styled('input', {
     },
   },
 });
+
 const StaticEmailBox = styled('div', {
   cursor: 'not-allowed',
   display: 'flex',
   alignItems: 'center',
-});
-const InputField = styled('div', {
-  display: 'flex',
-  alignItems: 'center',
-  marginBottom: '0.5rem',
-  minHeight: '2rem',
-});
-const InputLabel = styled('label', {
-  width: '8em',
-  fontSize: 'small',
 });
 const ButtonGroup = styled('div', {
   display: 'flex',
@@ -85,77 +82,6 @@ const SignOutSection = styled('div', {
   justifyContent: 'center',
   margin: '5vh 1rem 1rem 1rem',
 });
-const MockUploadButton = styled('label', {
-  marginLeft: '1rem',
-  cursor: 'pointer',
-  border: '1px solid transparent',
-  backgroundColor: '$gray12',
-  color: '$gray1',
-  minHeight: '2rem',
-  borderRadius: '$button',
-  fontSize: '1em',
-  minWidth: '$button',
-  padding: '$button',
-  '&:hover': {
-    color: '$gray12',
-    backgroundColor: 'transparent',
-    border: '1px solid $gray12',
-  },
-});
-
-function UploadButton(props) {
-  if (props.first) {
-    return (
-      <>
-        <MockUploadButton htmlFor='single'>
-          {props.loading
-            ? strings.account.avatarInProgress
-            : strings.account.avatarUpload}
-        </MockUploadButton>
-        <input
-          style={{
-            visibility: 'hidden',
-            position: 'absolute',
-          }}
-          type='file'
-          id='single'
-          accept='image/*'
-          onChange={props.onUpload}
-          disabled={props.loading}
-        />
-      </>
-    );
-  }
-  return (
-    <>
-      <MockUploadButton htmlFor='single'>
-        {props.loading
-          ? strings.account.avatarInProgress
-          : strings.account.avatarReplace}
-      </MockUploadButton>
-      <input
-        style={{
-          visibility: 'hidden',
-          position: 'absolute',
-        }}
-        type='file'
-        id='single'
-        accept='image/*'
-        onChange={props.onUpload}
-        disabled={props.loading}
-      />
-    </>
-  );
-}
-
-const InputGroup = ({ type, label, value, onChange }) => {
-  return (
-    <InputField>
-      <InputLabel htmlFor={type}>{label}</InputLabel>
-      <InputBox id={type} type='text' value={value} onChange={onChange} />
-    </InputField>
-  );
-};
 
 function AccountSettings({ session }) {
   const router = useRouter();
@@ -414,8 +340,8 @@ function AccountSettings({ session }) {
         <FormGroup>
           {contentLoaded ? (
             <StaticEmailBox>
-              <InputLabel htmlFor='email'>Email</InputLabel>
-              <InputBox
+              <EmailLabel htmlFor='email'>Email</EmailLabel>
+              <EmailBox
                 id='email'
                 type='text'
                 value={session.email}
