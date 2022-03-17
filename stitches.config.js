@@ -3,9 +3,11 @@ import {
   blue,
   green,
   gray,
+  red,
   grayDark,
   blueDark,
   greenDark,
+  redDark,
 } from '@radix-ui/colors';
 
 export const { styled, globalCss, keyframes, theme, css } = createStitches({
@@ -14,6 +16,7 @@ export const { styled, globalCss, keyframes, theme, css } = createStitches({
       ...blue,
       ...gray,
       ...green,
+      ...red,
     },
     radii: {
       button: '0.25rem',
@@ -75,5 +78,6 @@ export const darkTheme = createTheme({
     ...grayDark,
     ...blueDark,
     ...greenDark,
+    ...redDark,
   },
 });

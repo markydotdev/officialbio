@@ -3,19 +3,20 @@ import Link from 'next/link';
 import { styled } from '../../stitches.config';
 
 const HeroContainer = styled('div', {
-  marginTop: '5vh',
-  marginBottom: '10vh',
   minHeight: '40vh',
 });
 const HeroBox = styled('div', {
-  backgroundColor: '#FFD6E8',
-  borderRadius: '$image',
-  padding: '$button',
+  display: 'flex',
+  flexDirection: 'column',
+  backgroundColor: '$red4',
+  borderRadius: '$button',
+  padding: '1rem',
   boxShadow: '$low',
 });
 const HeroTitle = styled('h2', {
   margin: 0,
   fontSize: '$minFluid',
+  order: 1,
   '@md': {
     fontSize: '$fluid',
   },
@@ -23,34 +24,35 @@ const HeroTitle = styled('h2', {
     fontSize: '$maxFluid',
   },
 });
-const ImageSection = styled('div', {
-  position: 'relative',
-  gridColumn: '3 / -1',
-  gridRow: '1 / span 2',
-  justifySelf: 'center',
+const HeroDescription = styled('p', {
+  order: 2,
 });
 const HeroImage = styled('img', {
   width: '100%',
   height: '100%',
   objectFit: 'contain',
   objectPosition: 'center',
+  order: 3,
+  marginLeft: '15px',
   '@media (min-width: 800px)': {
     width: '40vw',
   },
 });
 const HeroButton = styled('a', {
-  width: 'fit-content',
-  color: '$gray12',
-  borderBottom: '2px solid $gray12',
+  width: '100%',
+  border: '2px solid $gray12',
   textAlign: 'center',
-  padding: '0.5rem 0',
   transition: 'all 0.1s ease-in-out',
   fontWeight: '500',
+  order: 4,
+  backgroundColor: '$gray12',
+  marginTop: '1rem',
+  padding: '0.5rem',
+  borderRadius: '$button',
+  color: '$red4',
   '&:hover': {
-    backgroundColor: '$gray12',
-    padding: '0.5rem 0.15rem 0.5rem 0.5rem',
-    borderRadius: '$button',
-    color: '$gray1',
+    color: '$gray12',
+    backgroundColor: 'transparent',
   },
 });
 
@@ -59,7 +61,7 @@ const Hero = ({ title, subtitle, prompt }) => {
     <HeroContainer>
       <HeroBox>
         <HeroTitle>{title}</HeroTitle>
-        <p>{subtitle}</p>
+        <HeroDescription>{subtitle}</HeroDescription>
         <Link href='/sign_in' passHref>
           <HeroButton>
             {prompt}
@@ -80,9 +82,7 @@ const Hero = ({ title, subtitle, prompt }) => {
           </HeroButton>
         </Link>
 
-        <ImageSection>
-          <HeroImage src='/hero-images/explore.png' alt='hero' />
-        </ImageSection>
+        <HeroImage src='/hero-images/explore.png' alt='hero' />
       </HeroBox>
     </HeroContainer>
   );

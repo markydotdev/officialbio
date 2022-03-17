@@ -6,7 +6,6 @@ const Container = styled('main', {
   marginTop: '1rem',
   '@lg': {
     margin: '1rem auto 0',
-    maxWidth: '80vw',
     minHeight: '80vh',
     display: 'flex',
     flexDirection: 'column',
