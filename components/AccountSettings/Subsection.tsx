@@ -32,7 +32,7 @@ type Subsection = {
 };
 
 function Subsection({ title, description, children }) {
-  if (description.length > 1) {
+  if (description) {
     return (
       <>
         <SubsectionTitle>{title}</SubsectionTitle>
