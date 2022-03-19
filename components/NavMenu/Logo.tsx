@@ -23,7 +23,7 @@ const Title = styled('h1', {
     gridColumn: '1',
     gridRow: '1',
     alignSelf: 'center',
-    fontSize: '1.5em',
+    fontSize: '1.2em',
   },
 });
 
