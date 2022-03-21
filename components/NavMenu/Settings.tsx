@@ -40,28 +40,17 @@ const StyledContent = styled(DropdownMenu.Content, {
 });
 const StyledItem = styled(DropdownMenu.Item, {
   display: 'block',
-});
-const StyledLink = styled('a', {
-  display: 'block',
-  color: '$gray12',
-  padding: '0.5rem',
-  userSelect: 'none',
-  '&:hover': {
+  borderRadius: '$button',
+  '&:focus-visible': {
+    outline: 'none',
     color: '$gray1',
     backgroundColor: '$gray12',
-    borderRadius: '$button',
+    a: {
+      color: '$gray1',
+    },
   },
 });
-const StyledButton = styled('button', {
-  border: 'none',
-  backgroundColor: 'initial',
-  width: '100%',
-  fontFamily: 'inherit',
-  fontSize: 'inherit',
-  textAlign: 'unset',
-  cursor: 'pointer',
-  font: 'inherit',
-  outline: 'inherit',
+const StyledLink = styled('a', {
   display: 'block',
   color: '$gray12',
   padding: '0.5rem',
@@ -127,41 +116,31 @@ function Settings() {
       <StyledContent loop>
         {userId !== null && (
           <StyledItem onSelect={() => router.push(`/user/${name}`)}>
-            <Link href={`/user/${name}`} passHref>
-              <StyledLink>{strings.settings.publicProfile}</StyledLink>
-            </Link>
+            <StyledLink>{strings.settings.publicProfile}</StyledLink>
           </StyledItem>
         )}
 
         {userId === null && (
           <StyledItem onSelect={() => router.push('/sign_in')}>
-            <Link href='/sign_in' passHref>
-              <StyledLink>{strings.settings.signIn}</StyledLink>
-            </Link>
+            <StyledLink>{strings.settings.signIn}</StyledLink>
           </StyledItem>
         )}
 
         {userId !== null && (
           <StyledItem onSelect={() => router.push(`/musings`)}>
-            <Link href='/musings' passHref>
-              <StyledLink>{strings.settings.posts}</StyledLink>
-            </Link>
+            <StyledLink>{strings.settings.posts}</StyledLink>
           </StyledItem>
         )}
 
         {userId !== null && (
           <StyledItem onSelect={() => router.push(`/settings`)}>
-            <Link href='/settings' passHref>
-              <StyledLink>{strings.settings.settings}</StyledLink>
-            </Link>
+            <StyledLink>{strings.settings.settings}</StyledLink>
           </StyledItem>
         )}
 
         {userId !== null && (
           <StyledItem onSelect={() => handleSignOut()}>
-            <StyledButton onClick={() => handleSignOut()}>
-              {strings.settings.signOut}
-            </StyledButton>
+            <StyledLink>{strings.settings.signOut}</StyledLink>
           </StyledItem>
         )}
       </StyledContent>
