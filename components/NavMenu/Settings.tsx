@@ -1,11 +1,13 @@
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { styled } from '../../stitches.config';
 import Link from 'next/link';
-import { supabase } from '../../lib/supabaseClient';
-import { useEffect, useState, useContext } from 'react';
-import { UserContext } from '../../pages/_app';
 import { useRouter } from 'next/router';
+import { useContext, useEffect, useState } from 'react';
+
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+
+import { supabase } from '../../lib/supabaseClient';
 import strings from '../../locales/en/strings';
+import { UserContext } from '../../pages/_app';
+import { styled } from '../../stitches.config';
 
 const StyledTrigger = styled(DropdownMenu.Trigger, {
   height: 50,
@@ -122,9 +124,9 @@ function Settings() {
         </StyledMenuSvg>
       </StyledTrigger>
 
-      <StyledContent>
+      <StyledContent loop>
         {userId !== null && (
-          <StyledItem>
+          <StyledItem onSelect={() => router.push(`/user/${name}`)}>
             <Link href={`/user/${name}`} passHref>
               <StyledLink>{strings.settings.publicProfile}</StyledLink>
             </Link>
@@ -132,7 +134,7 @@ function Settings() {
         )}
 
         {userId === null && (
-          <StyledItem>
+          <StyledItem onSelect={() => router.push('/sign_in')}>
             <Link href='/sign_in' passHref>
               <StyledLink>{strings.settings.signIn}</StyledLink>
             </Link>
@@ -140,7 +142,7 @@ function Settings() {
         )}
 
         {userId !== null && (
-          <StyledItem>
+          <StyledItem onSelect={() => router.push(`/musings`)}>
             <Link href='/musings' passHref>
               <StyledLink>{strings.settings.posts}</StyledLink>
             </Link>
@@ -148,7 +150,7 @@ function Settings() {
         )}
 
         {userId !== null && (
-          <StyledItem>
+          <StyledItem onSelect={() => router.push(`/settings`)}>
             <Link href='/settings' passHref>
               <StyledLink>{strings.settings.settings}</StyledLink>
             </Link>
@@ -156,7 +158,7 @@ function Settings() {
         )}
 
         {userId !== null && (
-          <StyledItem>
+          <StyledItem onSelect={() => handleSignOut()}>
             <StyledButton onClick={() => handleSignOut()}>
               {strings.settings.signOut}
             </StyledButton>
