@@ -36,7 +36,7 @@ const StyledContent = styled(DropdownMenu.Content, {
   padding: '0.5rem',
   marginTop: '1rem',
   borderRadius: '$button',
-  boxShadow: '$medium',
+  boxShadow: '$high',
 });
 const StyledItem = styled(DropdownMenu.Item, {
   display: 'block',
