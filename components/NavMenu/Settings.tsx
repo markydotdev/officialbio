@@ -61,6 +61,11 @@ const StyledLink = styled('a', {
     borderRadius: '$button',
   },
 });
+const Separator = styled(DropdownMenu.Separator, {
+  height: 1,
+  backgroundColor: '$gray7',
+  margin: '0.5rem',
+});
 
 function Settings() {
   const router = useRouter();
@@ -137,6 +142,8 @@ function Settings() {
             <StyledLink>{strings.settings.settings}</StyledLink>
           </StyledItem>
         )}
+
+        <Separator />
 
         {userId !== null && (
           <StyledItem onSelect={() => handleSignOut()}>
