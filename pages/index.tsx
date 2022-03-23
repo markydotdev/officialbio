@@ -17,6 +17,7 @@ export default function Home({ error }) {
         style={{
           display: 'flex',
           justifyContent: 'center',
+          flexWrap: 'wrap',
           marginTop: '2rem',
           marginBottom: '-1rem',
         }}
