@@ -9,18 +9,18 @@ const StyledFooter = styled('footer', {
     marginBottom: 'calc(1.5rem + env(safe-area-inset-bottom))',
   },
 });
-const FooterLink = styled('a', {
-  margin: '0 0.25rem',
-  borderBottom: '2px solid $gray12',
-  color: '$gray12',
-  '&:visited': {
-    color: '$gray12',
-  },
-  '&:hover': {
-    backgroundColor: '$gray12',
-    color: '$gray1',
-  },
-});
+// const FooterLink = styled('a', {
+//   margin: '0 0.25rem',
+//   borderBottom: '2px solid $gray12',
+//   color: '$gray12',
+//   '&:visited': {
+//     color: '$gray12',
+//   },
+//   '&:hover': {
+//     backgroundColor: '$gray12',
+//     color: '$gray1',
+//   },
+// });
 
 const Footer = () => {
   return <StyledFooter>Made with love</StyledFooter>;
