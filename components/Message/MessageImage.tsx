@@ -14,9 +14,9 @@ const StyledImage = styled(Image, {
   borderRadius: '$image',
 });
 
-function MessageImage({ url, key }) {
+function MessageImage({ url }) {
   return (
-    <ImageContainer key={key}>
+    <ImageContainer>
       <StyledImage
         layout='fill'
         objectFit='cover'
