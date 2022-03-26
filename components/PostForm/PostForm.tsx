@@ -8,8 +8,8 @@ import { styled } from '../../stitches.config';
 const FormBox = styled('div', {
   backgroundColor: '$gray1',
   boxShadow: '$low',
-  padding: '1rem',
-  borderRadius: '$button',
+  padding: '1rem 0.75rem 0.5rem 0.75rem',
+  borderRadius: '$image',
 });
 const StyledForm = styled('form', {
   position: 'relative',
@@ -27,7 +27,7 @@ const StyledInput = styled('textarea', {
   resize: 'none',
   fontSize: '1rem',
   fontFamily: 'system-ui',
-  borderRadius: '$button',
+  borderRadius: '$image',
   '@supports (width: -moz-available)': {
     width: '-moz-available',
   },
