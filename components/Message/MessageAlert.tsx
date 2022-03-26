@@ -83,12 +83,12 @@ const StyledEye = styled(EyeOpenIcon, {
 const StyledLock = styled(LockClosedIcon, {
   ...BasicIconStyles,
   color: '$gray12',
-  backgroundColor: '$gray4',
+  backgroundColor: '$gray3',
 });
 const StyledClose = styled(CrossCircledIcon, {
   ...BasicIconStyles,
   color: '$gray12',
-  backgroundColor: '$gray4',
+  backgroundColor: '$gray3',
   variants: {
     publicMessage: {
       true: {
