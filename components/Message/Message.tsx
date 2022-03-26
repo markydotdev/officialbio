@@ -7,6 +7,7 @@ import MessageImage from './MessageImage';
 
 const StyledPostBox = styled('div', {
   display: 'flex',
+  width: '100%',
   flexDirection: 'column',
   justifyContent: 'space-between',
   marginTop: '2rem',
@@ -23,7 +24,6 @@ const StyledPostBox = styled('div', {
     },
   },
   '@xl': {
-    width: '700px',
     margin: '0.5rem auto 0 auto',
   },
 });
