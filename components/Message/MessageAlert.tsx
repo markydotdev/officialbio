@@ -17,6 +17,15 @@ const StyledTrigger = styled(AlertPrompt.Trigger, {
   color: '$gray12',
   border: 'none',
   padding: 0,
+  alignItems: 'center',
+  variants: {
+    public: {
+      true: {
+        backgroundColor: '$green4',
+        color: '$green10',
+      },
+    },
+  },
 });
 const AlertContent = styled(AlertPrompt.Content, {
   isolation: 'isolate',
@@ -79,6 +88,7 @@ const StyledEye = styled(EyeOpenIcon, {
   ...BasicIconStyles,
   color: '$green10',
   backgroundColor: '$green4',
+  marginRight: '4px',
 });
 const StyledLock = styled(LockClosedIcon, {
   ...BasicIconStyles,
@@ -119,8 +129,9 @@ function MessageAlert({
     return (
       <Overlay>
         <Tooltip side={false} message={strings.private.button}>
-          <StyledTrigger>
+          <StyledTrigger public={true}>
             <StyledEye />
+            {strings.private.info}
           </StyledTrigger>
         </Tooltip>
 
