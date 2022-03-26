@@ -11,7 +11,7 @@ const StyledPostBox = styled('div', {
   justifyContent: 'space-between',
   marginTop: '2rem',
   borderRadius: '$image',
-  padding: '1rem',
+  padding: '1rem 0.75rem 0.5rem 0.75rem',
   backgroundColor: '$gray3',
   boxShadow: '$message',
   variants: {
