@@ -1,12 +1,13 @@
 import type { AppProps } from 'next/app';
-import { IdProvider } from '@radix-ui/react-id';
-import { supabase } from '../lib/supabaseClient';
-import { SupabaseClient } from '@supabase/supabase-js';
-import type { User } from '@supabase/supabase-js';
-import { useEffect, useState } from 'react';
-import { globalCss } from '../stitches.config';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
+import { IdProvider } from '@radix-ui/react-id';
+import { SupabaseClient } from '@supabase/supabase-js';
+
+import { supabase } from '../lib/supabaseClient';
+import { globalCss } from '../stitches.config';
+
+import type { User } from '@supabase/supabase-js';
 const globalStyles = globalCss({
   '@font-face': [
     {
@@ -49,8 +50,10 @@ const globalStyles = globalCss({
   },
   body: {
     fontFamily: '$body',
+    fontSize: 'clamp(0.95rem, 1vw + 1rem, 1.1rem)',
     margin: '0.5rem 1rem',
     overflowX: 'hidden',
+    lineHeight: 1.45,
   },
   a: {
     textDecoration: 'none',

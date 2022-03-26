@@ -2,6 +2,7 @@ import { styled } from '../../stitches.config';
 
 const SubsectionTitle = styled('h2', {
   margin: '2rem 0 0 0',
+  fontSize: 'clamp(1.3rem, 2vw + 1rem, 2rem)',
   '&:first-of-type': {
     marginTop: '1rem',
   },
@@ -13,7 +14,7 @@ const SubsectionDesc = styled('h3', {
   margin: '0 0 1rem 0',
   fontFamily: '$body',
   fontWeight: 'normal',
-  fontSize: 'small',
+  fontSize: 'clamp(0.95rem, 1vw + 1rem, 1.2rem)',
   '@media (min-width: 800px)': {
     margin: '0 0 1rem 1rem',
   },
