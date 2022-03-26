@@ -1,7 +1,9 @@
 import * as AlertPrompt from '@radix-ui/react-alert-dialog';
+import { CrossCircledIcon, EyeOpenIcon, LockClosedIcon } from '@radix-ui/react-icons';
 
 import strings from '../../locales/en/strings';
 import { styled } from '../../stitches.config';
+import Tooltip from '../Tooltip';
 
 const StyledOverlay = styled(AlertPrompt.Overlay, {
   backgroundColor: 'rgba(0, 0, 0, 0.90)',
@@ -10,33 +12,11 @@ const StyledOverlay = styled(AlertPrompt.Overlay, {
   zIndex: 2,
 });
 const StyledTrigger = styled(AlertPrompt.Trigger, {
-  flex: 2,
+  display: 'flex',
   cursor: 'pointer',
-  border: '2px solid transparent',
-  backgroundColor: '$gray12',
-  color: '$gray1',
-  minHeight: '2rem',
-  borderRadius: '$button',
-  fontSize: '1em',
-  minWidth: '$button',
-  padding: '$button',
-  '&:hover': {
-    color: '$gray12',
-    backgroundColor: 'transparent',
-    border: '2px solid $gray12',
-  },
-  '& + button:last-of-type': {
-    flex: 1,
-  },
-  '& + button': {
-    marginTop: '0.5rem',
-  },
-  '@md': {
-    '& + button': {
-      marginTop: '0',
-      marginLeft: '1rem',
-    },
-  },
+  color: '$gray12',
+  border: 'none',
+  padding: 0,
 });
 const AlertContent = styled(AlertPrompt.Content, {
   isolation: 'isolate',
@@ -91,6 +71,33 @@ const AlertDeleteButton = styled(AlertPrompt.Action, {
     border: '2px solid $gray12',
   },
 });
+const BasicIconStyles = {
+  width: '1.25rem',
+  height: '1.25rem',
+};
+const StyledEye = styled(EyeOpenIcon, {
+  ...BasicIconStyles,
+  color: '$green10',
+  backgroundColor: '$green4',
+});
+const StyledLock = styled(LockClosedIcon, {
+  ...BasicIconStyles,
+  color: '$gray12',
+  backgroundColor: '$gray4',
+});
+const StyledClose = styled(CrossCircledIcon, {
+  ...BasicIconStyles,
+  color: '$gray12',
+  backgroundColor: '$gray4',
+  variants: {
+    publicMessage: {
+      true: {
+        color: '$green10',
+        backgroundColor: '$green4',
+      },
+    },
+  },
+});
 
 function Overlay({ children }) {
   return (
@@ -101,11 +108,22 @@ function Overlay({ children }) {
   );
 }
 
-function MessageAlert({ publishPost, removePost, privatePost, postId }) {
+function MessageAlert({
+  publishPost,
+  removePost,
+  privatePost,
+  postId,
+  publicMessage,
+}) {
   if (privatePost) {
     return (
       <Overlay>
-        <StyledTrigger>{strings.private.button}</StyledTrigger>
+        <Tooltip message={strings.private.button}>
+          <StyledTrigger>
+            <StyledEye />
+          </StyledTrigger>
+        </Tooltip>
+
         <AlertContent>
           <AlertTitle>{strings.private.prompt}</AlertTitle>
           <AlertDescription>{strings.private.description}</AlertDescription>
@@ -122,7 +140,12 @@ function MessageAlert({ publishPost, removePost, privatePost, postId }) {
   if (publishPost) {
     return (
       <Overlay>
-        <StyledTrigger>{strings.publish.button}</StyledTrigger>
+        <Tooltip message={strings.publish.button}>
+          <StyledTrigger>
+            <StyledLock />
+          </StyledTrigger>
+        </Tooltip>
+
         <AlertContent>
           <AlertTitle>{strings.publish.prompt}</AlertTitle>
           <AlertDescription>{strings.publish.description}</AlertDescription>
@@ -138,7 +161,12 @@ function MessageAlert({ publishPost, removePost, privatePost, postId }) {
   }
   return (
     <Overlay>
-      <StyledTrigger>{strings.delete.button}</StyledTrigger>
+      <Tooltip message={strings.delete.button}>
+        <StyledTrigger>
+          <StyledClose publicMessage={publicMessage} />
+        </StyledTrigger>
+      </Tooltip>
+
       <AlertContent>
         <AlertTitle>{strings.delete.prompt}</AlertTitle>
         <AlertDescription>{strings.delete.description}</AlertDescription>

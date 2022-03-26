@@ -10,10 +10,21 @@ const StyledPostBox = styled('div', {
   flexDirection: 'column',
   justifyContent: 'space-between',
   marginTop: '2rem',
+  borderRadius: '$image',
+  padding: '1rem',
+  backgroundColor: '$gray3',
+  boxShadow: '$message',
+  variants: {
+    public: {
+      true: {
+        border: '2px solid $green10',
+        backgroundColor: '$green4',
+      },
+    },
+  },
   '@xl': {
     width: '700px',
-    margin: '0 auto',
-    padding: '2rem 1rem 1rem 1rem',
+    margin: '0.5rem auto 0 auto',
   },
 });
 const StyledImages = styled('div', {
@@ -31,6 +42,7 @@ const ButtonGroup = styled('div', {
   flexDirection: 'column',
   '@md': {
     flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });
 
@@ -52,7 +64,7 @@ function Message({ posts, removePost, publishPost, privatePost }) {
     <>
       {content &&
         content.map((post) => (
-          <StyledPostBox key={post.id}>
+          <StyledPostBox key={post.id} public={post.public}>
             <PostText content={post.post} />
             {post.files !== null ? (
               <StyledImages>
@@ -70,6 +82,7 @@ function Message({ posts, removePost, publishPost, privatePost }) {
                   postId={post.id}
                   publishPost={undefined}
                   removePost={undefined}
+                  publicMessage={post.public}
                 />
               ) : (
                 <MessageAlert
@@ -77,6 +90,7 @@ function Message({ posts, removePost, publishPost, privatePost }) {
                   postId={post.id}
                   removePost={undefined}
                   privatePost={undefined}
+                  publicMessage={post.public}
                 />
               )}
               <MessageAlert
@@ -84,6 +98,7 @@ function Message({ posts, removePost, publishPost, privatePost }) {
                 postId={post.id}
                 publishPost={undefined}
                 privatePost={undefined}
+                publicMessage={post.public}
               />
             </ButtonGroup>
           </StyledPostBox>
