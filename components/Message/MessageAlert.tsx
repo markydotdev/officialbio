@@ -7,6 +7,7 @@ const StyledOverlay = styled(AlertPrompt.Overlay, {
   backgroundColor: 'rgba(0, 0, 0, 0.90)',
   inset: '0',
   position: 'fixed',
+  zIndex: 2,
 });
 const StyledTrigger = styled(AlertPrompt.Trigger, {
   flex: 2,
@@ -38,6 +39,8 @@ const StyledTrigger = styled(AlertPrompt.Trigger, {
   },
 });
 const AlertContent = styled(AlertPrompt.Content, {
+  isolation: 'isolate',
+  zIndex: 3,
   position: 'fixed',
   top: '50%',
   left: '50%',
