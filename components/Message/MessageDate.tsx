@@ -4,7 +4,7 @@ import Tooltip from '../Tooltip';
 const StyledDate = styled('span', {
   margin: '0.5rem 0 0.5rem 0',
   fontSize: '0.85rem',
-  color: '$gray9',
+  color: '$gray11',
   width: 'fit-content',
 });
 
