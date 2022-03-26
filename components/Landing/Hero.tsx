@@ -10,12 +10,14 @@ const HeroBox = styled('div', {
   borderRadius: '$button',
   padding: '1rem',
   boxShadow: '$low',
-  '@md': {
-    marginBottom: '2rem',
-  },
+  marginBottom: '2.5rem',
   '@xl': {
     width: '75vw',
     margin: '0 auto 4rem auto',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(2, 1fr)',
+    gridTemplateRows: 'repeat(3, 1fr)',
+    alignItems: 'center',
   },
 });
 const HeroTitle = styled('h2', {
@@ -25,6 +27,10 @@ const HeroTitle = styled('h2', {
   '@md': {
     fontSize: '$fluid',
     order: 2,
+  },
+  '@xl': {
+    gridRow: '1',
+    gridColumn: '1 / -1',
   },
   '@xxl': {
     fontSize: '$maxFluid',
@@ -39,6 +45,10 @@ const HeroDescription = styled('p', {
   },
   '@lg': {
     fontSize: '1.3em',
+  },
+  '@xl': {
+    gridRow: '2',
+    alignSelf: 'end',
   },
   '@xxl': {
     fontSize: '1.5em',
@@ -56,8 +66,9 @@ const HeroImage = styled('img', {
     margin: '0 auto',
     order: 1,
   },
-  '@media (min-width: 800px)': {
-    width: '40vw',
+  '@xl': {
+    gridColumn: 2,
+    gridRow: '1 / -1',
   },
 });
 const HeroButton = styled('a', {
@@ -82,6 +93,9 @@ const HeroButton = styled('a', {
   '@xl': {
     fontSize: '1.3em',
     width: '250px',
+    gridRow: '3',
+    height: 'fit-content',
+    alignSelf: 'baseline',
     '> svg': {
       height: 15,
       marginLeft: '0.5rem',
