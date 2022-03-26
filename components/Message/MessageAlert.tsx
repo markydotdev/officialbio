@@ -18,12 +18,18 @@ const StyledTrigger = styled(AlertPrompt.Trigger, {
   border: 'none',
   padding: 0,
   alignItems: 'center',
+  backgroundColor: '$gray3',
   variants: {
     public: {
       true: {
         backgroundColor: '$green4',
         color: '$green10',
       },
+    },
+  },
+  '&:hover': {
+    '& > svg': {
+      transform: 'scale(0.9)',
     },
   },
 });
@@ -80,9 +86,14 @@ const AlertDeleteButton = styled(AlertPrompt.Action, {
     border: '2px solid $gray12',
   },
 });
+const PublicSpan = styled('span', {
+  color: '$green10',
+  fontSize: '0.9rem',
+});
 const BasicIconStyles = {
-  width: '1.25rem',
-  height: '1.25rem',
+  width: '1.45rem',
+  height: '1.45rem',
+  transition: 'all 0.2s ease-in-out',
 };
 const StyledEye = styled(EyeOpenIcon, {
   ...BasicIconStyles,
@@ -131,9 +142,9 @@ function MessageAlert({
         <Tooltip side={false} message={strings.private.button}>
           <StyledTrigger public={true}>
             <StyledEye />
-            {strings.private.info}
           </StyledTrigger>
         </Tooltip>
+        <PublicSpan>{strings.private.info}</PublicSpan>
 
         <AlertContent>
           <AlertTitle>{strings.private.prompt}</AlertTitle>
@@ -173,7 +184,7 @@ function MessageAlert({
   return (
     <Overlay>
       <Tooltip side={false} message={strings.delete.button}>
-        <StyledTrigger>
+        <StyledTrigger public={publicMessage}>
           <StyledClose publicMessage={publicMessage} />
         </StyledTrigger>
       </Tooltip>
