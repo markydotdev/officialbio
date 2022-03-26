@@ -118,7 +118,7 @@ function MessageAlert({
   if (privatePost) {
     return (
       <Overlay>
-        <Tooltip message={strings.private.button}>
+        <Tooltip side={false} message={strings.private.button}>
           <StyledTrigger>
             <StyledEye />
           </StyledTrigger>
@@ -140,7 +140,7 @@ function MessageAlert({
   if (publishPost) {
     return (
       <Overlay>
-        <Tooltip message={strings.publish.button}>
+        <Tooltip side={false} message={strings.publish.button}>
           <StyledTrigger>
             <StyledLock />
           </StyledTrigger>
@@ -161,7 +161,7 @@ function MessageAlert({
   }
   return (
     <Overlay>
-      <Tooltip message={strings.delete.button}>
+      <Tooltip side={false} message={strings.delete.button}>
         <StyledTrigger>
           <StyledClose publicMessage={publicMessage} />
         </StyledTrigger>
