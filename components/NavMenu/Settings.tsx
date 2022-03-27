@@ -96,7 +96,7 @@ function Settings() {
 
   return (
     <DropdownMenu.Root>
-      <Tooltip side={false} message={strings.settings.tooltip}>
+      <Tooltip side={false} message={strings.settings.settings}>
         <StyledTrigger>
           <StyledMenuSvg
             width='24'
