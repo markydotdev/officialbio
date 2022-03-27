@@ -6,7 +6,7 @@ function ShareButton({ children, onClick }) {
   return (
     <Button
       onClick={onClick}
-      type='button'
+      type={undefined}
       disabled={false}
       version={undefined}
       loading={false}
