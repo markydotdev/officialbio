@@ -69,12 +69,6 @@ function User({ name, avatar }) {
           )}
         </AvatarGroup>
       </Link>
-
-      {name === null && router.pathname !== '/sign_in' ? (
-        <Link href='/sign_in' passHref>
-          <SignInLabel>Sign In</SignInLabel>
-        </Link>
-      ) : null}
     </AvatarItem>
   );
 }
