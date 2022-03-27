@@ -7,6 +7,7 @@ module.exports = {
     settings: 'Settings',
     signIn: 'Sign in',
     signOut: 'Sign out',
+    tooltip: 'Settings button',
   },
   // General delete actions
   delete: {
