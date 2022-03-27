@@ -31,7 +31,7 @@ module.exports = {
     description: 'Making this post private will hide it from your public page',
     confirm: 'Yes, make it private',
     deny: 'No, keep it public',
-    info: 'This post is public',
+    info: 'This post viewable to the public',
   },
   // Landing page
   // Prompt is the button text for the user to get to the sign in page
