@@ -4,6 +4,8 @@ import { supabase } from '../../lib/supabaseClient';
 import strings from '../../locales/en/strings';
 import { styled } from '../../stitches.config';
 import Avatar from '../Avatar';
+import ShareButton from './ShareButton';
+import Toast from './Toast';
 
 const CardFlex = styled('div', {
   display: 'flex',
@@ -33,7 +35,6 @@ const ShareSection = styled('div', {
   alignItems: 'center',
   marginTop: '0.5rem',
 });
-const ShareButton = styled('button', {});
 const TempMessage = styled('span', {
   color: 'green',
   marginLeft: '0.5rem',
@@ -41,6 +42,7 @@ const TempMessage = styled('span', {
 
 const ContactCard = ({ name, avatar }) => {
   const [status, setStatus] = useState(false);
+  const [open, setOpen] = useState(false);
   const [description, setDescription] = useState('');
 
   useEffect(() => {
@@ -70,6 +72,7 @@ const ContactCard = ({ name, avatar }) => {
     console.log(window.location.href);
 
     setStatus(true);
+    setOpen(true);
 
     const timer = setTimeout(() => setStatus(false), 4000);
 
@@ -88,7 +91,13 @@ const ContactCard = ({ name, avatar }) => {
         {description && <Description>{description}</Description>}
         <ShareSection>
           <ShareButton onClick={shareLink}>{strings.public.share}</ShareButton>
-          {status && <TempMessage>{strings.public.sharedMessage}</TempMessage>}
+          <Toast
+            open={open}
+            setOpen={setOpen}
+            title={strings.public.shareTitle}
+            description={strings.public.shareDescription}
+            close={strings.public.shareButton}
+          />
         </ShareSection>
       </CardArticle>
     </CardFlex>

@@ -7,7 +7,6 @@ module.exports = {
     settings: 'Settings',
     signIn: 'Sign in',
     signOut: 'Sign out',
-    tooltip: 'Settings button',
   },
   // General delete actions
   delete: {
@@ -76,8 +75,11 @@ module.exports = {
   // User public page
   public: {
     share: 'Share Page',
-    sharedMessage: 'Copied! ❤️',
+    shareTitle: `You've copied this user's page!`,
+    shareDescription:
+      'Feel free to share it by pasting the link wherever you want.',
     shareError: 'Oops! Something went wrong. Please try again.',
+    shareButton: 'Okay',
     missingUser: 'No public posts from that user 😞',
     returnHome: 'Return back home',
   },
