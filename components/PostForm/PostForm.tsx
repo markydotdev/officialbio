@@ -18,6 +18,8 @@ const StyledInputSection = styled('div', {
   flex: '1',
 });
 const StyledInput = styled('textarea', {
+  boxShadow:
+    'rgba(50, 50, 93, 0.05) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.1) 0px 18px 36px -18px inset',
   width: '-webkit-fill-available',
   height: '4em',
   margin: '0.5rem 0 0 0',
