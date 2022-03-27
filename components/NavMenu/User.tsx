@@ -1,8 +1,9 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
+import strings from '../../locales/en/strings';
 import { styled } from '../../stitches.config';
 import Avatar from '../Avatar';
+import Tooltip from '../Tooltip';
 
 const AvatarItem = styled('div', {
   gridColumn: '1',
@@ -52,13 +53,15 @@ const SignInLabel = styled('a', {
 });
 
 function User({ name, avatar }) {
-  const router = useRouter();
-
   return (
     <AvatarItem>
       <Link href={`/user/${name}`} passHref>
         <AvatarGroup>
-          {name && <AvatarLabel>{name}</AvatarLabel>}
+          {name && (
+            <Tooltip side={undefined} message={strings.settings.userTooltip}>
+              <AvatarLabel>{name}</AvatarLabel>
+            </Tooltip>
+          )}
           {avatar && (
             <Avatar
               url={avatar}
