@@ -3,10 +3,10 @@ import { useContext, useEffect, useState } from 'react';
 
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
-import { supabase } from '../../lib/supabaseClient';
 import strings from '../../locales/en/strings';
 import { UserContext } from '../../pages/_app';
 import { styled } from '../../stitches.config';
+import { supabase } from '../../utils/supabaseClient';
 import Tooltip from '../Tooltip';
 
 const StyledTrigger = styled(DropdownMenu.Trigger, {

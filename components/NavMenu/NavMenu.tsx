@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
 
-import { supabase } from '../../lib/supabaseClient';
 import { UserContext } from '../../pages/_app';
 import { styled } from '../../stitches.config';
+import { supabase } from '../../utils/supabaseClient';
 import Logo from './Logo';
 import Settings from './Settings';
 import User from './User';

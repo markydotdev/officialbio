@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import { supabase } from '../../lib/supabaseClient';
 import strings from '../../locales/en/strings';
 import { styled } from '../../stitches.config';
+import { supabase } from '../../utils/supabaseClient';
 import Avatar from '../Avatar';
 import ShareButton from './ShareButton';
 import Toast from './Toast';

@@ -3,9 +3,9 @@ import { useState } from 'react';
 
 import Button from '../components/Button';
 import Layout from '../components/Layout';
-import { supabase } from '../lib/supabaseClient';
 import strings from '../locales/en/strings';
 import { styled } from '../stitches.config';
+import { supabase } from '../utils/supabaseClient';
 
 const SetupTitle = styled('h2', {});
 const Subsection = styled('section', {

@@ -1,10 +1,11 @@
-import Layout from '../../components/Layout';
-import { supabase } from '../../lib/supabaseClient';
-import PublicMessage from '../../components/PublicMessage';
 import Link from 'next/link';
+
 import ContactCard from '../../components/ContactCard';
+import Layout from '../../components/Layout';
+import PublicMessage from '../../components/PublicMessage';
 import strings from '../../locales/en/strings';
 import { styled } from '../../stitches.config';
+import { supabase } from '../../utils/supabaseClient';
 
 const ReturnHome = styled('a', {
   backgroundColor: '$gray12',

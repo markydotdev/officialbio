@@ -6,8 +6,8 @@ import Message from '../components/Message';
 import PostForm from '../components/PostForm';
 import {
     deleteMusing, fetchMusings, postMusing, postMusingImage, publishMusing, removePublicMusing
-} from '../lib/post';
-import { supabase } from '../lib/supabaseClient';
+} from '../utils/post';
+import { supabase } from '../utils/supabaseClient';
 
 export default function Musings({ user, guest }) {
   const [posts, setPosts] = useState(null);

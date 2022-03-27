@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import { supabase } from '../../lib/supabaseClient';
 import { styled } from '../../stitches.config';
+import { supabase } from '../../utils/supabaseClient';
 
 const LoginButton = styled('button', {
   textTransform: 'capitalize',

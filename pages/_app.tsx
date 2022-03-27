@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { IdProvider } from '@radix-ui/react-id';
 import { SupabaseClient } from '@supabase/supabase-js';
 
-import { supabase } from '../lib/supabaseClient';
 import { globalCss } from '../stitches.config';
+import { supabase } from '../utils/supabaseClient';
 
 import type { User } from '@supabase/supabase-js';
 const globalStyles = globalCss({

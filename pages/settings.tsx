@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 import AccountSettings from '../components/AccountSettings';
 import Layout from '../components/Layout';
-import { supabase } from '../lib/supabaseClient';
+import { supabase } from '../utils/supabaseClient';
 
 export default function Profile() {
   const router = useRouter();

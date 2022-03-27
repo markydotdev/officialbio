@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
-import { supabase } from '../../lib/supabaseClient';
-import { DEFAULT_AVATARS_BUCKET } from '../../lib/constants';
+
 import * as BaseAvatar from '@radix-ui/react-avatar';
+
 import { styled } from '../../stitches.config';
+import { DEFAULT_AVATARS_BUCKET } from '../../utils/constants';
+import { supabase } from '../../utils/supabaseClient';
 
 const StyledBase = styled(BaseAvatar.Root, {
   display: 'inline-flex',
