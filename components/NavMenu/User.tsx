@@ -53,7 +53,6 @@ const SignInLabel = styled('a', {
 
 function User({ name, avatar }) {
   const router = useRouter();
-  console.log(name);
 
   return (
     <AvatarItem>
