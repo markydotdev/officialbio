@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 
 import strings from '../../locales/en/strings';
 import { styled } from '../../stitches.config';
+import { addSocialToDb } from '../../utils/addSocial';
 import { DEFAULT_AVATARS_BUCKET } from '../../utils/constants';
 import { supabase } from '../../utils/supabaseClient';
 import Avatar from '../Avatar';
@@ -10,6 +11,7 @@ import Button from '../Button';
 import ExternalSignIn from '../ExternalSignIn';
 import Placeholder from '../Placeholder';
 import InputGroup from './InputGroup';
+import SocialBox from './SocialBox';
 import Subsection from './Subsection';
 import UploadButton from './UploadButton';
 
@@ -70,10 +72,22 @@ function AccountSettings({ session }) {
   const [website, setWebsite] = useState(null);
   const [description, setDescription] = useState(null);
   const [connectedAccs, setConnectedAccs] = useState([]);
-  console.log(user);
+
+  // console.log(user);
 
   useEffect(() => {
     getProfile();
+
+    const provider = 'discord';
+    const enabled = true;
+    const userId = user.id;
+    const name = 'Ok so now does this work??';
+
+    const magic = async () => {
+      await addSocialToDb(provider, enabled, name, userId);
+    };
+    magic();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -388,10 +402,13 @@ function AccountSettings({ session }) {
         title={strings.account.connected}
         description={strings.account.connectedAccsDesc}
       >
-        <ExternalSignIn
+        {/* <ExternalSignIn
           connectedAccs={connectedAccs}
           contentLoaded={contentLoaded}
-        />
+        /> */}
+
+        <SocialBox provider='twitch' />
+        <SocialBox provider='discord' />
       </Subsection>
 
       <SignOutSection>
