@@ -12,7 +12,8 @@ const Container = styled('div', {
 const PseudoButton = styled('a', {
   all: 'unset',
   cursor: 'pointer',
-  backgroundColor: '$blue6',
+  backgroundImage:
+    'linear-gradient( 109.6deg,  rgba(116,18,203,1) 11.2%, rgba(230,46,131,1) 91.2% )',
   borderRadius: '999px',
   minWidth: '25rem',
   display: 'flex',
@@ -21,9 +22,10 @@ const PseudoButton = styled('a', {
   fontSize: '7rem',
   fontWeight: 'bold',
   color: '$gray1',
-  transition: 'all 0.4s ease-in-out',
+  transition: 'all 2s ease-in-out',
   '&:hover': {
-    backgroundColor: '$blue11',
+    backgroundImage:
+      'linear-gradient( 310.6deg,  rgba(100,0,233,0.94) 6.8%, rgba(166,0,188,0.66) 57.8% );',
   },
 });
 
