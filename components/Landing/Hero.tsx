@@ -103,6 +103,7 @@ const HeroButton = styled('a', {
   },
 });
 
+
 const Hero = ({ title, subtitle, prompt }) => {
   return (
     <HeroBox>
@@ -129,6 +130,7 @@ const Hero = ({ title, subtitle, prompt }) => {
       </Link>
 
       <HeroImage src='/hero-images/explore.png' alt='hero' />
+
     </HeroBox>
   );
 };
