@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { keyframes, styled } from '../../stitches.config';
 
 const circleAppear = keyframes({
-  from: { transform: 'translate3d(0)', opacity: 0 },
-  to: { transform: 'translate3d(175px,100px,100px)', opacity: 1 },
+  '0%': { transform: 'translate3d(0)', opacity: 0 },
+  '100%': { transform: 'translate3d(175px,100px,100px)', opacity: 1 },
 });
 const donutAppear = keyframes({
   from: { transform: 'translate3d(0)', opacity: 0 },
@@ -97,6 +97,10 @@ const Container = styled('div', {
   background:
     'linear-gradient($gray4, $gray4) padding-box, linear-gradient(155deg, hsl(279deg 83% 46%) 0%, hsl(277deg 84% 43%) 10%, hsl(275deg 85% 39%) 20%, hsl(273deg 87% 36%) 30%, hsl(271deg 90% 33%) 40%, hsl(269deg 93% 29%) 50%, hsl(278deg 95% 31%) 60%, hsl(285deg 95% 32%) 70%, hsl(292deg 95% 34%) 80%, hsl(298deg 92% 36%) 90%, hsl(303deg 88% 40%) 100%) border-box',
   border: '0.5rem solid transparent',
+  transition: 'all 1000ms ease-in-out',
+  '&:hover': {
+    transition: 'all 1000ms ease-in-out',
+  },
   '&::before': {
     position: 'absolute',
     content: '',
@@ -133,19 +137,21 @@ const Container = styled('div', {
     color: '$gray4',
   },
   [`&:hover > ${Circle}`]: {
-    animation: `${circleAppear} 1000ms ease-in-out forwards`,
+    // Changing normal to reverse does reverse the animation but the timing is off and doesn't work on hover
+    // Maybe I should be setting this by JS instead
+    animation: `${circleAppear} 1000ms ease-in-out forwards normal`,
   },
   [`&:hover > ${Cone}`]: {
-    animation: `${coneAppear} 1000ms ease-in-out forwards`,
+    animation: `${coneAppear} 1000ms ease-in-out forwards normal`,
   },
   [`&:hover > ${Donut}`]: {
-    animation: `${donutAppear} 1000ms ease-in-out forwards`,
+    animation: `${donutAppear} 1000ms ease-in-out forwards normal`,
   },
   [`&:hover > ${Cube}`]: {
-    animation: `${cubeAppear} 1000ms ease-in-out forwards`,
+    animation: `${cubeAppear} 1000ms ease-in-out forwards normal`,
   },
   [`&:hover > ${DistantCircle}`]: {
-    animation: `${distantCircleAppear} 1000ms ease-in-out forwards`,
+    animation: `${distantCircleAppear} 1000ms ease-in-out forwards normal`,
   },
 });
 
