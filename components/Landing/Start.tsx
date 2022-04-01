@@ -63,7 +63,6 @@ const PseudoButton = styled('a', {
   position: 'relative',
   cursor: 'pointer',
   borderRadius: '999px',
-  minWidth: '25rem',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -92,7 +91,7 @@ const Container = styled('div', {
   position: 'relative',
   justifyContent: 'center',
   alignItems: 'center',
-  minWidth: '30rem',
+  minWidth: '60vw',
   margin: '20vh auto',
   borderRadius: '999px',
   background:
