@@ -11,27 +11,10 @@ import type { User } from '@supabase/supabase-js';
 const globalStyles = globalCss({
   '@font-face': [
     {
-      fontFamily: 'Quicksand',
-      src: `url('/fonts/Quicksand/Quicksand-Regular.ttf')`,
-      fontWeight: 'normal',
-      fontStyle: 'normal',
-    },
-    {
-      fontFamily: 'Quicksand',
-      src: `url('/fonts/Quicksand/Quicksand-Bold.ttf')`,
-      fontWeight: 'bold',
-      fontStyle: 'normal',
-    },
-    {
-      fontFamily: 'Quicksand',
-      src: `url('/fonts/Quicksand/Quicksand-Medium.ttf')`,
-      fontWeight: '500',
-      fontStyle: 'normal',
-    },
-    {
-      fontFamily: 'Syncopate',
-      src: `url('/fonts/Syncopate/Syncopate-Regular.ttf')`,
-      fontWeight: 'normal',
+      fontFamily: 'Inter',
+      src: `url('/fonts/Inter/')`,
+      fontWeight: '125 950',
+      fontStretch: '75% 125%',
       fontStyle: 'normal',
     },
     {
