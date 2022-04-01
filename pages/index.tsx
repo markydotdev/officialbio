@@ -1,5 +1,23 @@
 import Landing from '../components/Landing';
 import Layout from '../components/Layout';
+import { styled } from '../stitches.config';
+
+const TemporaryFooter = styled('div', {
+  display: 'flex',
+  justifyContent: 'center',
+  flexWrap: 'wrap',
+  marginTop: '2rem',
+  marginBottom: '-1rem',
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  paddingTop: '0.5rem',
+  paddingBottom: '0.5rem',
+  paddingLeft: '1rem',
+  paddingRight: '1rem',
+  backgroundColor: '$gray6',
+  borderRadius: '$image',
+  width: 'fit-content',
+});
 
 export default function Home({ error }) {
   if (error) {
@@ -13,15 +31,7 @@ export default function Home({ error }) {
   return (
     <Layout>
       <Landing />
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          flexWrap: 'wrap',
-          marginTop: '2rem',
-          marginBottom: '-1rem',
-        }}
-      >
+      <TemporaryFooter>
         Illustration by
         <a
           style={{
@@ -44,7 +54,7 @@ export default function Home({ error }) {
         >
           Ouch!
         </a>
-      </div>
+      </TemporaryFooter>
     </Layout>
   );
 }

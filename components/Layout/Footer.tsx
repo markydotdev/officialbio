@@ -4,9 +4,16 @@ const StyledFooter = styled('footer', {
   display: 'flex',
   justifyContent: 'center',
   marginTop: '2rem',
-  marginBottom: '2rem',
-  '@supports (margin-bottom: env(safe-area-inset-bottom))': {
-    marginBottom: 'calc(1.5rem + env(safe-area-inset-bottom))',
+  paddingTop: '2rem',
+  paddingBottom: '2rem',
+  backgroundColor: '$gray7',
+  borderRadius: '$image',
+  width: '100vw',
+  position: 'relative',
+  left: 'calc(-50vw + 50%)',
+  boxShadow: 'rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset',
+  '@supports (padding-bottom: env(safe-area-inset-bottom))': {
+    paddingBottom: 'calc(2rem + env(safe-area-inset-bottom))',
   },
 });
 // const FooterLink = styled('a', {

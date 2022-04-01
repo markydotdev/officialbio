@@ -51,9 +51,12 @@ const globalStyles = globalCss({
   body: {
     fontFamily: '$body',
     fontSize: 'clamp(0.95rem, 1vw + 1rem, 1.1rem)',
-    margin: '0.5rem 1rem',
+    margin: 0,
     overflowX: 'hidden',
     lineHeight: 1.45,
+    '& > #__next': {
+      padding: '0.5rem 1rem 0 1rem',
+    },
   },
   a: {
     textDecoration: 'none',
