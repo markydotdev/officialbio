@@ -1,42 +1,102 @@
 import Link from 'next/link';
 
-import { styled } from '../../stitches.config';
+import { keyframes, styled } from '../../stitches.config';
 
+const circleAppear = keyframes({
+  from: { transform: 'translate3d(0)', opacity: 0 },
+  to: { transform: 'translate3d(175px,100px,100px)', opacity: 1 },
+});
+const donutAppear = keyframes({
+  from: { transform: 'translate3d(0)', opacity: 0 },
+  to: { transform: 'translate3d(100px,-150px,100px)', opacity: 1 },
+});
+const cubeAppear = keyframes({
+  from: { transform: 'translate3d(0)', opacity: 0 },
+  to: { transform: 'translate3d(350px,-200px,100px)', opacity: 1 },
+});
+const coneAppear = keyframes({
+  from: { transform: 'translate3d(0)', opacity: 0 },
+  to: { transform: 'translate3d(-300px,50px,100px)', opacity: 1 },
+});
+const distantCircleAppear = keyframes({
+  from: { transform: 'translate3d(0)', opacity: 0 },
+  to: { transform: 'translate3d(-200px,-100px,100px)', opacity: 1 },
+});
+
+const BaseShape = styled('div', {
+  opacity: 0,
+  zIndex: -1,
+  backgroundSize: 'contain',
+  backgroundRepeat: 'no-repeat',
+  position: 'absolute',
+  top: '20%',
+  left: '25%',
+});
+const Donut = styled(BaseShape, {
+  backgroundImage: `url("./hero-images/donut.png")`,
+  width: '300px',
+  height: '100%',
+});
+const Circle = styled(BaseShape, {
+  zIndex: 0,
+  backgroundImage: `url("./hero-images/circle.png")`,
+  width: '30vw',
+  height: '30vh',
+  filter: 'blur(4px)',
+});
+const Cone = styled(BaseShape, {
+  backgroundImage: `url("./hero-images/cone.png")`,
+  width: '200px',
+  height: '100%',
+});
+const Cube = styled(BaseShape, {
+  backgroundImage: `url("./hero-images/cube.png")`,
+  width: '250px',
+  height: '100%',
+});
+const DistantCircle = styled(BaseShape, {
+  backgroundImage: `url("./hero-images/distant_circle.png")`,
+  width: '75px',
+  height: '100%',
+});
 const Container = styled('div', {
   display: 'flex',
   position: 'relative',
   justifyContent: 'center',
   alignItems: 'center',
-  width: '100%',
-  height: '55vh',
+  width: 'fit-content',
+  margin: '20vh auto',
+  [`&:hover > ${Circle}`]: {
+    animation: `${circleAppear} 1000ms ease-in-out forwards`,
+  },
+  [`&:hover > ${Cone}`]: {
+    animation: `${coneAppear} 1000ms ease-in-out forwards`,
+  },
+  [`&:hover > ${Donut}`]: {
+    animation: `${donutAppear} 1000ms ease-in-out forwards`,
+  },
+  [`&:hover > ${Cube}`]: {
+    animation: `${cubeAppear} 1000ms ease-in-out forwards`,
+  },
+  [`&:hover > ${DistantCircle}`]: {
+    animation: `${distantCircleAppear} 1000ms ease-in-out forwards`,
+  },
 });
 const PseudoButton = styled('a', {
-  all: 'unset',
   cursor: 'pointer',
   backgroundImage: `linear-gradient(
     155deg,
-    hsl(265deg 95% 37%) 2%,
-    hsl(267deg 94% 37%) 25%,
-    hsl(269deg 93% 36%) 34%,
-    hsl(271deg 93% 36%) 41%,
-    hsl(272deg 92% 36%) 45%,
-    hsl(274deg 92% 36%) 50%,
-    hsl(276deg 91% 36%) 53%,
-    hsl(278deg 91% 35%) 56%,
-    hsl(280deg 90% 35%) 59%,
-    hsl(281deg 90% 35%) 62%,
-    hsl(283deg 89% 35%) 64%,
-    hsl(285deg 89% 35%) 66%,
-    hsl(287deg 88% 34%) 68%,
-    hsl(289deg 88% 34%) 70%,
-    hsl(290deg 87% 34%) 72%,
-    hsl(292deg 87% 34%) 74%,
-    hsl(294deg 86% 33%) 77%,
-    hsl(296deg 86% 33%) 79%,
-    hsl(298deg 85% 33%) 81%,
-    hsl(300deg 85% 33%) 84%,
-    hsl(302deg 85% 33%) 89%,
-    hsl(304deg 85% 34%) 100%
+    hsl(279deg 83% 46%) 0%,
+    hsl(277deg 84% 43%) 10%,
+    hsl(275deg 85% 39%) 20%,
+    hsl(273deg 87% 36%) 30%,
+    hsl(271deg 90% 33%) 40%,
+    hsl(269deg 93% 29%) 50%,
+    hsl(278deg 95% 31%) 60%,
+    hsl(285deg 95% 32%) 70%,
+    hsl(292deg 95% 34%) 80%,
+    hsl(298deg 92% 36%) 90%,
+    hsl(303deg 88% 40%) 100%
   )`,
   borderRadius: '999px',
   minWidth: '25rem',
@@ -46,17 +106,6 @@ const PseudoButton = styled('a', {
   fontSize: '7rem',
   fontWeight: 'bold',
   color: '$gray1',
-  transition: 'all 2s ease-in-out',
-});
-const Donut = styled('div', {
-  backgroundImage: `url("./hero-images/whiteorange.png")`,
-  backgroundSize: 'contain',
-  backgroundRepeat: 'no-repeat',
-  position: 'absolute',
-  top: 0,
-  right: 0,
-  width: '250px',
-  height: '100%',
 });
 
 type StartProps = {
@@ -71,6 +120,10 @@ function Start({ children }: StartProps) {
       </Link>
 
       <Donut />
+      <Circle />
+      <Cone />
+      <Cube />
+      <DistantCircle />
     </Container>
   );
 }
