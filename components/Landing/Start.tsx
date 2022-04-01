@@ -68,7 +68,7 @@ const PseudoButton = styled('a', {
   justifyContent: 'center',
   alignItems: 'center',
   fontSize: '7rem',
-  fontWeight: 'bold',
+  fontWeight: '500',
   color: '$gray12',
   backgroundImage: `linear-gradient(
     155deg,
@@ -97,7 +97,7 @@ const Container = styled('div', {
   borderRadius: '999px',
   background:
     'linear-gradient($gray4, $gray4) padding-box, linear-gradient(155deg, hsl(279deg 83% 46%) 0%, hsl(277deg 84% 43%) 10%, hsl(275deg 85% 39%) 20%, hsl(273deg 87% 36%) 30%, hsl(271deg 90% 33%) 40%, hsl(269deg 93% 29%) 50%, hsl(278deg 95% 31%) 60%, hsl(285deg 95% 32%) 70%, hsl(292deg 95% 34%) 80%, hsl(298deg 92% 36%) 90%, hsl(303deg 88% 40%) 100%) border-box',
-  border: '4px solid transparent',
+  border: '0.5rem solid transparent',
   '&::before': {
     position: 'absolute',
     content: '',
