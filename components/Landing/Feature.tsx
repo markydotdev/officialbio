@@ -11,7 +11,7 @@ const FeatureText = styled('div', {
   flex: 2,
 });
 const FeatureTitle = styled('h3', {
-  fontWeight: 'bold',
+  fontWeight: '900',
   margin: '0',
   fontSize: '$minFluid',
   '@md': {
@@ -20,6 +20,9 @@ const FeatureTitle = styled('h3', {
   '@xxl': {
     fontSize: '$maxFluid',
   },
+});
+const FeatureDesc = styled('p', {
+  fontWeight: '300',
 });
 const ImageContainer = styled('div', {
   flex: 1,
@@ -35,7 +38,7 @@ const Feature = ({ name, summary, image }) => {
     <FeatureContainer>
       <FeatureText>
         <FeatureTitle>{name}</FeatureTitle>
-        <p>{summary}</p>
+        <FeatureDesc>{summary}</FeatureDesc>
       </FeatureText>
 
       <ImageContainer>

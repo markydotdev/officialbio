@@ -92,6 +92,9 @@ const PseudoButton = styled('a', {
   '@md': {
     fontSize: '3.5rem',
   },
+  '@lg': {
+    fontWeight: '600',
+  },
 });
 const Container = styled('div', {
   cursor: 'pointer',
