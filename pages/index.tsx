@@ -18,6 +18,11 @@ const TemporaryFooter = styled('div', {
   borderRadius: '$image',
   width: 'fit-content',
 });
+const TemporaryLinks = styled('a', {
+  margin: '0 0.25rem',
+  color: 'black',
+  borderBottom: '1px solid black',
+});
 
 export default function Home({ error }) {
   if (error) {
@@ -32,28 +37,14 @@ export default function Home({ error }) {
     <Layout>
       <Landing />
       <TemporaryFooter>
-        Illustration by
-        <a
-          style={{
-            margin: '0 0.25rem',
-            color: 'black',
-            borderBottom: '1px solid black',
-          }}
-          href='https://icons8.com/illustrations/author/zD2oqC8lLBBA'
-        >
+        Illustrations by
+        <TemporaryLinks href='https://icons8.com/illustrations/author/zD2oqC8lLBBA'>
           Icons 8
-        </a>
+        </TemporaryLinks>
         from
-        <a
-          style={{
-            margin: '0 0.25rem',
-            color: 'black',
-            borderBottom: '1px solid black',
-          }}
-          href='https://icons8.com/illustrations'
-        >
+        <TemporaryLinks href='https://icons8.com/illustrations'>
           Ouch!
-        </a>
+        </TemporaryLinks>
       </TemporaryFooter>
     </Layout>
   );
