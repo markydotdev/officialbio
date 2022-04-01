@@ -35,6 +35,7 @@ const BaseShape = styled('div', {
   top: '20%',
   left: '25%',
   userSelect: 'none',
+  pointerEvents: 'none',
 });
 const Donut = styled(BaseShape, {
   backgroundImage: `url("./hero-images/donut.png")`,
