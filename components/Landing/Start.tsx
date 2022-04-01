@@ -59,6 +59,34 @@ const DistantCircle = styled(BaseShape, {
   width: '75px',
   height: '100%',
 });
+const PseudoButton = styled('a', {
+  position: 'relative',
+  cursor: 'pointer',
+  borderRadius: '999px',
+  minWidth: '25rem',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  fontSize: '7rem',
+  fontWeight: 'bold',
+  color: '$gray12',
+  backgroundImage: `linear-gradient(
+    155deg,
+    hsl(279deg 83% 46%) 0%,
+    hsl(277deg 84% 43%) 10%,
+    hsl(275deg 85% 39%) 20%,
+    hsl(273deg 87% 36%) 30%,
+    hsl(271deg 90% 33%) 40%,
+    hsl(269deg 93% 29%) 50%,
+    hsl(278deg 95% 31%) 60%,
+    hsl(285deg 95% 32%) 70%,
+    hsl(292deg 95% 34%) 80%,
+    hsl(298deg 92% 36%) 90%,
+    hsl(303deg 88% 40%) 100%
+  )`,
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+});
 const Container = styled('div', {
   display: 'flex',
   position: 'relative',
@@ -66,6 +94,45 @@ const Container = styled('div', {
   alignItems: 'center',
   width: 'fit-content',
   margin: '20vh auto',
+  borderRadius: '999px',
+  background:
+    'linear-gradient($gray4, $gray4) padding-box, linear-gradient(155deg, hsl(279deg 83% 46%) 0%, hsl(277deg 84% 43%) 10%, hsl(275deg 85% 39%) 20%, hsl(273deg 87% 36%) 30%, hsl(271deg 90% 33%) 40%, hsl(269deg 93% 29%) 50%, hsl(278deg 95% 31%) 60%, hsl(285deg 95% 32%) 70%, hsl(292deg 95% 34%) 80%, hsl(298deg 92% 36%) 90%, hsl(303deg 88% 40%) 100%) border-box',
+  border: '4px solid transparent',
+  '&::before': {
+    position: 'absolute',
+    content: '',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: 0,
+    opacity: 0,
+    transition: 'opacity 0.2s linear',
+    backgroundImage: `linear-gradient(
+      155deg,
+      hsl(279deg 83% 46%) 0%,
+      hsl(277deg 84% 43%) 10%,
+      hsl(275deg 85% 39%) 20%,
+      hsl(273deg 87% 36%) 30%,
+      hsl(271deg 90% 33%) 40%,
+      hsl(269deg 93% 29%) 50%,
+      hsl(278deg 95% 31%) 60%,
+      hsl(285deg 95% 32%) 70%,
+      hsl(292deg 95% 34%) 80%,
+      hsl(298deg 92% 36%) 90%,
+      hsl(303deg 88% 40%) 100%
+    )`,
+    borderRadius: '75px',
+    // Needed to prevent the very tiny lines around the object from appearing due to the gradient magic happening
+    margin: '-2px',
+  },
+  '&:hover::before': {
+    opacity: 1,
+  },
+  [`&:hover ${PseudoButton}`]: {
+    WebkitTextFillColor: 'unset',
+    color: '$gray4',
+  },
   [`&:hover > ${Circle}`]: {
     animation: `${circleAppear} 1000ms ease-in-out forwards`,
   },
@@ -81,31 +148,6 @@ const Container = styled('div', {
   [`&:hover > ${DistantCircle}`]: {
     animation: `${distantCircleAppear} 1000ms ease-in-out forwards`,
   },
-});
-const PseudoButton = styled('a', {
-  cursor: 'pointer',
-  backgroundImage: `linear-gradient(
-    155deg,
-    hsl(279deg 83% 46%) 0%,
-    hsl(277deg 84% 43%) 10%,
-    hsl(275deg 85% 39%) 20%,
-    hsl(273deg 87% 36%) 30%,
-    hsl(271deg 90% 33%) 40%,
-    hsl(269deg 93% 29%) 50%,
-    hsl(278deg 95% 31%) 60%,
-    hsl(285deg 95% 32%) 70%,
-    hsl(292deg 95% 34%) 80%,
-    hsl(298deg 92% 36%) 90%,
-    hsl(303deg 88% 40%) 100%
-  )`,
-  borderRadius: '999px',
-  minWidth: '25rem',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  fontSize: '7rem',
-  fontWeight: 'bold',
-  color: '$gray1',
 });
 
 type StartProps = {
