@@ -4,23 +4,26 @@ import { keyframes, styled } from '../../stitches.config';
 
 const circleAppear = keyframes({
   '0%': { transform: 'translate3d(0)', opacity: 0 },
-  '100%': { transform: 'translate3d(175px,100px,100px)', opacity: 1 },
+  '100%': {
+    transform: 'translate3d(7rem,6rem,0px)',
+    opacity: 1,
+  },
 });
 const donutAppear = keyframes({
   from: { transform: 'translate3d(0)', opacity: 0 },
-  to: { transform: 'translate3d(100px,-150px,100px)', opacity: 1 },
+  to: { transform: 'translate3d(10em,-10em,0px)', opacity: 1 },
 });
 const cubeAppear = keyframes({
   from: { transform: 'translate3d(0)', opacity: 0 },
-  to: { transform: 'translate3d(350px,-200px,100px)', opacity: 1 },
+  to: { transform: 'translate3d(350px,-200px,0px)', opacity: 1 },
 });
 const coneAppear = keyframes({
   from: { transform: 'translate3d(0)', opacity: 0 },
-  to: { transform: 'translate3d(-300px,50px,100px)', opacity: 1 },
+  to: { transform: 'translate3d(-300px,50px,0px)', opacity: 1 },
 });
 const distantCircleAppear = keyframes({
   from: { transform: 'translate3d(0)', opacity: 0 },
-  to: { transform: 'translate3d(-200px,-100px,100px)', opacity: 1 },
+  to: { transform: 'translate3d(-200px,-100px,0px)', opacity: 1 },
 });
 
 const BaseShape = styled('div', {
@@ -96,7 +99,6 @@ const Container = styled('div', {
   justifyContent: 'center',
   alignItems: 'center',
   margin: '20vh auto',
-  minWidth: '20rem',
   borderRadius: '999px',
   background:
     'linear-gradient($gray4, $gray4) padding-box, linear-gradient(155deg, hsl(279deg 83% 46%) 0%, hsl(277deg 84% 43%) 10%, hsl(275deg 85% 39%) 20%, hsl(273deg 87% 36%) 30%, hsl(271deg 90% 33%) 40%, hsl(269deg 93% 29%) 50%, hsl(278deg 95% 31%) 60%, hsl(285deg 95% 32%) 70%, hsl(292deg 95% 34%) 80%, hsl(298deg 92% 36%) 90%, hsl(303deg 88% 40%) 100%) border-box',
@@ -158,6 +160,7 @@ const Container = styled('div', {
     animation: `${distantCircleAppear} 1000ms ease-in-out forwards normal`,
   },
   '@md': {
+    width: '20rem',
     border: '0.5rem solid transparent',
   },
 });
