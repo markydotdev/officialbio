@@ -92,7 +92,7 @@ const Container = styled('div', {
   position: 'relative',
   justifyContent: 'center',
   alignItems: 'center',
-  width: 'fit-content',
+  minWidth: '30rem',
   margin: '20vh auto',
   borderRadius: '999px',
   background:

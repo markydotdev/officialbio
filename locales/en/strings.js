@@ -1,7 +1,7 @@
 module.exports = {
   title: 'OfficialBio',
   menu: 'Menu',
-  start: 'Start',
+  start: 'Create',
   settings: {
     publicProfile: 'Profile page',
     posts: 'Musings page',
