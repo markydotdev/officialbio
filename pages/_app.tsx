@@ -12,7 +12,14 @@ const globalStyles = globalCss({
   '@font-face': [
     {
       fontFamily: 'Inter',
-      src: `url('/fonts/Inter/')`,
+      src: `url('/fonts/Inter/Inter-VariableFont_slnt,wght.ttf')`,
+      fontWeight: '125 950',
+      fontStretch: '75% 125%',
+      fontStyle: 'normal',
+    },
+    {
+      fontFamily: 'Exo2',
+      src: `url('/fonts/Exo2/Exo2-VariableFont_wght.ttf')`,
       fontWeight: '125 950',
       fontStretch: '75% 125%',
       fontStyle: 'normal',

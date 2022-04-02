@@ -72,6 +72,7 @@ const PseudoButton = styled('a', {
   alignItems: 'center',
   fontSize: '1.5rem',
   fontWeight: '500',
+  fontFamily: '$alt',
   color: '$gray12',
   backgroundImage: `linear-gradient(
     155deg,

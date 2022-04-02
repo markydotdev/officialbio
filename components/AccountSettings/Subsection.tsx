@@ -3,6 +3,7 @@ import { styled } from '../../stitches.config';
 const SubsectionTitle = styled('h2', {
   margin: '2rem 0 0 0',
   fontSize: 'clamp(1.3rem, 2vw + 1rem, 2rem)',
+  fontFamily: '$alt',
   '&:first-of-type': {
     marginTop: '1rem',
   },
