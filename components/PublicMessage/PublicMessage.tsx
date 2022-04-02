@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { Key, useState } from 'react';
 
 import { styled } from '../../stitches.config';
+import ImageZoom from '../ImageZoom';
 
 const ArticleContainer = styled('article', {
   marginTop: '1.5rem',
@@ -83,12 +84,12 @@ function PostDate({ date }) {
   return <StyledDate>{daysString}</StyledDate>;
 }
 
-function PublicMessage({ makePrivate, post }) {
+function PublicMessage({ post }) {
   const [open, setOpen] = useState(false);
-  const [imageShown, setImageShown] = useState('');
+  const [imageShown, setImageShown] = useState(null);
 
   // TODO: Convert into react hook to reuse ?
-  const handleImageZoom = (image) => {
+  const handleImageZoom = (image: Key) => {
     if (open) {
       setOpen(false);
       setImageShown('');
@@ -104,7 +105,7 @@ function PublicMessage({ makePrivate, post }) {
 
       <ImageBlock>
         {post.files &&
-          post.files.map((image) => (
+          post.files.map((image: Key) => (
             <ImageItem key={image}>
               <Image
                 onClick={() => handleImageZoom(image)}
@@ -113,12 +114,19 @@ function PublicMessage({ makePrivate, post }) {
               />
             </ImageItem>
           ))}
-        {open ? (
+        {/* {open ? (
           <LargeImageBlock onClick={handleImageZoom}>
             <LargeImage
               src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${imageShown}`}
             />
           </LargeImageBlock>
+        ) : null} */}
+
+        {open ? (
+          <ImageZoom
+            onClick={handleImageZoom}
+            imageSrc={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${imageShown}`}
+          />
         ) : null}
       </ImageBlock>
 

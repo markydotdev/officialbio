@@ -14,7 +14,7 @@ const StyledImage = styled(Image, {
   borderRadius: '$image',
 });
 
-function MessageImage({ url }) {
+function MessageImage({ url, onClick }) {
   return (
     <ImageContainer>
       <StyledImage
@@ -28,6 +28,7 @@ function MessageImage({ url }) {
           const target = e.target as HTMLImageElement;
           target.src = './missing.jpg';
         }}
+        onClick={onClick}
         alt='image here'
       />
     </ImageContainer>

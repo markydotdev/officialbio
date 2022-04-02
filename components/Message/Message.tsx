@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { Key, useEffect, useState } from 'react';
 
 import { styled } from '../../stitches.config';
+import ImageZoom from '../ImageZoom';
 import MessageAlert from './MessageAlert';
 import MessageDate from './MessageDate';
 import MessageImage from './MessageImage';
@@ -52,6 +53,8 @@ function PostText({ content }) {
 
 function Message({ posts, removePost, publishPost, privatePost }) {
   const [content, setContent] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [imageShown, setImageShown] = useState(null);
 
   useEffect(() => {
     const orderedListOfPosts = posts.sort(
@@ -59,6 +62,16 @@ function Message({ posts, removePost, publishPost, privatePost }) {
     );
     setContent(orderedListOfPosts);
   }, [posts]);
+
+  const handleImageZoom = (image: Key) => {
+    if (open) {
+      setOpen(false);
+      setImageShown('');
+    } else {
+      setImageShown(image);
+      setOpen(true);
+    }
+  };
 
   return (
     <>
@@ -69,7 +82,11 @@ function Message({ posts, removePost, publishPost, privatePost }) {
             {post.files !== null ? (
               <StyledImages>
                 {post.files.map((url) => (
-                  <MessageImage key={url} url={url} />
+                  <MessageImage
+                    key={url}
+                    url={url}
+                    onClick={() => handleImageZoom(url)}
+                  />
                 ))}
               </StyledImages>
             ) : null}
@@ -103,6 +120,12 @@ function Message({ posts, removePost, publishPost, privatePost }) {
             </ButtonGroup>
           </StyledPostBox>
         ))}
+      {open ? (
+        <ImageZoom
+          onClick={handleImageZoom}
+          imageSrc={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${imageShown}`}
+        />
+      ) : null}
     </>
   );
 }
