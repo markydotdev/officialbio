@@ -17,7 +17,7 @@ module.exports = {
     description:
       'Once you delete this post, there is no retrieving it, the post is gone for good',
     confirm: 'Yes, delete it',
-    deny: 'No, keep it',
+    deny: 'Cancel',
   },
   publish: {
     button: 'Publish this post',
@@ -25,14 +25,14 @@ module.exports = {
     description:
       'Once you publish this post, others will be able to view it on your public page',
     confirm: 'Yes, publish it',
-    deny: 'No, do not publish',
+    deny: 'Cancel',
   },
   private: {
     button: 'Privatize this post',
     prompt: 'Are you sure you want to make this post private?',
     description: 'Making this post private will hide it from your public page',
     confirm: 'Yes, make it private',
-    deny: 'No, keep it public',
+    deny: 'Cancel',
     info: 'This post viewable to the public',
   },
   // Landing page
