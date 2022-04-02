@@ -56,18 +56,17 @@ const AlertButtons = styled('div', {
   justifyContent: 'space-between',
 });
 const AlertCancelButton = styled(AlertPrompt.Cancel, {
-  margin: 0,
-  padding: 0,
   cursor: 'pointer',
-  border: 'none',
-  borderBottom: '2px solid $gray12',
+  minHeight: '2rem',
+  borderRadius: '$button',
+  fontSize: '1em',
+  padding: '$button',
   backgroundColor: '$gray1',
   color: '$gray12',
-  minHeight: '2rem',
-  fontSize: '1em',
-  transition: '$main',
+  border: '2px solid $gray12',
   '&:hover': {
-    padding: '0 0.5rem',
+    backgroundColor: '$gray12',
+    color: '$gray1',
   },
 });
 const AlertDeleteButton = styled(AlertPrompt.Action, {
