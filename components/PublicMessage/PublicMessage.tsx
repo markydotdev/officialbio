@@ -40,6 +40,7 @@ const Image = styled('img', {
   borderRadius: '0.25rem',
 });
 const LargeImageBlock = styled('div', {
+  zIndex: 10,
   position: 'fixed',
   display: 'flex',
   justifyContent: 'center',
@@ -58,8 +59,8 @@ const LargeImage = styled('img', {
   position: 'relative',
   maxWidth: '100%',
   maxHeight: '100%',
+  zIndex: 11,
 });
-const PrivateButton = styled('button', {});
 const StyledDate = styled('span', {
   fontSize: '0.8em',
   fontStyle: 'italic',
