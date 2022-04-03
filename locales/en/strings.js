@@ -117,5 +117,6 @@ module.exports = {
     // So the full prompt is: "Display {namehere} on your profile?"
     prompt1: 'Display',
     prompt2: 'on your profile?',
+    fullPrompt: 'Display this on your profile?',
   },
 };

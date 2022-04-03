@@ -8,10 +8,8 @@ import { DEFAULT_AVATARS_BUCKET } from '../../utils/constants';
 import { supabase } from '../../utils/supabaseClient';
 import Avatar from '../Avatar';
 import Button from '../Button';
-import ExternalSignIn from '../ExternalSignIn';
 import Placeholder from '../Placeholder';
 import InputGroup from './InputGroup';
-import SocialBox from './SocialBox';
 import Subsection from './Subsection';
 import UploadButton from './UploadButton';
 
@@ -71,9 +69,6 @@ function AccountSettings({ session }) {
   const [pubName, setPubName] = useState(null);
   const [website, setWebsite] = useState(null);
   const [description, setDescription] = useState(null);
-  const [connectedAccs, setConnectedAccs] = useState([]);
-
-  // console.log(user);
 
   useEffect(() => {
     getProfile();
@@ -168,13 +163,6 @@ function AccountSettings({ session }) {
     try {
       setLoading(true);
       const user = supabase.auth.user();
-      const accounts = user.identities.map((account) => {
-        return {
-          service: account.provider,
-          name: account.identity_data.name,
-        };
-      });
-      setConnectedAccs(accounts);
 
       const { data, error } = await supabase
         .from('profiles')
@@ -396,19 +384,6 @@ function AccountSettings({ session }) {
             <Placeholder height='2.5rem' width='10rem' margin={undefined} />
           )}
         </ButtonGroup>
-      </Subsection>
-
-      <Subsection
-        title={strings.account.connected}
-        description={strings.account.connectedAccsDesc}
-      >
-        {/* <ExternalSignIn
-          connectedAccs={connectedAccs}
-          contentLoaded={contentLoaded}
-        /> */}
-
-        <SocialBox provider='twitch' />
-        <SocialBox provider='discord' />
       </Subsection>
 
       <SignOutSection>
