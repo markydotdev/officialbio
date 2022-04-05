@@ -1,30 +1,60 @@
 import { styled } from '../../stitches.config';
+import Card from './Card';
+import DragBox from './DragBox';
+import DropGrid from './DropGrid';
+import List from './List';
 
-const Position = styled('div', {
-  height: 'calc(100vh - 1rem)',
+const Container = styled('div', {
   display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'flex-end',
+  flex: 1,
+  position: 'relative',
 });
-const Scrolly = styled('div', {
-  display: 'flex',
-  overflowX: 'scroll',
-});
-const Block = styled('div', {
-  backgroundColor: 'white',
-  padding: '1rem',
-  margin: '1rem',
-  minWidth: '10rem',
-  cursor: 'grab',
-});
+const items = [
+  'Item 1',
+  'Item 2',
+  'Item 3',
+  'Item 4',
+  'Item 5',
+  'Item 6',
+  'Item 7',
+  'Item 8',
+  'Item 9',
+  'Item 10',
+  'Item 6',
+  'Item 7',
+  'Item 8',
+  'Item 9',
+  'Item 10',
+  'Item 6',
+  'Item 7',
+  'Item 8',
+  'Item 9',
+  'Item 10',
+  'Item 6',
+  'Item 7',
+  'Item 8',
+  'Item 9',
+  'Item 10',
+  'Item 6',
+  'Item 7',
+  'Item 8',
+  'Item 9',
+  'Item 10',
+];
 
 function BuildingBlocks() {
   return (
-    <Position>
-      <Scrolly>
-        <Block>Text inside block</Block>
-      </Scrolly>
-    </Position>
+    <Container>
+      <DropGrid />
+
+      <List>
+        {items.map((item) => (
+          <DragBox key={item} dataItem={item}>
+            <Card>{item}</Card>
+          </DragBox>
+        ))}
+      </List>
+    </Container>
   );
 }
 
