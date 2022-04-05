@@ -1,6 +1,3 @@
-import { useState } from 'react';
-import Draggable, { DraggableCore } from 'react-draggable';
-
 import { styled } from '../../stitches.config';
 
 const Position = styled('div', {
@@ -20,43 +17,12 @@ const Block = styled('div', {
   minWidth: '10rem',
   cursor: 'grab',
 });
-// Duplicate the dragged item into placement where it gets duplicated into the realized component? Probably happens on create page...
-const Placement = styled('div', {});
 
 function BuildingBlocks() {
   return (
-    <Position className='boundary'>
+    <Position>
       <Scrolly>
-        <Draggable bounds='.boundary'>
-          <Block>Hate It</Block>
-        </Draggable>
-        <Draggable bounds='.boundary'>
-          <Block>Hate It</Block>
-        </Draggable>
-        <Draggable bounds='.boundary'>
-          <Block>Hate It</Block>
-        </Draggable>
-        <Draggable bounds='.boundary'>
-          <Block>Hate It</Block>
-        </Draggable>
-        <Draggable bounds='.boundary'>
-          <Block>Hate It</Block>
-        </Draggable>
-        <Draggable bounds='.boundary'>
-          <Block>Hate It</Block>
-        </Draggable>
-        <Draggable bounds='.boundary'>
-          <Block>Hate It</Block>
-        </Draggable>
-        <Draggable bounds='.boundary'>
-          <Block>Hate It</Block>
-        </Draggable>
-        <Draggable bounds='.boundary'>
-          <Block>Hate It</Block>
-        </Draggable>
-        <Draggable bounds='.boundary'>
-          <Block>Hate It</Block>
-        </Draggable>
+        <Block>Text inside block</Block>
       </Scrolly>
     </Position>
   );
