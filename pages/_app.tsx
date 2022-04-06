@@ -34,11 +34,13 @@ const globalStyles = globalCss({
   html: {
     boxSizing: 'border-box',
     backgroundColor: '$gray4',
+    height: '100vh',
   },
   '*, *:before, *:after': {
     boxSizing: 'inherit',
   },
   body: {
+    height: '100%',
     fontFamily: '$body',
     fontSize: 'clamp(0.95rem, 1vw + 1rem, 1.1rem)',
     margin: 0,
@@ -47,6 +49,9 @@ const globalStyles = globalCss({
     '& > #__next': {
       padding: '0.5rem 1rem 0 1rem',
     },
+  },
+  '#__next': {
+    height: '100%',
   },
   a: {
     textDecoration: 'none',

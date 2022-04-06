@@ -10,7 +10,9 @@ const DropGrid = () => {
   return (
     <DropTarget itemDropped={itemDropped}>
       {items.map((item) => (
-        <Card key={item}>{item}</Card>
+        <Card type='square' key={item}>
+          {item}
+        </Card>
       ))}
     </DropTarget>
   );

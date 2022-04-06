@@ -8,6 +8,7 @@ const Container = styled('div', {
   display: 'flex',
   flex: 1,
   position: 'relative',
+  height: '100%',
 });
 const items = [
   'Item 1',
@@ -50,7 +51,7 @@ function BuildingBlocks() {
       <List>
         {items.map((item) => (
           <DragBox key={item} dataItem={item}>
-            <Card>{item}</Card>
+            <Card type='square'>{item}</Card>
           </DragBox>
         ))}
       </List>

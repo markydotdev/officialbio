@@ -6,6 +6,7 @@ const StyledList = styled('div', {
   width: '100%',
   position: 'absolute',
   bottom: 0,
+  marginBottom: '1rem',
 });
 
 const List = ({ children }) => {
