@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { styled } from '../../stitches.config';
 
@@ -6,6 +6,13 @@ const DropBucket = styled('div', {
   backgroundColor: '$gray10',
   width: '100%',
   flex: 1,
+  padding: '1rem',
+  overflowY: 'auto',
+  paddingBottom: '10rem',
+  borderRadius: '$image',
+  '& > div': {
+    margin: '0.5rem 0',
+  },
 });
 
 const DropTarget = ({ itemDropped, children }) => {
@@ -19,6 +26,7 @@ const DropTarget = ({ itemDropped, children }) => {
     if (droppedItem) {
       itemDropped(droppedItem);
     }
+
     setIsOver(false);
   };
   const dragEnter = (e) => {

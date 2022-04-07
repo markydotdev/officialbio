@@ -7,10 +7,11 @@ const DropGrid = () => {
   const [items, setItems] = React.useState([]);
 
   const itemDropped = (item) => setItems([...items, item]);
+
   return (
     <DropTarget itemDropped={itemDropped}>
       {items.map((item) => (
-        <Card type='square' key={item}>
+        <Card type={undefined} key={item}>
           {item}
         </Card>
       ))}

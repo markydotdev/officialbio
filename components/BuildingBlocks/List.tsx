@@ -6,7 +6,14 @@ const StyledList = styled('div', {
   width: '100%',
   position: 'absolute',
   bottom: 0,
-  marginBottom: '1rem',
+  backgroundColor: '$blue5',
+  padding: '0.5rem',
+  paddingBottom: '1.5rem',
+  borderBottomLeftRadius: '$image',
+  borderBottomRightRadius: '$image',
+  '& > div': {
+    margin: '0 0.5rem',
+  },
 });
 
 const List = ({ children }) => {

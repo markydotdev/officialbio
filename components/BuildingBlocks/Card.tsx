@@ -7,7 +7,8 @@ const StyledCard = styled('div', {
   minHeight: '2rem',
   backgroundColor: '$gray1',
   padding: '1rem',
-  margin: '0 1rem',
+  boxShadow: '$low',
+  borderRadius: '$image',
   variants: {
     type: {
       wide: {},

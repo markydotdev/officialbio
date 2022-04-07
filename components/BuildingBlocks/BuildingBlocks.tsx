@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { styled } from '../../stitches.config';
 import Card from './Card';
 import DragBox from './DragBox';
