@@ -2,7 +2,7 @@ import React from 'react';
 
 import { styled } from '../../stitches.config';
 
-const StyledCard = styled('div', {
+const StyledPreview = styled('div', {
   minWidth: '6rem',
   minHeight: '6rem',
   backgroundColor: '$gray1',
@@ -12,22 +12,22 @@ const StyledCard = styled('div', {
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
+  margin: '0 0.5rem',
   variants: {
     type: {
       wide: {
-        minWidth: '20rem',
-        height: '100%',
+        width: '100%',
       },
       square: {
-        width: '6rem',
+        width: '50%',
         height: '6rem',
       },
     },
   },
 });
 
-const Card = ({ type, children }) => {
-  return <StyledCard type={type}>{children}</StyledCard>;
+const PreviewCard = ({ type, children }) => {
+  return <StyledPreview type={type}>{children}</StyledPreview>;
 };
 
-export default Card;
+export default PreviewCard;

@@ -7,8 +7,10 @@ const StyledList = styled('div', {
   position: 'absolute',
   bottom: 0,
   backgroundColor: '$blue5',
-  padding: '0.5rem',
+  paddingTop: '1.5rem',
   paddingBottom: '1.5rem',
+  paddingLeft: '0.5rem',
+  paddingRight: '0.5rem',
   borderBottomLeftRadius: '$image',
   borderBottomRightRadius: '$image',
   '& > div': {

@@ -1,64 +1,36 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-import { styled } from '../../stitches.config';
-import Card from './Card';
-import DragBox from './DragBox';
-import DropGrid from './DropGrid';
-import List from './List';
+import { DndContext } from '@dnd-kit/core';
 
-const Container = styled('div', {
-  display: 'flex',
-  flex: 1,
-  position: 'relative',
-  height: '100%',
-});
-const items = [
-  'Item 1',
-  'Item 2',
-  'Item 3',
-  'Item 4',
-  'Item 5',
-  'Item 6',
-  'Item 7',
-  'Item 8',
-  'Item 9',
-  'Item 10',
-  'Item 6',
-  'Item 7',
-  'Item 8',
-  'Item 9',
-  'Item 10',
-  'Item 6',
-  'Item 7',
-  'Item 8',
-  'Item 9',
-  'Item 10',
-  'Item 6',
-  'Item 7',
-  'Item 8',
-  'Item 9',
-  'Item 10',
-  'Item 6',
-  'Item 7',
-  'Item 8',
-  'Item 9',
-  'Item 10',
-];
+import { Draggable } from './Draggable';
+import { Droppable } from './Droppable';
 
 function BuildingBlocks() {
-  return (
-    <Container>
-      <DropGrid />
+  const containers = ['A', 'B', 'C'];
+  const [parent, setParent] = useState(null);
+  const draggableMarkup = <Draggable id='draggable'>Drag me</Draggable>;
 
-      <List>
-        {items.map((item) => (
-          <DragBox key={item} dataItem={item}>
-            <Card type='square'>{item}</Card>
-          </DragBox>
-        ))}
-      </List>
-    </Container>
+  return (
+    <DndContext onDragEnd={handleDragEnd}>
+      {parent === null ? draggableMarkup : null}
+
+      {containers.map((id) => (
+        // We updated the Droppable component so it would accept an `id`
+        // prop and pass it to `useDroppable`
+        <Droppable key={id} id={id}>
+          {parent === id ? draggableMarkup : 'Drop here'}
+        </Droppable>
+      ))}
+    </DndContext>
   );
+
+  function handleDragEnd(event) {
+    const { over } = event;
+
+    // If the item is dropped over a container, set it as the parent
+    // otherwise reset the parent to `null`
+    setParent(over ? over.id : null);
+  }
 }
 
 export default BuildingBlocks;

@@ -3,7 +3,6 @@ import NavMenu from '../NavMenu';
 import Footer from './Footer';
 
 const Container = styled('main', {
-  height: '90%',
   marginTop: '1rem',
   '@lg': {
     margin: '1rem auto 0',
