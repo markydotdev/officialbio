@@ -8,6 +8,7 @@ export function Draggable(props) {
   const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
     id: props.id,
     data: { name: props.name },
+    disabled: props.disable,
   });
 
   const style = isDragging
