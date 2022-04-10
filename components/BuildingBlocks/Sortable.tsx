@@ -2,13 +2,13 @@ import React from 'react';
 
 import { useSortable } from '@dnd-kit/sortable';
 
-import { styled } from '../../stitches.config';
 import Card from './Card';
 
 export function Sortable(props) {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({
       id: props.id,
+      data: { name: props.name },
     });
   const style = transform
     ? {

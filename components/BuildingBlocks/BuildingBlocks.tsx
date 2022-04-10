@@ -26,14 +26,23 @@ const ListOfDraggables = [
   { id: '11', type: 'square', name: 'test string 11' },
 ];
 const SortItem = ({ id, name }) => {
-  return <Sortable id={id}>{name}</Sortable>;
+  return (
+    <Sortable id={id} name={name}>
+      {name}
+    </Sortable>
+  );
 };
 const DragItem = ({ id, name }) => {
-  return <Draggable id={id}>{name}</Draggable>;
+  return (
+    <Draggable id={id} name={name}>
+      {name}
+    </Draggable>
+  );
 };
 
 function BuildingBlocks() {
   const [activeId, setActiveId] = useState(null);
+  const [activeName, setActiveName] = useState('');
   const [dropped, setDropped] = useState([]);
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -63,11 +72,14 @@ function BuildingBlocks() {
         </SortableContext>
       </Droppable>
 
-      <DragOverlay>{activeId && <Card id={activeId} />}</DragOverlay>
+      <DragOverlay>
+        {activeId && <Card id={activeId}>{activeName}</Card>}
+      </DragOverlay>
     </DndContext>
   );
 
   function handleDragStart(event) {
+    setActiveName(event.active.data.current.name);
     setActiveId(event.active.id);
   }
   function handleDragEnd(event) {

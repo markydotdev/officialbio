@@ -7,6 +7,7 @@ import Card from './Card';
 export function Draggable(props) {
   const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
     id: props.id,
+    data: { name: props.name },
   });
 
   const style = isDragging
