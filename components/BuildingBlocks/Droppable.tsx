@@ -2,17 +2,18 @@ import React from 'react';
 
 import { useDroppable } from '@dnd-kit/core';
 
+import { styled } from '../../stitches.config';
+
+const DropBox = styled('div', {
+  backgroundColor: '$gray5',
+  borderRadius: '$main',
+  padding: '2rem',
+});
+
 export function Droppable(props) {
   const { isOver, setNodeRef } = useDroppable({
     id: props.id,
   });
-  const style = {
-    color: isOver ? 'green' : undefined,
-  };
 
-  return (
-    <div ref={setNodeRef} style={style}>
-      {props.children}
-    </div>
-  );
+  return <DropBox ref={setNodeRef}>{props.children}</DropBox>;
 }
