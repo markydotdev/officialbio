@@ -1,11 +1,10 @@
 import { styled } from '../../stitches.config';
 
-const StyledList = styled('div', {
-  display: 'flex',
+const ListContainer = styled('div', {
+  width: '50vw',
+  margin: '0 auto',
   overflowX: 'scroll',
-  width: '100%',
-  position: 'absolute',
-  bottom: 0,
+  overflowY: 'hidden',
   backgroundColor: '$blue5',
   paddingTop: '1.5rem',
   paddingBottom: '1.5rem',
@@ -13,13 +12,17 @@ const StyledList = styled('div', {
   paddingRight: '0.5rem',
   borderBottomLeftRadius: '$image',
   borderBottomRightRadius: '$image',
-  '& > div': {
-    margin: '0 0.5rem',
-  },
+});
+const StyledList = styled('ul', {
+  display: 'flex',
 });
 
 const List = ({ children }) => {
-  return <StyledList>{children}</StyledList>;
+  return (
+    <ListContainer>
+      <StyledList>{children}</StyledList>
+    </ListContainer>
+  );
 };
 
 export default List;

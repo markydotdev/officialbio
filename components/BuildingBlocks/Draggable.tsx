@@ -2,26 +2,20 @@ import React from 'react';
 
 import { useDraggable } from '@dnd-kit/core';
 
-import { styled } from '../../stitches.config';
-
-const StyledCard = styled('div', {
-  backgroundColor: '$gray1',
-  padding: '2rem',
-});
+import Card from './Card';
 
 export function Draggable(props) {
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({
+  const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
     id: props.id,
   });
-  const style = transform
-    ? {
-        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-      }
-    : undefined;
+
+  const style = isDragging
+    ? { filter: `opacity(0.5)` }
+    : { filter: `opacity(1)` };
 
   return (
-    <StyledCard ref={setNodeRef} style={style} {...listeners} {...attributes}>
+    <Card ref={setNodeRef} style={style} {...listeners} {...attributes}>
       {props.children}
-    </StyledCard>
+    </Card>
   );
 }
