@@ -32,9 +32,9 @@ const SortItem = ({ id, name }) => {
     </Sortable>
   );
 };
-const DragItem = ({ id, name, disable }) => {
+const DragItem = ({ id, name }) => {
   return (
-    <Draggable id={id} name={name} disable={disable}>
+    <Draggable id={id} name={name}>
       {name}
     </Draggable>
   );
@@ -57,12 +57,7 @@ function BuildingBlocks() {
     >
       <List>
         {ListOfDraggables.map((item) => (
-          <DragItem
-            key={item.id}
-            id={item.id}
-            name={item.name}
-            disable={ListOfDraggables.find((el) => el.id === dropped.id)}
-          />
+          <DragItem key={item.id} id={item.id} name={item.name} />
         ))}
       </List>
 
