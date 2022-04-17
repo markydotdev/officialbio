@@ -1,7 +1,6 @@
 import { styled } from '../../stitches.config';
 
 const ListContainer = styled('div', {
-  width: '50vw',
   margin: '0 auto',
   overflowX: 'scroll',
   overflowY: 'hidden',
@@ -10,11 +9,12 @@ const ListContainer = styled('div', {
   paddingBottom: '1.5rem',
   paddingLeft: '0.5rem',
   paddingRight: '0.5rem',
-  borderBottomLeftRadius: '$image',
-  borderBottomRightRadius: '$image',
+  borderRadius: '$main',
 });
 const StyledList = styled('ul', {
   display: 'flex',
+  padding: 0,
+  paddingLeft: '1rem',
 });
 
 const List = ({ children }) => {

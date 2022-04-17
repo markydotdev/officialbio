@@ -32,9 +32,9 @@ const SortItem = ({ id, name }) => {
     </Sortable>
   );
 };
-const DragItem = ({ id, name }) => {
+const DragItem = ({ id, name, disabled }) => {
   return (
-    <Draggable id={id} name={name}>
+    <Draggable id={id} name={name} disabled={disabled}>
       {name}
     </Draggable>
   );
@@ -57,7 +57,12 @@ function BuildingBlocks() {
     >
       <List>
         {ListOfDraggables.map((item) => (
-          <DragItem key={item.id} id={item.id} name={item.name} />
+          <DragItem
+            key={item.id}
+            id={item.id}
+            name={item.name}
+            disabled={dropped.some((el) => el.id === item.id)}
+          />
         ))}
       </List>
 
@@ -73,7 +78,11 @@ function BuildingBlocks() {
       </Droppable>
 
       <DragOverlay>
-        {activeId && <Card id={activeId}>{activeName}</Card>}
+        {activeId && (
+          <Card id={activeId} dragging={true}>
+            {activeName}
+          </Card>
+        )}
       </DragOverlay>
     </DndContext>
   );

@@ -7,7 +7,7 @@ import { styled } from '../../stitches.config';
 const DropBox = styled('div', {
   backgroundColor: '$gray5',
   borderRadius: '$main',
-  padding: '2rem',
+  padding: '1rem',
 });
 
 export function Droppable(props) {
