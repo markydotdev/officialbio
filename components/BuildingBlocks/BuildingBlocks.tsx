@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { createPortal } from 'react-dom';
 
 import {
     DndContext, DragOverlay, KeyboardSensor, PointerSensor, useSensor, useSensors
