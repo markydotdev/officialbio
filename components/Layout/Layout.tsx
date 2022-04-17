@@ -7,9 +7,6 @@ const Container = styled('main', {
   '@lg': {
     margin: '1rem auto 0',
     minHeight: '80vh',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
   },
 });
 

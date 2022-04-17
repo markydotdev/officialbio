@@ -52,9 +52,14 @@ const globalStyles = globalCss({
   },
   '#__next': {
     height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
   },
   a: {
     textDecoration: 'none',
+  },
+  main: {
+    flex: 1,
   },
 });
 
