@@ -5,7 +5,7 @@ import Footer from './Footer';
 const Container = styled('main', {
   marginTop: '1rem',
   '@lg': {
-    margin: '1rem auto 0',
+    margin: '1rem 0',
     minHeight: '80vh',
   },
 });
