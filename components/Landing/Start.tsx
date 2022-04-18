@@ -177,7 +177,7 @@ type StartProps = {
 function Start({ children }: StartProps) {
   return (
     <Container>
-      <Link href='/' passHref>
+      <Link href='/create' passHref>
         <PseudoButton>{children}</PseudoButton>
       </Link>
 
