@@ -16,6 +16,7 @@ export function Draggable(props) {
       ref={setNodeRef}
       dragging={isDragging}
       disabled={props.disabled}
+      type={props.type}
       {...listeners}
       {...attributes}
     >

@@ -12,17 +12,17 @@ import List from './List';
 import { Sortable } from './Sortable';
 
 const ListOfDraggables = [
-  { id: '1', type: 'wide', name: 'Test string 1' },
-  { id: '2', type: 'square', name: 'Test string 2' },
-  { id: '3', type: 'square', name: 'Test string 3' },
-  { id: '4', type: 'wide', name: 'Test string 4' },
-  { id: '5', type: 'square', name: 'test string 5' },
-  { id: '6', type: 'square', name: 'test string 6' },
-  { id: '7', type: 'square', name: 'test string 7' },
-  { id: '8', type: 'square', name: 'test string 8' },
-  { id: '9', type: 'square', name: 'test string 9' },
-  { id: '10', type: 'square', name: 'test string 10' },
-  { id: '11', type: 'square', name: 'test string 11' },
+  { id: '1', name: 'Test string 1', type: 'social' },
+  { id: '2', name: 'Description box goes here', type: 'description' },
+  { id: '3', name: 'Avi', type: 'avatar' },
+  { id: '4', name: 'Test string 4' },
+  { id: '5', name: 'test string 5' },
+  { id: '6', name: 'test string 6' },
+  { id: '7', name: 'test string 7' },
+  { id: '8', name: 'test string 8' },
+  { id: '9', name: 'test string 9' },
+  { id: '10', name: 'test string 10' },
+  { id: '11', name: 'test string 11' },
 ];
 const SortItem = ({ id, name }) => {
   return (
@@ -31,9 +31,9 @@ const SortItem = ({ id, name }) => {
     </Sortable>
   );
 };
-const DragItem = ({ id, name, disabled }) => {
+const DragItem = ({ id, name, disabled, type }) => {
   return (
-    <Draggable id={id} name={name} disabled={disabled}>
+    <Draggable id={id} name={name} disabled={disabled} type={type}>
       {name}
     </Draggable>
   );
@@ -61,6 +61,7 @@ function BuildingBlocks() {
             id={item.id}
             name={item.name}
             disabled={dropped.some((el) => el.id === item.id)}
+            type={item.type}
           />
         ))}
       </List>

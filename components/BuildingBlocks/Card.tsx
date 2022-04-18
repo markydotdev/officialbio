@@ -10,6 +10,20 @@ const StyledCard = styled('li', {
   borderRadius: '$main',
   margin: '0.25rem',
   variants: {
+    type: {
+      social: {
+        minWidth: '10rem',
+        minHeight: '10rem',
+      },
+      description: {
+        minWidth: '20rem',
+        minHeight: '10rem',
+      },
+      avatar: {
+        minHeight: '10rem',
+        minWidth: '5rem',
+      },
+    },
     disabled: {
       true: {
         filter: `opacity(0.2) !important`,
@@ -31,6 +45,7 @@ const StyledCard = styled('li', {
 interface LiProps extends React.ComponentPropsWithoutRef<'li'> {
   disabled?: boolean;
   dragging?: boolean;
+  type?: 'social' | 'description' | 'avatar';
 }
 
 const Item = forwardRef<HTMLLIElement, LiProps>(
