@@ -6,7 +6,6 @@ const Container = styled('main', {
   marginTop: '1rem',
   '@lg': {
     margin: '1rem 0',
-    minHeight: '80vh',
   },
 });
 
