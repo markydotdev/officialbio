@@ -8,6 +8,9 @@ const DropBox = styled('div', {
   backgroundColor: '$gray5',
   borderRadius: '$main',
   padding: '1rem',
+  display: 'grid',
+  gridTemplateColumns: 'repeat(4, 1fr)',
+  gridTemplateRows: 'repeat(5, 1fr)',
 });
 
 export function Droppable(props) {

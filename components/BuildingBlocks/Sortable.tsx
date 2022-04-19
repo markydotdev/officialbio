@@ -18,7 +18,13 @@ export function Sortable(props) {
     : undefined;
 
   return (
-    <Card ref={setNodeRef} style={style} {...listeners} {...attributes}>
+    <Card
+      ref={setNodeRef}
+      style={style}
+      type={props.type}
+      {...listeners}
+      {...attributes}
+    >
       {props.children}
     </Card>
   );

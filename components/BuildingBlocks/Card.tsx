@@ -15,13 +15,25 @@ const StyledCard = styled('li', {
         minWidth: '10rem',
         minHeight: '10rem',
       },
+      'social-sort': {
+        gridRow: 'auto / span 1',
+        gridColumn: 'auto / span 1',
+      },
       description: {
         minWidth: '20rem',
         minHeight: '10rem',
       },
+      'description-sort': {
+        gridRow: 'auto / span 2',
+        gridColumn: 'auto / span 3',
+      },
       avatar: {
         minHeight: '10rem',
         minWidth: '5rem',
+      },
+      'avatar-sort': {
+        gridRow: 'auto / span 2',
+        gridColumn: 'auto / span 1',
       },
     },
     disabled: {

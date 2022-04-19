@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 import {
     DndContext, DragOverlay, KeyboardSensor, PointerSensor, useSensor, useSensors
 } from '@dnd-kit/core';
-import { arrayMove, SortableContext, sortableKeyboardCoordinates } from '@dnd-kit/sortable';
+import {
+    arrayMove, rectSortingStrategy, SortableContext, sortableKeyboardCoordinates
+} from '@dnd-kit/sortable';
 
 import Card from './Card';
 import { Draggable } from './Draggable';
@@ -15,18 +17,19 @@ const ListOfDraggables = [
   { id: '1', name: 'Test string 1', type: 'social' },
   { id: '2', name: 'Description box goes here', type: 'description' },
   { id: '3', name: 'Avi', type: 'avatar' },
-  { id: '4', name: 'Test string 4' },
-  { id: '5', name: 'test string 5' },
-  { id: '6', name: 'test string 6' },
-  { id: '7', name: 'test string 7' },
-  { id: '8', name: 'test string 8' },
-  { id: '9', name: 'test string 9' },
-  { id: '10', name: 'test string 10' },
-  { id: '11', name: 'test string 11' },
+  { id: '4', name: 'Test string 1', type: 'social' },
+  { id: '5', name: 'Description box goes here', type: 'description' },
+  { id: '6', name: 'Avi', type: 'avatar' },
+  { id: '7', name: 'Test string 1', type: 'social' },
+  { id: '8', name: 'Description box goes here', type: 'description' },
+  { id: '9', name: 'Avi', type: 'avatar' },
+  { id: '10', name: 'Test string 1', type: 'social' },
+  { id: '11', name: 'Description box goes here', type: 'description' },
+  { id: '12', name: 'Avi', type: 'avatar' },
 ];
-const SortItem = ({ id, name }) => {
+const SortItem = ({ id, name, type }) => {
   return (
-    <Sortable id={id} name={name}>
+    <Sortable id={id} name={name} type={type}>
       {name}
     </Sortable>
   );
@@ -68,11 +71,17 @@ function BuildingBlocks() {
 
       <Droppable id={'B'}>
         <SortableContext
+          strategy={rectSortingStrategy}
           items={dropped.length < 1 ? dropped : dropped.map((item) => item.id)}
         >
           {dropped.length >= 1 &&
             dropped.map((item) => (
-              <SortItem key={item.id} id={item.id} name={item.name} />
+              <SortItem
+                key={item.id}
+                id={item.id}
+                name={item.name}
+                type={item.type + '-sort'}
+              />
             ))}
         </SortableContext>
       </Droppable>
