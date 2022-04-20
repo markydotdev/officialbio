@@ -30,7 +30,7 @@ function UserPage({ user, avatar, postData }) {
         {postData
           .sort((a, b) => +new Date(b.updated_at) - +new Date(a.updated_at))
           .map((post) => (
-            <PublicMessage key={post.id} post={post} makePrivate={undefined} />
+            <PublicMessage key={post.id} post={post} />
           ))}
       </Layout>
     );
