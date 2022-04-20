@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import {
     DndContext, DragOverlay, KeyboardSensor, PointerSensor, useSensor, useSensors
@@ -53,7 +53,7 @@ const DragItem = ({ id, name, disabled, type }) => {
   );
 };
 
-function BuildingBlocks() {
+function BuildingBlocks({ preset }) {
   const userId = useContext(UserContext);
   const [activeId, setActiveId] = useState(null);
   const [activeName, setActiveName] = useState('');
@@ -62,6 +62,10 @@ function BuildingBlocks() {
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
   );
+
+  useEffect(() => {
+    setDropped(preset);
+  }, [preset]);
 
   return (
     <>
