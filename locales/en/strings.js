@@ -119,4 +119,7 @@ module.exports = {
     prompt2: 'on your profile?',
     fullPrompt: 'Display this on your profile?',
   },
+  create: {
+    title: 'Create your custom profile',
+  },
 };

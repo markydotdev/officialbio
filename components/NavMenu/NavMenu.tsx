@@ -52,13 +52,11 @@ function NavMenu() {
   return (
     <Menu>
       <Logo />
-      <User name={name} avatar={avatar} />
+      {userId !== null && <User name={name} avatar={avatar} />}
 
-      {userId !== null && (
-        <SettingsItem>
-          <Settings />
-        </SettingsItem>
-      )}
+      <SettingsItem>
+        <Settings />
+      </SettingsItem>
     </Menu>
   );
 }

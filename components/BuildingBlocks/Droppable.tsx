@@ -8,12 +8,15 @@ const DropBox = styled('div', {
   backgroundColor: '$gray5',
   borderRadius: '$main',
   padding: '1rem',
+  minHeight: '50vh',
 });
 
-export function Droppable(props) {
-  const { isOver, setNodeRef } = useDroppable({
+function Droppable(props) {
+  const { setNodeRef } = useDroppable({
     id: props.id,
   });
 
   return <DropBox ref={setNodeRef}>{props.children}</DropBox>;
 }
+
+export default Droppable;

@@ -145,12 +145,13 @@ function Settings() {
           </StyledItem>
         )}
 
-        <Separator />
-
         {userId !== null && (
-          <StyledItem onSelect={() => handleSignOut()}>
-            <StyledLink>{strings.settings.signOut}</StyledLink>
-          </StyledItem>
+          <>
+            <Separator />
+            <StyledItem onSelect={() => handleSignOut()}>
+              <StyledLink>{strings.settings.signOut}</StyledLink>
+            </StyledItem>
+          </>
         )}
       </StyledContent>
     </DropdownMenu.Root>
