@@ -57,7 +57,7 @@ function BuildingBlocks({ preset }) {
   const userId = useContext(UserContext);
   const [activeId, setActiveId] = useState(null);
   const [activeName, setActiveName] = useState('');
-  const [dropped, setDropped] = useState([]);
+  const [dropped, setDropped] = useState(preset || []);
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
