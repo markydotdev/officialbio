@@ -4,7 +4,7 @@ import { styled } from '../../stitches.config';
 
 const StyledCard = styled('li', {
   backgroundColor: '$gray1',
-  padding: '2rem',
+  padding: '1.5rem',
   listStyle: 'none',
   borderRadius: '$main',
   margin: '0.25rem',
