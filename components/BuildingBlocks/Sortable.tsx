@@ -8,6 +8,13 @@ import Card from './Card';
 const SortableCard = styled(Card, {
   minWidth: 'unset',
 });
+const DragHandle = styled('button', {
+  cursor: 'grab',
+});
+
+function InputField() {
+  return <input type='text' required></input>;
+}
 
 function Sortable(props) {
   const { attributes, listeners, setNodeRef, transform, transition } =
@@ -23,8 +30,12 @@ function Sortable(props) {
     : undefined;
 
   return (
-    <SortableCard ref={setNodeRef} style={style} {...listeners} {...attributes}>
+    <SortableCard ref={setNodeRef} style={style}>
+      <InputField />
       {props.children}
+      <DragHandle {...listeners} {...attributes}>
+        drag here
+      </DragHandle>
     </SortableCard>
   );
 }

@@ -6,7 +6,6 @@ const StyledCard = styled('li', {
   backgroundColor: '$gray1',
   padding: '2rem',
   listStyle: 'none',
-  cursor: 'grab',
   borderRadius: '$main',
   margin: '0.25rem',
   minWidth: '150px',
