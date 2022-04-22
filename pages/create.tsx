@@ -1,9 +1,11 @@
+import Head from 'next/head';
 import router from 'next/router';
 import React, { useContext, useEffect, useState } from 'react';
 
 import BuildingBlocks from '../components/BuildingBlocks';
 import Button from '../components/Button';
 import Layout from '../components/Layout';
+import strings from '../locales/en/strings';
 import { styled } from '../stitches.config';
 import { supabase } from '../utils/supabaseClient';
 import { UserContext } from './_app';
@@ -52,9 +54,16 @@ function create() {
     );
   }
   return (
-    <Layout>
-      <BuildingBlocks preset={presetOrder} />
-    </Layout>
+    <>
+      <Head>
+        <title>
+          {strings.title} | {strings.create.pageName}
+        </title>
+      </Head>
+      <Layout>
+        <BuildingBlocks preset={presetOrder} />
+      </Layout>
+    </>
   );
 }
 

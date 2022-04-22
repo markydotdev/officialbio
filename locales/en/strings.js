@@ -120,6 +120,7 @@ module.exports = {
     fullPrompt: 'Display this on your profile?',
   },
   create: {
+    pageName: 'Create',
     title: 'Create your custom profile',
   },
 };
