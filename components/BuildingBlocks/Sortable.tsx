@@ -1,19 +1,58 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useSortable } from '@dnd-kit/sortable';
+import { CaretSortIcon } from '@radix-ui/react-icons';
 
 import { styled } from '../../stitches.config';
 import Card from './Card';
 
 const SortableCard = styled(Card, {
   minWidth: 'unset',
+  display: 'flex',
+  justifyContent: 'space-between',
 });
 const DragHandle = styled('button', {
   cursor: 'grab',
+  outline: 'none',
+  border: 'none',
+  backgroundColor: 'transparent',
 });
+const Input = styled('input', {
+  backgroundColor: '$gray5',
+  border: 'none',
+  borderRadius: '$image',
+  padding: '0.5rem 0.75rem',
+  flex: 1,
+});
+const Label = styled('label', {});
 
-function InputField() {
-  return <input type='text' required></input>;
+function InputField({ id }) {
+  const [textInput, setTextInput] = useState(
+    JSON.parse(localStorage.getItem(id)) || ''
+  );
+
+  useEffect(() => {
+    if (textInput.length >= 1) {
+      const delay = setTimeout(() => {
+        localStorage.setItem(id, JSON.stringify(textInput));
+      }, 500);
+
+      return () => clearTimeout(delay);
+    }
+  }, [textInput]);
+
+  return (
+    <Input
+      id={id}
+      type='text'
+      value={textInput}
+      onChange={(e) => setTextInput(e.target.value)}
+      required
+    ></Input>
+  );
+}
+function InputLabel({ children }) {
+  return <Label htmlFor={children}>{children}</Label>;
 }
 
 function Sortable(props) {
@@ -31,10 +70,10 @@ function Sortable(props) {
 
   return (
     <SortableCard ref={setNodeRef} style={style}>
-      <InputField />
-      {props.children}
+      <InputLabel>{props.children}</InputLabel>
+      <InputField id={props.id} />
       <DragHandle {...listeners} {...attributes}>
-        drag here
+        <CaretSortIcon />
       </DragHandle>
     </SortableCard>
   );

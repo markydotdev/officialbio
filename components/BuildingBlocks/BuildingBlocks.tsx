@@ -67,6 +67,46 @@ function BuildingBlocks({ preset }) {
     setDropped(preset);
   }, [preset]);
 
+  const handleSubmit = async () => {
+    // take input from local storage
+    // using dropped to select the ids
+    const savedData = dropped.map((item) => ({
+      id: item.id,
+      text: localStorage.getItem(item.id),
+    }));
+    // send it to supabase
+    const { data, error } = await supabase
+      .from('profiles')
+      .update({ linkContent: savedData }, { returning: 'minimal' })
+      .match({ id: userId });
+  };
+  const handleDragStart = (event) => {
+    setActiveName(event.active.data.current.name);
+    setActiveId(event.active.id);
+  };
+  const handleDragEnd = (event) => {
+    const { active, over } = event;
+    if (active.id !== over.id) {
+      if (dropped.length < 1) {
+        setDropped(ListOfDraggables.filter((item) => item.id === active.id));
+      } else if (!dropped.find((el) => el.id === active.id)) {
+        // Checking if it already exists and if it doesn't then add the item
+        const newItem = ListOfDraggables.filter(
+          (item) => item.id === active.id
+        );
+        setDropped([...dropped, newItem[0]]);
+      }
+      console.log('being sorted');
+      setDropped((items) => {
+        const activeIndex = items.findIndex(({ id }) => id === active.id);
+        const overIndex = items.findIndex(({ id }) => id === over.id);
+
+        return arrayMove(items, activeIndex, overIndex);
+      });
+    }
+    setActiveId(null);
+  };
+
   return (
     <>
       <h2>{strings.create.title}</h2>
@@ -117,7 +157,7 @@ function BuildingBlocks({ preset }) {
 
       <StyledButton>
         <Button
-          onClick={() => handleFinalize()}
+          onClick={() => handleSubmit()}
           type='submit'
           disabled={false}
           version={undefined}
@@ -128,41 +168,6 @@ function BuildingBlocks({ preset }) {
       </StyledButton>
     </>
   );
-
-  function handleDragStart(event) {
-    setActiveName(event.active.data.current.name);
-    setActiveId(event.active.id);
-  }
-  function handleDragEnd(event) {
-    const { active, over } = event;
-    if (active.id !== over.id) {
-      if (dropped.length < 1) {
-        setDropped(ListOfDraggables.filter((item) => item.id === active.id));
-      } else if (!dropped.find((el) => el.id === active.id)) {
-        // Checking if it already exists and if it doesn't then add the item
-        const newItem = ListOfDraggables.filter(
-          (item) => item.id === active.id
-        );
-        setDropped([...dropped, newItem[0]]);
-      }
-      console.log('being sorted');
-      setDropped((items) => {
-        const activeIndex = items.findIndex(({ id }) => id === active.id);
-        const overIndex = items.findIndex(({ id }) => id === over.id);
-
-        return arrayMove(items, activeIndex, overIndex);
-      });
-    }
-    setActiveId(null);
-  }
-  async function handleFinalize() {
-    console.log(dropped);
-    const { data, error } = await supabase
-      .from('profiles')
-      .update({ orderOfLinks: dropped })
-      .match({ id: userId });
-    console.log(data || error);
-  }
 }
 
 export default BuildingBlocks;
