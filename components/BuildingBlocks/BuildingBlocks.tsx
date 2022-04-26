@@ -16,6 +16,7 @@ import Card from './Card';
 import Draggable from './Draggable';
 import Droppable from './Droppable';
 import List from './List';
+import Blocks from './ListOfBlocks';
 import Sortable from './Sortable';
 
 const StyledButton = styled('div', {
@@ -24,20 +25,6 @@ const StyledButton = styled('div', {
   paddingTop: '1rem',
 });
 
-const ListOfDraggables = [
-  { id: '1', name: 'Test string 1', type: 'social' },
-  { id: '2', name: 'Description box goes here', type: 'description' },
-  { id: '33', name: 'Avi', type: 'avatar' },
-  { id: '4', name: 'Test string 1', type: 'social' },
-  { id: '5', name: 'Description box goes here', type: 'description' },
-  { id: '6', name: 'Avi', type: 'avatar' },
-  { id: '7', name: 'Test string 1', type: 'social' },
-  { id: '8', name: 'Description box goes here', type: 'description' },
-  { id: '9', name: 'Avi', type: 'avatar' },
-  { id: '10', name: 'Test string 1', type: 'social' },
-  { id: '11', name: 'Description box goes here', type: 'description' },
-  { id: '12', name: 'Avi', type: 'avatar' },
-];
 const SortItem = ({ id, name, type }) => {
   return (
     <Sortable id={id} name={name} type={type}>
@@ -57,14 +44,16 @@ function BuildingBlocks({ preset }) {
   const userId = useContext(UserContext);
   const [activeId, setActiveId] = useState(null);
   const [activeName, setActiveName] = useState('');
-  const [dropped, setDropped] = useState(preset || []);
+  const [dropped, setDropped] = useState(preset || [{ id: '1' }]);
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
   );
 
   useEffect(() => {
-    setDropped(preset);
+    if (preset !== null) {
+      setDropped(preset);
+    }
   }, [preset]);
 
   const handleSubmit = async () => {
@@ -72,7 +61,9 @@ function BuildingBlocks({ preset }) {
     // using dropped to select the ids
     const savedData = dropped.map((item) => ({
       id: item.id,
-      text: localStorage.getItem(item.id),
+      text: JSON.parse(localStorage.getItem(item.id)),
+      name: item.name,
+      type: item.type,
     }));
     // send it to supabase
     const { data, error } = await supabase
@@ -88,12 +79,10 @@ function BuildingBlocks({ preset }) {
     const { active, over } = event;
     if (active.id !== over.id) {
       if (dropped.length < 1) {
-        setDropped(ListOfDraggables.filter((item) => item.id === active.id));
+        setDropped(Blocks.filter((item) => item.id === active.id));
       } else if (!dropped.find((el) => el.id === active.id)) {
         // Checking if it already exists and if it doesn't then add the item
-        const newItem = ListOfDraggables.filter(
-          (item) => item.id === active.id
-        );
+        const newItem = Blocks.filter((item) => item.id === active.id);
         setDropped([...dropped, newItem[0]]);
       }
       console.log('being sorted');
@@ -116,12 +105,12 @@ function BuildingBlocks({ preset }) {
         onDragEnd={handleDragEnd}
       >
         <List>
-          {ListOfDraggables.map((item) => (
+          {Blocks.map((item) => (
             <DragItem
               key={item.id}
               id={item.id}
               name={item.name}
-              disabled={dropped.some((el) => el.id === item.id)}
+              disabled={dropped && dropped.some((el) => el.id === item.id)}
               type={item.type}
             />
           ))}
@@ -131,7 +120,7 @@ function BuildingBlocks({ preset }) {
           <SortableContext
             strategy={rectSortingStrategy}
             items={
-              dropped.length < 1 ? dropped : dropped.map((item) => item.id)
+              dropped.length <= 1 ? dropped : dropped.map((item) => item.id)
             }
           >
             {dropped.length >= 1 &&

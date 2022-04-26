@@ -8,7 +8,7 @@ const DropBox = styled('div', {
   backgroundColor: '$gray5',
   borderRadius: '$main',
   padding: '1rem',
-  minHeight: '50vh',
+  minHeight: '25vh',
 });
 
 function Droppable(props) {

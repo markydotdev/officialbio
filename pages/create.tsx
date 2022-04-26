@@ -26,9 +26,9 @@ function create() {
     const checkForUserOrder = async () => {
       const { data, error } = await supabase
         .from('profiles')
-        .select('orderOfLinks')
+        .select('linkContent')
         .match({ id: userId });
-      setPresetOrder(data[0].orderOfLinks);
+      setPresetOrder(data[0].linkContent);
     };
     if (userId !== null) {
       checkForUserOrder();
