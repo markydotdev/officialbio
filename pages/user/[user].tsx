@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import ContactCard from '../../components/ContactCard';
+import ContactExtras from '../../components/ContactExtras';
 import Layout from '../../components/Layout';
 import PublicMessage from '../../components/PublicMessage';
 import strings from '../../locales/en/strings';
@@ -21,11 +22,13 @@ const ReturnHome = styled('a', {
   },
 });
 
-function UserPage({ user, avatar, postData }) {
+function UserPage({ user, avatar, postData, links }) {
   if (postData) {
     return (
       <Layout>
         <ContactCard name={user} avatar={avatar} />
+
+        <ContactExtras links={links} />
 
         {postData
           .sort((a, b) => +new Date(b.updated_at) - +new Date(a.updated_at))
@@ -49,17 +52,14 @@ export default UserPage;
 
 export async function getServerSideProps(context) {
   const userName = context.query.user;
-  // Why am I even looking at the cookie? Because it's a public page so even logged out users should be able to see it...
-  // const all = await supabase.auth.api.getUserByCookie(context.req);
-  // console.log(all);
 
   const { data, error } = await supabase
     .from('profiles')
-    .select('id, avatar_url')
+    .select('id, avatar_url, linkContent')
     .eq('pubName', userName);
 
   if (data[0]) {
-    const { id, avatar_url } = data[0];
+    const { id, avatar_url, linkContent } = data[0];
     const { data: postData, error: errorObj } = await supabase
       .from('posts')
       .select()
@@ -68,7 +68,12 @@ export async function getServerSideProps(context) {
     if (postData) {
       // fetch also the linked accounts here
       return {
-        props: { user: userName, avatar: avatar_url, postData },
+        props: {
+          user: userName,
+          avatar: avatar_url,
+          postData,
+          links: linkContent,
+        },
       };
     } else {
       return {
