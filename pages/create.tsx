@@ -28,7 +28,9 @@ function create() {
         .from('profiles')
         .select('linkContent')
         .match({ id: userId });
-      setPresetOrder(data[0].linkContent);
+      if (data !== null) {
+        setPresetOrder(data[0].linkContent);
+      }
     };
     if (userId !== null) {
       checkForUserOrder();

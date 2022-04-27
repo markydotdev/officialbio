@@ -25,9 +25,9 @@ const StyledButton = styled('div', {
   paddingTop: '1rem',
 });
 
-const SortItem = ({ id, name, type }) => {
+const SortItem = ({ id, name, type, text }) => {
   return (
-    <Sortable id={id} name={name} type={type}>
+    <Sortable id={id} name={name} type={type} text={text}>
       {name}
     </Sortable>
   );
@@ -130,6 +130,7 @@ function BuildingBlocks({ preset }) {
                   id={item.id}
                   name={item.name}
                   type={item.type + '-sort'}
+                  text={item.text}
                 />
               ))}
           </SortableContext>

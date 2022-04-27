@@ -26,9 +26,9 @@ const Input = styled('input', {
 });
 const Label = styled('label', {});
 
-function InputField({ id }) {
+function InputField({ id, text }) {
   const [textInput, setTextInput] = useState(
-    JSON.parse(localStorage.getItem(id)) || ''
+    text || JSON.parse(localStorage.getItem(id)) || ''
   );
 
   useEffect(() => {
@@ -61,6 +61,7 @@ function Sortable(props) {
       id: props.id,
       data: { name: props.name },
     });
+
   const style = transform
     ? {
         transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
@@ -71,7 +72,7 @@ function Sortable(props) {
   return (
     <SortableCard ref={setNodeRef} style={style}>
       <InputLabel>{props.children}</InputLabel>
-      <InputField id={props.id} />
+      <InputField id={props.id} text={props.text} />
       <DragHandle {...listeners} {...attributes}>
         <CaretSortIcon />
       </DragHandle>
