@@ -55,27 +55,8 @@ export async function getServerSideProps(context) {
 
   const { data, error } = await supabase
     .from('profiles')
-    .select('id, avatar_url, external_connections')
+    .select('id, avatar_url')
     .eq('pubName', userName);
-
-  // We need to get only the external_connections from data[0] that have enabled set to true
-  if (data[0] !== undefined) {
-    const externalConnections = data[0].external_connections.filter(
-      (account) => account.enabled
-    );
-    const connectionName = externalConnections.map((account) => account.id);
-  }
-
-  // // we need to loop through user.identities and filter the connection that matches the connectionName
-  // const connection = user.identities.filter((provider) =>
-  //   connectionName.includes(provider.provider)
-  // );
-  // // connection works great, one specific issue:
-  // // gotrue hasn't been updated in supabase-js yet, so name just shows the name WITHOUT the identifier tag (name#1234)
-  // // but when it's updated it will show the name with the identifier tag (name#1234)
-  // // so for now just deal with it showing (name)
-  // // FOR REFERNECE: https://github.com/supabase/gotrue/releases/tag/v2.5.6
-  // console.log(connection);
 
   if (data[0]) {
     const { id, avatar_url } = data[0];
