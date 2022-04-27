@@ -35,9 +35,10 @@ const StyledContent = styled(DropdownMenu.Content, {
   fontFamily: 'system-ui',
   backgroundColor: '$gray1',
   padding: '0.5rem',
-  marginTop: '1rem',
+  marginTop: '0.5rem',
+  border: '2px solid white',
   borderRadius: '$button',
-  boxShadow: '$high',
+  boxShadow: '$medium',
 });
 const StyledItem = styled(DropdownMenu.Item, {
   display: 'block',
