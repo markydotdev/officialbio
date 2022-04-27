@@ -8,6 +8,7 @@ import { UserContext } from '../../pages/_app';
 import { styled } from '../../stitches.config';
 import { supabase } from '../../utils/supabaseClient';
 import Tooltip from '../Tooltip';
+import Pages from './Pages';
 
 const StyledTrigger = styled(DropdownMenu.Trigger, {
   height: 50,
@@ -121,12 +122,6 @@ function Settings() {
       </Tooltip>
 
       <StyledContent loop>
-        {userId !== null && (
-          <StyledItem onSelect={() => router.push(`/user/${name}`)}>
-            <StyledLink>{strings.settings.publicProfile}</StyledLink>
-          </StyledItem>
-        )}
-
         {userId === null && (
           <StyledItem onSelect={() => router.push('/sign_in')}>
             <StyledLink>{strings.settings.signIn}</StyledLink>
@@ -134,19 +129,19 @@ function Settings() {
         )}
 
         {userId !== null && (
-          <StyledItem onSelect={() => router.push(`/musings`)}>
-            <StyledLink>{strings.settings.posts}</StyledLink>
-          </StyledItem>
-        )}
-
-        {userId !== null && (
-          <StyledItem onSelect={() => router.push(`/settings`)}>
-            <StyledLink>{strings.settings.settings}</StyledLink>
-          </StyledItem>
-        )}
-
-        {userId !== null && (
           <>
+            {Pages.sort((a, b) => a.order - b.order).map((page) => (
+              <StyledItem
+                key={page.order}
+                onSelect={() =>
+                  router.push(
+                    page.unique ? `/${page.slug}/${name}` : `/${page.slug}`
+                  )
+                }
+              >
+                <StyledLink>{page.name}</StyledLink>
+              </StyledItem>
+            ))}
             <Separator />
             <StyledItem onSelect={() => handleSignOut()}>
               <StyledLink>{strings.settings.signOut}</StyledLink>
