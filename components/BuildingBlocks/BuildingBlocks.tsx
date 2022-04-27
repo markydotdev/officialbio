@@ -85,7 +85,6 @@ function BuildingBlocks({ preset }) {
         const newItem = Blocks.filter((item) => item.id === active.id);
         setDropped([...dropped, newItem[0]]);
       }
-      console.log('being sorted');
       setDropped((items) => {
         const activeIndex = items.findIndex(({ id }) => id === active.id);
         const overIndex = items.findIndex(({ id }) => id === over.id);
