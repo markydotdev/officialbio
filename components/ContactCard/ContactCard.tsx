@@ -13,7 +13,7 @@ const CardFlex = styled('div', {
   backgroundColor: '$gray1',
   borderRadius: '$button',
   boxShadow: '$low',
-  marginBottom: '1rem',
+  marginBottom: '0.5rem',
 });
 const CardArticle = styled('article', {
   marginLeft: '0.5rem',
