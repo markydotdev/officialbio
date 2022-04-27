@@ -10,21 +10,39 @@ const SortableCard = styled(Card, {
   minWidth: 'unset',
   display: 'flex',
   justifyContent: 'space-between',
+  padding: '0 !important',
 });
 const DragHandle = styled('button', {
   cursor: 'grab',
   outline: 'none',
   border: 'none',
   backgroundColor: 'transparent',
+  width: '5rem',
+  padding: '1rem',
+  '& > svg': {
+    width: '30px',
+    height: '30px',
+  },
+});
+const InputSection = styled('div', {
+  flex: 1,
+  display: 'flex',
+  flexDirection: 'column',
 });
 const Input = styled('input', {
   backgroundColor: '$gray5',
   border: 'none',
   borderRadius: '$image',
-  padding: '0.5rem 0.75rem',
+  padding: '0.75rem 1rem',
+  margin: '0.5rem 0 1rem 1rem',
   flex: 1,
 });
-const Label = styled('label', {});
+const Label = styled('label', {
+  paddingLeft: '1rem',
+  paddingTop: '0.5rem',
+  color: '$gray10',
+  fontSize: '16px',
+});
 
 function InputField({ id, text }) {
   const [textInput, setTextInput] = useState(
@@ -71,8 +89,10 @@ function Sortable(props) {
 
   return (
     <SortableCard ref={setNodeRef} style={style}>
-      <InputLabel>{props.children}</InputLabel>
-      <InputField id={props.id} text={props.text} />
+      <InputSection>
+        <InputLabel>{props.children}</InputLabel>
+        <InputField id={props.id} text={props.text} />
+      </InputSection>
       <DragHandle {...listeners} {...attributes}>
         <CaretSortIcon />
       </DragHandle>
