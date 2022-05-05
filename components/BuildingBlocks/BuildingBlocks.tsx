@@ -25,9 +25,9 @@ const StyledButton = styled('div', {
   paddingTop: '1rem',
 });
 
-const SortItem = ({ id, name, type, text }) => {
+const SortItem = ({ id, name, type, text, display }) => {
   return (
-    <Sortable id={id} name={name} type={type} text={text}>
+    <Sortable id={id} name={name} type={type} text={text} display={display}>
       {name}
     </Sortable>
   );
@@ -59,11 +59,13 @@ function BuildingBlocks({ preset }) {
   const handleSubmit = async () => {
     // take input from local storage
     // using dropped to select the ids
+    console.log(dropped);
     const savedData = dropped.map((item) => ({
       id: item.id,
-      text: JSON.parse(localStorage.getItem(item.id)),
+      text: JSON.parse(localStorage.getItem(`${item.id}-text`)),
       name: item.name,
       type: item.type,
+      display: JSON.parse(localStorage.getItem(`${item.id}-display`)),
     }));
     // send it to supabase
     const { data, error } = await supabase
@@ -130,6 +132,7 @@ function BuildingBlocks({ preset }) {
                   name={item.name}
                   type={item.type + '-sort'}
                   text={item.text}
+                  display={item.display}
                 />
               ))}
           </SortableContext>

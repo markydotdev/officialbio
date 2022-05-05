@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CaretSortIcon } from '@radix-ui/react-icons';
 
+import strings from '../../locales/en/strings';
 import { styled } from '../../stitches.config';
 import Card from './Card';
 
@@ -46,13 +47,13 @@ const Label = styled('label', {
 
 function InputField({ id, text }) {
   const [textInput, setTextInput] = useState(
-    text || JSON.parse(localStorage.getItem(id)) || ''
+    text || JSON.parse(localStorage.getItem(`${id}-text`)) || ''
   );
 
   useEffect(() => {
     if (textInput.length >= 1) {
       const delay = setTimeout(() => {
-        localStorage.setItem(id, JSON.stringify(textInput));
+        localStorage.setItem(`${id}-text`, JSON.stringify(textInput));
       }, 500);
 
       return () => clearTimeout(delay);
@@ -62,9 +63,34 @@ function InputField({ id, text }) {
   return (
     <Input
       id={id}
-      type='text'
+      type='url'
       value={textInput}
       onChange={(e) => setTextInput(e.target.value)}
+      required
+    ></Input>
+  );
+}
+function AlternateField({ id, display }) {
+  const [displayInput, setDisplayInput] = useState(
+    display || JSON.parse(localStorage.getItem(`${id}-display`)) || ''
+  );
+
+  useEffect(() => {
+    if (displayInput.length >= 1) {
+      const delay = setTimeout(() => {
+        localStorage.setItem(`${id}-display`, JSON.stringify(displayInput));
+      }, 500);
+
+      return () => clearTimeout(delay);
+    }
+  }, [displayInput]);
+
+  return (
+    <Input
+      id={id}
+      type='text'
+      value={displayInput}
+      onChange={(e) => setDisplayInput(e.target.value)}
       required
     ></Input>
   );
@@ -90,8 +116,12 @@ function Sortable(props) {
   return (
     <SortableCard ref={setNodeRef} style={style}>
       <InputSection>
-        <InputLabel>{props.children}</InputLabel>
+        <InputLabel>{strings.create.displayLabelForLink}</InputLabel>
         <InputField id={props.id} text={props.text} />
+      </InputSection>
+      <InputSection>
+        <InputLabel>{strings.create.displayTextForLink}</InputLabel>
+        <AlternateField id={props.id} display={props.display} />
       </InputSection>
       <DragHandle {...listeners} {...attributes}>
         <CaretSortIcon />

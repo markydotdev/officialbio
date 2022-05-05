@@ -122,5 +122,7 @@ module.exports = {
   create: {
     pageName: 'Create',
     title: 'Create your custom profile',
+    displayLabelForLink: 'General link',
+    displayTextForLink: 'Public label',
   },
 };
