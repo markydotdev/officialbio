@@ -55,6 +55,12 @@ const DeleteButton = styled('button', {
   '&:hover': {
     transform: 'scale(1.1)',
   },
+  '& svg': {
+    width: '1.3rem',
+    height: '1.3rem',
+    color: 'red',
+    marginTop: '0.20rem',
+  },
 });
 
 function InputField({ id, text }) {
