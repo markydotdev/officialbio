@@ -25,9 +25,16 @@ const StyledButton = styled('div', {
   paddingTop: '1rem',
 });
 
-const SortItem = ({ id, name, type, text, display }) => {
+const SortItem = ({ id, name, type, text, display, handleDelete }) => {
   return (
-    <Sortable id={id} name={name} type={type} text={text} display={display}>
+    <Sortable
+      id={id}
+      name={name}
+      type={type}
+      text={text}
+      display={display}
+      handleDelete={handleDelete}
+    >
       {name}
     </Sortable>
   );
@@ -79,7 +86,7 @@ function BuildingBlocks({ preset }) {
   };
   const handleDragEnd = (event) => {
     const { active, over } = event;
-    if (active.id !== over.id) {
+    if (active && over && active.id !== over.id) {
       if (dropped.length < 1) {
         setDropped(Blocks.filter((item) => item.id === active.id));
       } else if (!dropped.find((el) => el.id === active.id)) {
@@ -93,8 +100,14 @@ function BuildingBlocks({ preset }) {
 
         return arrayMove(items, activeIndex, overIndex);
       });
+    } else if (active && over === null) {
+      // remove the active item from the sortable list as long as it's dropped outside
+      setDropped(dropped.filter((item) => item.id !== active.id));
     }
     setActiveId(null);
+  };
+  const handleDelete = (id) => {
+    setDropped(dropped.filter((item) => item.id !== id));
   };
 
   return (
@@ -133,6 +146,7 @@ function BuildingBlocks({ preset }) {
                   type={item.type + '-sort'}
                   text={item.text}
                   display={item.display}
+                  handleDelete={() => handleDelete(item.id)}
                 />
               ))}
           </SortableContext>

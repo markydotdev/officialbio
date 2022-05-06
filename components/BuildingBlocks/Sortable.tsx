@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
 
 import { useSortable } from '@dnd-kit/sortable';
-import { CaretSortIcon } from '@radix-ui/react-icons';
+import { CaretSortIcon, TrashIcon } from '@radix-ui/react-icons';
 
 import strings from '../../locales/en/strings';
 import { styled } from '../../stitches.config';
 import Card from './Card';
 
+const SortCard = styled('div', {
+  display: 'flex',
+});
 const SortableCard = styled(Card, {
+  flex: 1,
   minWidth: 'unset',
   display: 'flex',
   justifyContent: 'space-between',
@@ -15,14 +19,14 @@ const SortableCard = styled(Card, {
 });
 const DragHandle = styled('button', {
   cursor: 'grab',
+  padding: '1rem',
   outline: 'none',
   border: 'none',
   backgroundColor: 'transparent',
-  width: '5rem',
-  padding: '1rem',
+  width: '4rem',
   '& > svg': {
-    width: '30px',
-    height: '30px',
+    width: '100%',
+    height: '100%',
   },
 });
 const InputSection = styled('div', {
@@ -43,6 +47,14 @@ const Label = styled('label', {
   paddingTop: '0.5rem',
   color: '$gray10',
   fontSize: '16px',
+});
+const DeleteButton = styled('button', {
+  backgroundColor: 'transparent',
+  border: 'none',
+  transition: '$main',
+  '&:hover': {
+    transform: 'scale(1.1)',
+  },
 });
 
 function InputField({ id, text }) {
@@ -98,7 +110,13 @@ function AlternateField({ id, display }) {
 function InputLabel({ children }) {
   return <Label htmlFor={children}>{children}</Label>;
 }
-
+function RemoveButton({ handleDelete }) {
+  return (
+    <DeleteButton onClick={handleDelete} type='button'>
+      <TrashIcon />
+    </DeleteButton>
+  );
+}
 function Sortable(props) {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({
@@ -114,19 +132,22 @@ function Sortable(props) {
     : undefined;
 
   return (
-    <SortableCard ref={setNodeRef} style={style}>
-      <InputSection>
-        <InputLabel>{strings.create.displayLabelForLink}</InputLabel>
-        <InputField id={props.id} text={props.text} />
-      </InputSection>
-      <InputSection>
-        <InputLabel>{strings.create.displayTextForLink}</InputLabel>
-        <AlternateField id={props.id} display={props.display} />
-      </InputSection>
-      <DragHandle {...listeners} {...attributes}>
-        <CaretSortIcon />
-      </DragHandle>
-    </SortableCard>
+    <SortCard>
+      <SortableCard ref={setNodeRef} style={style}>
+        <InputSection>
+          <InputLabel>{strings.create.displayLabelForLink}</InputLabel>
+          <InputField id={props.id} text={props.text} />
+        </InputSection>
+        <InputSection>
+          <InputLabel>{strings.create.displayTextForLink}</InputLabel>
+          <AlternateField id={props.id} display={props.display} />
+        </InputSection>
+        <DragHandle {...listeners} {...attributes}>
+          <CaretSortIcon />
+        </DragHandle>
+      </SortableCard>
+      <RemoveButton handleDelete={props.handleDelete} />
+    </SortCard>
   );
 }
 
