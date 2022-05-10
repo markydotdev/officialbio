@@ -8,7 +8,7 @@ const InputField = styled('div', {
 });
 const InputLabel = styled('label', {
   width: '8em',
-  fontSize: 'small',
+  fontSize: '$base',
 });
 const InputBox = styled('input', {
   margin: 0,

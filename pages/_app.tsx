@@ -42,7 +42,7 @@ const globalStyles = globalCss({
   body: {
     height: '100%',
     fontFamily: '$body',
-    fontSize: 'clamp(0.95rem, 1vw + 1rem, 1.1rem)',
+    fontSize: '$base',
     margin: 0,
     overflowX: 'hidden',
     lineHeight: 1.45,

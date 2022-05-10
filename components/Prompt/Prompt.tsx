@@ -30,7 +30,7 @@ const CloseButton = styled(RadixPrompt.Close, {
   color: '$gray1',
   minHeight: '2rem',
   borderRadius: '$button',
-  fontSize: '1em',
+  fontSize: '$base',
   minWidth: '$button',
   padding: '$button',
   '&:hover': {

@@ -25,7 +25,7 @@ const FormGroup = styled('div', {
 });
 const EmailLabel = styled('label', {
   width: '8em',
-  fontSize: 'small',
+  fontSize: '$base',
 });
 const EmailBox = styled('input', {
   margin: 0,

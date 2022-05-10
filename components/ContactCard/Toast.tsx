@@ -37,7 +37,7 @@ const ToastButton = styled(ToastBase.Close, {
   color: '$gray1',
   minHeight: '2rem',
   borderRadius: '$button',
-  fontSize: '1em',
+  fontSize: '$base',
   minWidth: '$button',
   padding: '$button',
   variants: {

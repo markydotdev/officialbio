@@ -1,5 +1,9 @@
 import * as AlertPrompt from '@radix-ui/react-alert-dialog';
-import { CrossCircledIcon, EyeOpenIcon, LockClosedIcon } from '@radix-ui/react-icons';
+import {
+  CrossCircledIcon,
+  EyeOpenIcon,
+  LockClosedIcon,
+} from '@radix-ui/react-icons';
 
 import strings from '../../locales/en/strings';
 import { styled } from '../../stitches.config';
@@ -59,7 +63,7 @@ const AlertCancelButton = styled(AlertPrompt.Cancel, {
   cursor: 'pointer',
   minHeight: '2rem',
   borderRadius: '$button',
-  fontSize: '1em',
+  fontSize: '$base',
   padding: '$button',
   backgroundColor: '$gray1',
   color: '$gray12',
@@ -76,7 +80,7 @@ const AlertDeleteButton = styled(AlertPrompt.Action, {
   color: '$gray1',
   minHeight: '2rem',
   borderRadius: '$button',
-  fontSize: '1em',
+  fontSize: '$base',
   minWidth: '$button',
   padding: '$button',
   '&:hover': {
@@ -87,7 +91,7 @@ const AlertDeleteButton = styled(AlertPrompt.Action, {
 });
 const PublicSpan = styled('span', {
   color: '$green10',
-  fontSize: '0.9rem',
+  fontSize: '$sm',
 });
 const BasicIconStyles = {
   width: '1.45rem',

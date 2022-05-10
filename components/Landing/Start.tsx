@@ -70,7 +70,7 @@ const PseudoButton = styled('a', {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  fontSize: '1.5rem',
+  fontSize: '$md',
   fontWeight: '500',
   fontFamily: '$alt',
   color: '$gray12',
@@ -90,9 +90,6 @@ const PseudoButton = styled('a', {
   )`,
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
-  '@md': {
-    fontSize: '3.5rem',
-  },
   '@lg': {
     fontWeight: '600',
   },

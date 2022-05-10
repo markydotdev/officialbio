@@ -38,6 +38,13 @@ export const { styled, globalCss, keyframes, theme, css } = createStitches({
       alt: 'Exo2, system-ui, sans-serif',
     },
     fontSizes: {
+      sm: 'clamp(0.8rem, 0.12vw + 0.78rem, 0.94rem)',
+      base: 'clamp(1rem, 0.21vw + 0.97rem, 1.25rem)',
+      md: 'clamp(1.25rem, 0.35vw + 1.2rem, 1.67rem)',
+      lg: 'clamp(1.56rem, 0.55vw + 1.48rem, 2.22rem)',
+      xl: 'clamp(1.95rem, 0.84vw + 1.82rem, 2.96rem)',
+      xxl: 'clamp(2.44rem, 1.26vw + 2.24rem, 3.95rem)',
+      xxxl: 'clamp(3.05rem, 1.85vw + 2.76rem, 5.26rem)',
       minFluid: '2rem',
       fluid: 'clamp(2rem, 4vw, 4rem)',
       maxFluid: '4rem',

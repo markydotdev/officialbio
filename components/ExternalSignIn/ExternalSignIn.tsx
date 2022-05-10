@@ -39,17 +39,17 @@ const ExternalSignIn = ({ connectedAccs, contentLoaded }) => {
 
   useEffect(() => {
     // Retrieving user's third party accounts on load
-    const fetchExternalConnections = async () => {
-      const { data, error } = await supabase
-        .from('profiles')
-        .select('external_connections')
-        .eq('id', user.id);
-      const { external_connections } = data[0];
-      setEnabled(external_connections);
-    };
-    if (user !== null) {
-      fetchExternalConnections();
-    }
+    // const fetchExternalConnections = async () => {
+    //   const { data, error } = await supabase
+    //     .from('profiles')
+    //     .select('external_connections')
+    //     .eq('id', user.id);
+    //   const { external_connections } = data[0];
+    //   setEnabled(external_connections);
+    // };
+    // if (user !== null) {
+    //   fetchExternalConnections();
+    // }
   }, [user]);
 
   const sendToDb = async () => {

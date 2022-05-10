@@ -27,7 +27,7 @@ const Title = styled('h2', {
 const Description = styled('h3', {
   margin: '0',
   fontWeight: 'normal',
-  fontSize: 'medium',
+  fontSize: '$base',
   fontFamily: '$body',
   lineHeight: '1.2em',
 });

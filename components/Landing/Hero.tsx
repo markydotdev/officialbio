@@ -22,36 +22,26 @@ const HeroBox = styled('div', {
 });
 const HeroTitle = styled('h2', {
   margin: 0,
-  fontSize: '$minFluid',
+  fontSize: '$xl',
   order: 1,
   '@md': {
-    fontSize: '$fluid',
     order: 2,
   },
   '@xl': {
     gridRow: '1',
     gridColumn: '1 / -1',
   },
-  '@xxl': {
-    fontSize: '$maxFluid',
-  },
 });
 const HeroDescription = styled('p', {
   order: 2,
+  fontSize: '$base',
   '@md': {
     marginTop: '0.5rem',
     marginBottom: 0,
-    fontSize: '1.1em',
-  },
-  '@lg': {
-    fontSize: '1.3em',
   },
   '@xl': {
     gridRow: '2',
     alignSelf: 'end',
-  },
-  '@xxl': {
-    fontSize: '1.5em',
   },
 });
 const HeroImage = styled('img', {
@@ -83,6 +73,7 @@ const HeroButton = styled('a', {
   padding: '0.5rem',
   borderRadius: '$button',
   color: '$red4',
+  fontSize: '$base',
   '&:hover': {
     color: '$gray12',
     backgroundColor: 'transparent',
@@ -91,7 +82,6 @@ const HeroButton = styled('a', {
     width: '200px',
   },
   '@xl': {
-    fontSize: '1.3em',
     width: '250px',
     gridRow: '3',
     height: 'fit-content',
@@ -102,7 +92,6 @@ const HeroButton = styled('a', {
     },
   },
 });
-
 
 const Hero = ({ title, subtitle, prompt }) => {
   return (
@@ -130,7 +119,6 @@ const Hero = ({ title, subtitle, prompt }) => {
       </Link>
 
       <HeroImage src='/hero-images/explore.png' alt='hero' />
-
     </HeroBox>
   );
 };

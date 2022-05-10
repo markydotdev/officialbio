@@ -46,7 +46,7 @@ const Label = styled('label', {
   paddingLeft: '1rem',
   paddingTop: '0.5rem',
   color: '$gray10',
-  fontSize: '16px',
+  fontSize: '$base',
 });
 const DeleteButton = styled('button', {
   backgroundColor: 'transparent',

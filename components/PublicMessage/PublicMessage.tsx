@@ -63,7 +63,7 @@ const LargeImage = styled('img', {
   zIndex: 11,
 });
 const StyledDate = styled('span', {
-  fontSize: '0.8em',
+  fontSize: '$sm',
   fontStyle: 'italic',
 });
 

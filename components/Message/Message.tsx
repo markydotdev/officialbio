@@ -34,7 +34,7 @@ const StyledImages = styled('div', {
 });
 const StyledText = styled('p', {
   margin: '0 0 0.5rem 0',
-  fontSize: '1.05rem',
+  fontSize: '$base',
   whiteSpace: 'pre-line',
   lineHeight: '1.1rem',
 });

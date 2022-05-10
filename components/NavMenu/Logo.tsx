@@ -8,7 +8,7 @@ const Title = styled('h1', {
   margin: '0.5rem 0',
   minWidth: '100%',
   fontFamily: '$accent',
-  fontSize: '1.1em',
+  fontSize: '$md',
   fontWeight: '700',
   '& > a': {
     color: '$gray12',
@@ -23,7 +23,6 @@ const Title = styled('h1', {
     gridColumn: '1',
     gridRow: '1',
     alignSelf: 'center',
-    fontSize: '1.2em',
   },
 });
 

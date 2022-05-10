@@ -26,7 +26,7 @@ const StyledInput = styled('textarea', {
   border: '0',
   backgroundColor: '$gray5',
   resize: 'none',
-  fontSize: '1rem',
+  fontSize: '$base',
   fontFamily: 'system-ui',
   borderRadius: '$image',
   '@supports (width: -moz-available)': {
@@ -49,7 +49,7 @@ const AddImagesButton = styled('input', {
     backgroundColor: '$gray12',
     color: '$gray1',
     borderRadius: '$button',
-    fontSize: '1.2em',
+    fontSize: '$base',
     minWidth: '$button',
     padding: '0.5rem 1rem 0.5rem 1.15rem',
   },
@@ -62,7 +62,7 @@ const AddImagesButton = styled('input', {
   },
 });
 const StyledLabel = styled(Label.Root, {
-  fontSize: 15,
+  fontSize: '$base',
   fontWeight: 500,
   userSelect: 'none',
 });

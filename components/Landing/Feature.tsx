@@ -12,15 +12,9 @@ const FeatureText = styled('div', {
 });
 const FeatureTitle = styled('h3', {
   margin: '0',
-  fontSize: '$minFluid',
+  fontSize: '$lg',
   fontFamily: '$alt',
   fontWeight: '600',
-  '@md': {
-    fontSize: '$fluid',
-  },
-  '@xxl': {
-    fontSize: '$maxFluid',
-  },
 });
 const FeatureDesc = styled('p', {
   fontWeight: '300',

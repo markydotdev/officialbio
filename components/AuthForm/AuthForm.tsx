@@ -14,11 +14,13 @@ const AuthContainer = styled('section', {
   borderRadius: '$button',
   boxShadow: '$low',
 });
-const Header = styled('h2', {});
+const Header = styled('h2', {
+  fontSize: '$lg',
+});
 const Subtitle = styled('h3', {
   fontFamily: '$body',
   fontWeight: 'normal',
-  fontSize: 'medium',
+  fontSize: '$base',
 });
 const EmailInput = styled('input', {
   width: '100%',
