@@ -25,7 +25,7 @@ const StyledButton = styled('button', {
     disabled: {
       true: {
         cursor: 'not-allowed',
-        visibility: 'hidden',
+        filter: 'opacity(0.2)',
       },
     },
     loading: {
