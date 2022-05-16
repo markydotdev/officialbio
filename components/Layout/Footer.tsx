@@ -3,14 +3,14 @@ import { styled } from '../../stitches.config';
 const StyledFooter = styled('footer', {
   display: 'flex',
   justifyContent: 'center',
-  marginTop: '2rem',
+  marginTop: '5rem',
+  marginBottom: '1rem',
   paddingTop: '2rem',
   paddingBottom: '2rem',
   backgroundColor: '$gray7',
   borderRadius: '$image',
-  width: '100vw',
+  width: '100%',
   position: 'relative',
-  left: 'calc(-50vw + 50%)',
   boxShadow: 'rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset',
   '@supports (padding-bottom: env(safe-area-inset-bottom))': {
     paddingBottom: 'calc(2rem + env(safe-area-inset-bottom))',
