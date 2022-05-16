@@ -30,15 +30,12 @@ const Description = styled('h3', {
   fontSize: '$base',
   fontFamily: '$body',
   lineHeight: '1.2em',
+  whiteSpace: 'pre-wrap',
 });
 const ShareSection = styled('div', {
   display: 'flex',
   alignItems: 'center',
   marginTop: '0.5rem',
-});
-const TempMessage = styled('span', {
-  color: 'green',
-  marginLeft: '0.5rem',
 });
 
 const ContactCard = ({ name, avatar }) => {
