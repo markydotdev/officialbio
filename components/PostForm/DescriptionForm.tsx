@@ -7,6 +7,7 @@ import Button from '../Button';
 import { uploadAvatar } from './helpers';
 import UploadButton from '../AccountSettings/UploadButton';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const Container = styled('div', {
   display: 'flex',
@@ -45,7 +46,7 @@ const TextBox = styled('textarea', {
   height: '150px',
   ...BASE_INPUT_STYLES,
 });
-
+const StyledLink = styled('a', { float: 'right' });
 const AvatarSection = ({ avatar, setAvatar }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -162,6 +163,10 @@ const DescriptionForm = () => {
         >
           {strings.account.save}
         </Button>
+
+        <Link href={`/user/${name}`} passHref>
+          <StyledLink>Visit your live profile</StyledLink>
+        </Link>
       </NonAvatarContainer>
     </Container>
   );
