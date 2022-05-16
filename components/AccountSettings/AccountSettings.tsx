@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 
 import strings from '../../locales/en/strings';
 import { styled } from '../../stitches.config';
-import { addSocialToDb } from '../../utils/addSocial';
 import { DEFAULT_AVATARS_BUCKET } from '../../utils/constants';
 import { supabase } from '../../utils/supabaseClient';
 import Avatar from '../Avatar';
@@ -18,6 +17,9 @@ const AvatarField = styled('div', {
   display: 'flex',
   alignItems: 'center',
   height: '150px',
+  '& > span': {
+    margin: '1rem',
+  },
 });
 const FormGroup = styled('div', {
   display: 'flex',
@@ -72,16 +74,6 @@ function AccountSettings({ session }) {
 
   useEffect(() => {
     getProfile();
-
-    const provider = 'discord';
-    const enabled = true;
-    const userId = user.id;
-    const name = 'Ok so now does this work??';
-
-    const magic = async () => {
-      await addSocialToDb(provider, enabled, name, userId);
-    };
-    magic();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
