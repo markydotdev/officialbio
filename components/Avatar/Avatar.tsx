@@ -22,6 +22,7 @@ const StyledImage = styled(BaseAvatar.Image, {
   width: '100%',
   height: '100%',
   objectFit: 'cover',
+  objectPosition: 'top center',
   borderRadius: 'inherit',
 });
 const StyledFallback = styled(BaseAvatar.Fallback, {
