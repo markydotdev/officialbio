@@ -40,18 +40,20 @@ const globalStyles = globalCss({
     boxSizing: 'inherit',
   },
   body: {
+    overflowX: 'auto',
     height: '100%',
     fontFamily: '$body',
     fontSize: '$base',
-    margin: 0,
-    overflowX: 'hidden',
     lineHeight: 1.45,
+    margin: '0',
+    // negate radix-ui dropdown adding padding right to body
+    paddingRight: '0 !important',
     '& > #__next': {
       padding: '0.5rem 1rem 0 1rem',
     },
   },
   '#__next': {
-    height: '100%',
+    minHeight: '100%',
     display: 'flex',
     flexDirection: 'column',
   },
