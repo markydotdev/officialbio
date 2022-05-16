@@ -2,7 +2,6 @@ import strings from '../../locales/en/strings';
 import { styled } from '../../stitches.config';
 
 const MockUploadButton = styled('label', {
-  marginLeft: '1rem',
   cursor: 'pointer',
   border: '1px solid transparent',
   backgroundColor: '$gray12',
