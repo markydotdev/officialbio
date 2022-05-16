@@ -110,6 +110,7 @@ module.exports = {
     save: 'Save Changes',
     loading: 'Loading...',
     signOut: 'Sign Out',
+    description: 'Your bio',
   },
   // Connected account section
   connected: {
