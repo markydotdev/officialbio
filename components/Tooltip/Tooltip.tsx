@@ -17,7 +17,11 @@ function Tooltip({ message, children, side }) {
     <TooltipBase.Provider delayDuration={200}>
       <TooltipBase.Root>
         <TooltipBase.Trigger asChild>{children}</TooltipBase.Trigger>
-        <ToolTipMessage sideOffset={5} side={side ? 'right' : 'bottom'}>
+        <ToolTipMessage
+          align={'end'}
+          sideOffset={5}
+          side={side ? 'right' : 'bottom'}
+        >
           <TooltipArrow offset={5} width={12} height={5} />
           {message}
         </ToolTipMessage>
