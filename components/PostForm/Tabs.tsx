@@ -19,9 +19,14 @@ const Tab = styled('div', {
   },
 });
 
-const TYPE_OF_TABS = ['text', 'link'];
+const TYPE_OF_TABS = ['text', 'link', 'profile'];
 
 const Tabs = ({ activeTab, setActiveTab }) => {
+  const handleTabChange = (type) => {
+    setActiveTab(type);
+    localStorage.setItem('active-tab', type);
+  };
+
   return (
     <>
       <TabGroup>
@@ -29,7 +34,7 @@ const Tabs = ({ activeTab, setActiveTab }) => {
           <Tab
             key={type}
             active={activeTab === type}
-            onClick={() => setActiveTab(type)}
+            onClick={() => handleTabChange(type)}
           >
             {type}
           </Tab>
