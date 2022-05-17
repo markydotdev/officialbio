@@ -3,7 +3,10 @@ import { styled } from '../../stitches.config';
 const TabGroup = styled('div', {
   display: 'flex',
 });
-const Tab = styled('div', {
+const Tab = styled('button', {
+  border: 'none',
+  fontSize: '$base',
+  fontFamily: '$body',
   textAlign: 'center',
   minWidth: '6rem',
   textTransform: 'capitalize',
@@ -32,6 +35,7 @@ const Tabs = ({ activeTab, setActiveTab }) => {
       <TabGroup>
         {TYPE_OF_TABS.map((type) => (
           <Tab
+            type='button'
             key={type}
             active={activeTab === type}
             onClick={() => handleTabChange(type)}

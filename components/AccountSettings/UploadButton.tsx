@@ -6,7 +6,7 @@ const MockUploadButton = styled('label', {
   border: '1px solid transparent',
   backgroundColor: '$gray12',
   color: '$gray1',
-  minHeight: '2rem',
+  height: '2.7rem',
   borderRadius: '$button',
   fontSize: '$base',
   minWidth: '$button',

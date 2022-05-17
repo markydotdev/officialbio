@@ -5,11 +5,12 @@ const StyledButton = styled('button', {
   border: '1px solid transparent',
   backgroundColor: '$gray12',
   color: '$gray1',
-  minHeight: '2rem',
+  height: '2.7rem',
   borderRadius: '$button',
   fontSize: '$base',
   minWidth: '$button',
   padding: '$button',
+  lineHeight: 'unset',
   variants: {
     version: {
       reverse: {
