@@ -46,7 +46,24 @@ const TextBox = styled('textarea', {
   height: '150px',
   ...BASE_INPUT_STYLES,
 });
-const StyledLink = styled('a', { float: 'right' });
+const ButtonGroup = styled('div', {
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+});
+const StyledLink = styled('a', {
+  display: 'inline-block',
+  color: '$gray12',
+  borderBottom: '2px solid $gray12',
+  padding: '0 0.25rem',
+  transition: '$main',
+  '&:hover': {
+    backgroundColor: '$gray12',
+    color: '$gray1',
+    borderRadius: '$button',
+  },
+});
+
 const AvatarSection = ({ avatar, setAvatar }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -154,19 +171,22 @@ const DescriptionForm = () => {
       <NonAvatarContainer>
         <NameSection name={name} setName={setName} />
         <Bio description={desc} setDesc={setDesc} />
-        <Button
-          type='button'
-          onClick={(e) => handleSubmit(e)}
-          disabled={disableButton}
-          version={undefined}
-          loading={false}
-        >
-          {strings.account.save}
-        </Button>
 
-        <Link href={`/user/${name}`} passHref>
-          <StyledLink>Visit your live profile</StyledLink>
-        </Link>
+        <ButtonGroup>
+          <Button
+            type='button'
+            onClick={(e) => handleSubmit(e)}
+            disabled={disableButton}
+            version={undefined}
+            loading={false}
+          >
+            {strings.account.save}
+          </Button>
+
+          <Link href={`/user/${name}`} passHref>
+            <StyledLink>Visit your live profile</StyledLink>
+          </Link>
+        </ButtonGroup>
       </NonAvatarContainer>
     </Container>
   );
