@@ -18,6 +18,7 @@ const Container = styled('div', {
 });
 const Subtitle = styled('h2', {
   margin: 0,
+  marginTop: '0.5rem',
 });
 const AvatarContainer = styled('div', {
   display: 'inline-flex',
@@ -28,7 +29,7 @@ const AvatarBox = styled('div', {
 });
 const NonAvatarContainer = styled('div', {
   flex: 2,
-  paddingTop: '1rem',
+  paddingTop: '0.5rem',
   '@xl': {
     paddingTop: 'initial',
     paddingLeft: '1rem',
@@ -58,6 +59,7 @@ const ButtonGroup = styled('div', {
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
+  marginTop: '0.5rem',
   '& > button': {
     order: 2,
   },
