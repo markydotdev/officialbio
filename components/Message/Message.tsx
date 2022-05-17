@@ -11,7 +11,7 @@ const StyledPostBox = styled('div', {
   width: '100%',
   flexDirection: 'column',
   justifyContent: 'space-between',
-  marginTop: '2rem',
+  marginTop: '1rem',
   borderRadius: '$image',
   padding: '1rem 0.75rem 0.5rem 0.75rem',
   backgroundColor: '$gray3',
