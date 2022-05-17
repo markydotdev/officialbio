@@ -73,6 +73,7 @@ module.exports = {
     delete: 'Delete Post',
     addImages: 'Add Images',
     maxFiles: "You can't upload more than 4 files",
+    addLink: 'Save link',
   },
   // User public page
   public: {
