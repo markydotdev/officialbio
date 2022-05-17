@@ -9,8 +9,10 @@ const MockUploadButton = styled('label', {
   height: '2.7rem',
   borderRadius: '$button',
   fontSize: '$sm',
-  minWidth: '$button',
+  width: '20ch',
+  textAlign: 'center',
   padding: '$button',
+  margin: '0 auto',
   '&:hover': {
     color: '$gray12',
     backgroundColor: 'transparent',
