@@ -8,13 +8,16 @@ const MockUploadButton = styled('label', {
   color: '$gray1',
   height: '2.7rem',
   borderRadius: '$button',
-  fontSize: '$base',
+  fontSize: '$sm',
   minWidth: '$button',
   padding: '$button',
   '&:hover': {
     color: '$gray12',
     backgroundColor: 'transparent',
     border: '1px solid $gray12',
+  },
+  '@md': {
+    fontSize: '$base',
   },
 });
 

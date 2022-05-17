@@ -40,7 +40,7 @@ const globalStyles = globalCss({
     boxSizing: 'inherit',
   },
   body: {
-    overflowX: 'auto',
+    overflowX: 'hidden',
     height: '100%',
     fontFamily: '$body',
     fontSize: '$base',

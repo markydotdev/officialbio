@@ -97,7 +97,7 @@ module.exports = {
     avatar: 'Avatar Image',
     avatarDesc: 'Change your public facing display image',
     avatarUpload: 'Add your profile image',
-    avatarReplace: 'Replace your profile image',
+    avatarReplace: 'Replace your avatar',
     avatarInProgress: 'Replacing...',
     info: 'Profile Information',
     infoDesc:

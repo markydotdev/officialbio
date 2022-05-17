@@ -11,6 +11,10 @@ import Link from 'next/link';
 
 const Container = styled('div', {
   display: 'flex',
+  flexDirection: 'column',
+  '@xl': {
+    flexDirection: 'row',
+  },
 });
 const Subtitle = styled('h2', {
   margin: 0,
@@ -24,8 +28,12 @@ const AvatarBox = styled('div', {
 });
 const NonAvatarContainer = styled('div', {
   flex: 2,
-  paddingLeft: '1rem',
-  paddingRight: '1rem',
+  paddingTop: '1rem',
+  '@xl': {
+    paddingTop: 'initial',
+    paddingLeft: '1rem',
+    paddingRight: '1rem',
+  },
 });
 const BASE_INPUT_STYLES = {
   backgroundColor: '$gray4',
@@ -50,6 +58,22 @@ const ButtonGroup = styled('div', {
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
+  '& > button': {
+    order: 2,
+  },
+  '& > a': {
+    display: 'none',
+  },
+  '@lg': {
+    '& > a': {
+      display: 'block',
+    },
+  },
+  '@xl': {
+    '& > button': {
+      order: 1,
+    },
+  },
 });
 const StyledLink = styled('a', {
   display: 'inline-block',
@@ -83,7 +107,7 @@ const AvatarSection = ({ avatar, setAvatar }) => {
     <AvatarContainer>
       <Subtitle>{strings.account.avatar}</Subtitle>
       <AvatarBox>
-        <Avatar url={avatar} size={225} initials={undefined} type={undefined} />
+        <Avatar url={avatar} size={150} initials={undefined} type={undefined} />
       </AvatarBox>
       <UploadButton onUpload={(e) => upload(e, setAvatar)} loading={loading} />
     </AvatarContainer>
