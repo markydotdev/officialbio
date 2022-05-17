@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { styled } from '../../stitches.config';
 import Button from '../Button';
 import strings from '../../locales/en/strings';
+import { addLinkToProfile } from './helpers';
 
 const InputSeparator = styled('span', {
   display: 'block',
@@ -21,6 +22,7 @@ function LinkForm({ linkText, linkUrl, setLinkText, setLinkUrl }) {
     e.preventDefault();
     setLinkText(link);
     setLinkUrl(text);
+    addLinkToProfile(link, text);
   };
 
   return (

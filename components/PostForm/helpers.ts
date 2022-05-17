@@ -56,3 +56,33 @@ export async function uploadAvatar(event, setAvatar) {
     return false;
   }
 }
+
+export async function addLinkToProfile(link, text) {
+  try {
+    const user = supabase.auth.user();
+    const { data, error } = await supabase
+      .from('profiles')
+      .select('linkContent')
+      .eq('id', user.id);
+    if (data) {
+      const previousData = data[0].linkContent;
+      const newData = {
+        id: previousData.length + 1,
+        name: 'General link',
+        text: link,
+        type: 'link',
+        display: text,
+      };
+      previousData.push(newData);
+      const { data: da, error: err } = await supabase
+        .from('profiles')
+        .update({ linkContent: previousData }, { returning: 'minimal' })
+        .eq('id', user.id);
+      if (err) {
+        throw 'Error updating database';
+      }
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}

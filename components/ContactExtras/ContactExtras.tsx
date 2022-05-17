@@ -30,7 +30,7 @@ const ContactExtras = ({ links }) => {
       case 'link':
         return (
           <GenericLink key={link.id} href={link.text}>
-            <span>{link.text}</span>
+            <span>{link.display || link.text}</span>
             <ExternalLinkIcon />
           </GenericLink>
         );
