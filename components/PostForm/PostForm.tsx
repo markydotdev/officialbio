@@ -11,7 +11,7 @@ import DescriptionForm from './DescriptionForm';
 
 const FormBox = styled('div', {
   backgroundColor: '$gray1',
-  padding: '1rem 0.75rem 0.5rem 0.75rem',
+  padding: '1rem',
   borderRadius: '$image',
   boxShadow: '$lowMedium',
 });
