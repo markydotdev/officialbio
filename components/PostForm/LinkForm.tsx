@@ -1,10 +1,16 @@
 import { BaseInput, StyledLabel } from './PostForm';
 import { useState } from 'react';
 import { styled } from '../../stitches.config';
+import Button from '../Button';
+import strings from '../../locales/en/strings';
 
 const InputSeparator = styled('span', {
   display: 'block',
   height: '1rem',
+});
+const ButtonSpacer = styled('span', {
+  display: 'block',
+  height: '0.5rem',
 });
 
 function LinkForm({ linkText, linkUrl, setLinkText, setLinkUrl }) {
@@ -15,10 +21,10 @@ function LinkForm({ linkText, linkUrl, setLinkText, setLinkUrl }) {
     e.preventDefault();
     setLinkText(link);
     setLinkUrl(text);
-    console.log(link, text);
   };
+
   return (
-    <div>
+    <>
       <StyledLabel htmlFor='link' as='label'>
         Step One: Enter your link
       </StyledLabel>
@@ -40,10 +46,17 @@ function LinkForm({ linkText, linkUrl, setLinkText, setLinkUrl }) {
         required
         onChange={(e) => setText(e.target.value)}
       />
-      <button type='submit' onClick={(e) => handleSubmit(e)}>
-        Submit
-      </button>
-    </div>
+      <ButtonSpacer />
+      <Button
+        type='submit'
+        onClick={(e) => handleSubmit(e)}
+        disabled={undefined}
+        version={undefined}
+        loading={undefined}
+      >
+        {strings.musings.addLink}
+      </Button>
+    </>
   );
 }
 
