@@ -57,13 +57,13 @@ function PostForm({
   inputText,
   setInputText,
   setUploads,
-  linkText,
-  linkUrl,
   setLinkText,
   setLinkUrl,
+  activeTab,
+  setActiveTab,
+  refreshLinks,
 }) {
   const [preview, setPreview] = useState(null);
-  const [activeTab, setActiveTab] = useState('text');
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -86,13 +86,6 @@ function PostForm({
     setPreview(fileList.map((file) => URL.createObjectURL(file)));
   }
 
-  useEffect(() => {
-    const tab = localStorage.getItem('active-tab');
-    if (tab) {
-      setActiveTab(tab);
-    }
-  }, []);
-
   return (
     <>
       <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
@@ -100,10 +93,9 @@ function PostForm({
         <StyledForm onSubmit={(e) => handleSubmit(e)} method='POST'>
           {activeTab === 'link' && (
             <LinkForm
-              linkText={linkText}
-              linkUrl={linkUrl}
               setLinkText={setLinkText}
               setLinkUrl={setLinkUrl}
+              refreshLinks={refreshLinks}
             />
           )}
 

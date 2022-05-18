@@ -14,7 +14,7 @@ const ButtonSpacer = styled('span', {
   height: '0.5rem',
 });
 
-function LinkForm({ linkText, linkUrl, setLinkText, setLinkUrl }) {
+function LinkForm({ refreshLinks, setLinkText, setLinkUrl }) {
   const [link, setLink] = useState('');
   const [text, setText] = useState('');
 
@@ -23,6 +23,7 @@ function LinkForm({ linkText, linkUrl, setLinkText, setLinkUrl }) {
     setLinkText(link);
     setLinkUrl(text);
     addLinkToProfile(link, text);
+    refreshLinks();
   };
 
   return (

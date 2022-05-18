@@ -4,8 +4,10 @@ import AuthForm from '../components/AuthForm';
 import Layout from '../components/Layout';
 import Message from '../components/Message';
 import PostForm from '../components/PostForm';
+import ListOfLinks from '../components/ListOfLinks';
 import {
   deleteMusing,
+  fetchLinks,
   fetchMusings,
   postMusing,
   postMusingImage,
@@ -20,6 +22,15 @@ export default function Musings({ user, guest }) {
   const [uploads, setUploads] = useState(null);
   const [linkText, setLinkText] = useState('');
   const [linkUrl, setLinkUrl] = useState('');
+  const [activeTab, setActiveTab] = useState('text');
+  const [links, setLinks] = useState(null);
+
+  useEffect(() => {
+    const tab = localStorage.getItem('active-tab');
+    if (tab) {
+      setActiveTab(tab);
+    }
+  }, []);
 
   useEffect(() => {
     if (inputText.length === 0) {
@@ -30,6 +41,8 @@ export default function Musings({ user, guest }) {
   async function initialize() {
     const data = await fetchMusings();
     setPosts(data);
+    const links = await fetchLinks(user.id);
+    setLinks(links);
     setUploads(null);
   }
 
@@ -80,6 +93,27 @@ export default function Musings({ user, guest }) {
     }
   }
 
+  async function refreshLinks() {
+    const links = await fetchLinks(user.id);
+    setLinks(links);
+  }
+
+  async function removeLink(id) {
+    const { data, error } = await supabase
+      .from('profiles')
+      .select('linkContent')
+      .eq('id', user.id);
+    if (data) {
+      const oldLinks = data[0].linkContent;
+      const newLinks = oldLinks.filter((link) => link.id !== id);
+      const { data: da, error: err } = await supabase
+        .from('profiles')
+        .update({ linkContent: newLinks }, { returning: 'minimal' })
+        .eq('id', user.id);
+      setLinks(newLinks);
+    }
+  }
+
   if (guest) {
     return (
       <Layout>
@@ -95,19 +129,24 @@ export default function Musings({ user, guest }) {
         inputText={inputText}
         setInputText={setInputText}
         setUploads={setUploads}
-        linkText={linkText}
         setLinkText={setLinkText}
-        linkUrl={linkUrl}
         setLinkUrl={setLinkUrl}
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        refreshLinks={refreshLinks}
       />
 
-      {posts && (
+      {posts && activeTab === 'text' && (
         <Message
           removePost={removePost}
           publishPost={publishPost}
           privatePost={privatePost}
           posts={posts}
         />
+      )}
+
+      {links && activeTab === 'link' && (
+        <ListOfLinks links={links} removeLink={removeLink} />
       )}
     </Layout>
   );

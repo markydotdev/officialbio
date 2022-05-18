@@ -133,3 +133,15 @@ export async function removePublicMusing(id) {
     console.log(error);
   }
 }
+
+export async function fetchLinks(id) {
+  try {
+    const { data, error: err } = await supabase
+      .from('profiles')
+      .select('linkContent')
+      .eq('id', id);
+    return data[0].linkContent;
+  } catch (error) {
+    console.log(error);
+  }
+}

@@ -67,7 +67,7 @@ export async function addLinkToProfile(link, text) {
     if (data) {
       const previousData = data[0].linkContent;
       const newData = {
-        id: previousData.length + 1,
+        id: previousData[previousData.length - 1].id + 1,
         name: 'General link',
         text: link,
         type: 'link',
