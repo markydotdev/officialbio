@@ -30,6 +30,42 @@ const globalStyles = globalCss({
       fontWeight: 'bold',
       fontStyle: 'normal',
     },
+    {
+      fontFamily: 'DM Sans',
+      src: `url('/fonts/DMSans/DMSans-Regular.ttf')`,
+      fontWeight: 'regular',
+      fontStyle: 'normal',
+    },
+    {
+      fontFamily: 'DM Sans',
+      src: `url('/fonts/DMSans/DMSans-Bold.ttf')`,
+      fontWeight: 'bold',
+      fontStyle: 'normal',
+    },
+    {
+      fontFamily: 'DM Sans',
+      src: `url('/fonts/DMSans/DMSans-BoldItalic.ttf')`,
+      fontWeight: 'bold',
+      fontStyle: 'italic',
+    },
+    {
+      fontFamily: 'DM Sans',
+      src: `url('/fonts/DMSans/DMSans-Italic.ttf')`,
+      fontWeight: 'regular',
+      fontStyle: 'italic',
+    },
+    {
+      fontFamily: 'DM Sans',
+      src: `url('/fonts/DMSans/DMSans-Medium.ttf')`,
+      fontWeight: '500',
+      fontStyle: 'normal',
+    },
+    {
+      fontFamily: 'DM Sans',
+      src: `url('/fonts/DMSans/DMSans-MediumItalic.ttf')`,
+      fontWeight: '500',
+      fontStyle: 'italic',
+    },
   ],
   html: {
     boxSizing: 'border-box',

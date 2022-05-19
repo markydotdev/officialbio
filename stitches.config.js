@@ -34,7 +34,7 @@ export const { styled, globalCss, keyframes, theme, css } = createStitches({
     },
     fonts: {
       accent: 'Syncopate, system-ui, sans-serif',
-      body: 'Inter, system-ui, sans-serif',
+      body: 'DM Sans, system-ui, sans-serif',
       alt: 'Exo2, system-ui, sans-serif',
     },
     fontSizes: {
