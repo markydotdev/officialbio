@@ -326,58 +326,6 @@ function AccountSettings({ session }) {
         </FormGroup>
       </Subsection>
 
-      <Subsection
-        title={strings.account.links}
-        description={strings.account.linksDesc}
-      >
-        {contentLoaded ? (
-          <InputGroup
-            type='pub-name'
-            label='Public Name'
-            value={pubName || ''}
-            onChange={(e) => setPubName(e.target.value)}
-          />
-        ) : (
-          <Placeholder height='2rem' margin='0 0 0.5rem 0' width={undefined} />
-        )}
-        {contentLoaded ? (
-          <InputGroup
-            type='description'
-            label='Bio'
-            value={description || ''}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        ) : (
-          <Placeholder height='2rem' margin='0 0 0.5rem 0' width={undefined} />
-        )}
-        {contentLoaded ? (
-          <InputGroup
-            type='website'
-            label='Website'
-            value={website || ''}
-            onChange={(e) => setWebsite(e.target.value)}
-          />
-        ) : (
-          <Placeholder height='2rem' margin='0 0 0.5rem 0' width={undefined} />
-        )}
-
-        <ButtonGroup>
-          {contentLoaded ? (
-            <Button
-              onClick={() => updateProfile()}
-              version='reverse'
-              loading={loading}
-              type={undefined}
-              disabled={undefined}
-            >
-              {loading ? strings.account.loading : strings.account.save}
-            </Button>
-          ) : (
-            <Placeholder height='2.5rem' width='10rem' margin={undefined} />
-          )}
-        </ButtonGroup>
-      </Subsection>
-
       <SignOutSection>
         {contentLoaded ? (
           <Button
