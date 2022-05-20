@@ -2,6 +2,9 @@ module.exports = {
   title: 'OfficialBio',
   menu: 'Menu',
   start: 'Create',
+  generic: {
+    cancel: 'Cancel',
+  },
   settings: {
     publicProfile: 'Profile page',
     posts: 'Musings page',
@@ -10,7 +13,6 @@ module.exports = {
     signOut: 'Sign out',
     userTooltip: 'Visit your public page',
   },
-  // General delete actions
   delete: {
     button: 'Delete',
     prompt: 'Are you sure you want to delete this post?',
@@ -126,5 +128,11 @@ module.exports = {
     title: 'Create your custom profile',
     displayLabelForLink: 'General link',
     displayTextForLink: 'Public label',
+  },
+  linkPage: {
+    title_remove: 'Are you sure you want to remove this link?',
+    description_remove:
+      'This will permanently delete the link from your saved links and from your public profile page',
+    confirm_remove: 'Yes, remove link',
   },
 };

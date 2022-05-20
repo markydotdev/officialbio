@@ -2,7 +2,9 @@ lockfileVersion: 5.4
 
 specifiers:
   '@dnd-kit/core': ^5.0.3
+  '@dnd-kit/modifiers': ^5.0.0
   '@dnd-kit/sortable': ^6.0.1
+  '@dnd-kit/utilities': ^3.1.0
   '@radix-ui/colors': ^0.1.8
   '@radix-ui/react-alert-dialog': ^0.1.7
   '@radix-ui/react-avatar': ^0.1.4
@@ -29,7 +31,9 @@ specifiers:
 
 dependencies:
   '@dnd-kit/core': 5.0.3_sfoxds7t5ydpegc3knd667wn6m
+  '@dnd-kit/modifiers': 5.0.0_m3udonjmsl2vldbueoyqs62u2q
   '@dnd-kit/sortable': 6.0.1_m3udonjmsl2vldbueoyqs62u2q
+  '@dnd-kit/utilities': 3.1.0_react@17.0.2
   '@radix-ui/colors': 0.1.8
   '@radix-ui/react-alert-dialog': 0.1.7_k2mvpji5i2ojml6m4ftklg47pa
   '@radix-ui/react-avatar': 0.1.4_react@17.0.2
@@ -409,6 +413,18 @@ packages:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       tslib: 2.4.0
+    dev: false
+
+  /@dnd-kit/modifiers/5.0.0_m3udonjmsl2vldbueoyqs62u2q:
+    resolution: {integrity: sha512-ZVOfa5dKmvAPBxjjnI4QTm8fHV4/gMdS6k0zY5Z8p/p9HkL/3QEHn2fYgqM2zVDpxf5maqrZ4MvqXILSPNQPMQ==}
+    peerDependencies:
+      '@dnd-kit/core': ^5.0.0
+    dependencies:
+      '@dnd-kit/core': 5.0.3_sfoxds7t5ydpegc3knd667wn6m
+      '@dnd-kit/utilities': 3.1.0_react@17.0.2
+      tslib: 2.4.0
+    transitivePeerDependencies:
+      - react
     dev: false
 
   /@dnd-kit/sortable/6.0.1_m3udonjmsl2vldbueoyqs62u2q:

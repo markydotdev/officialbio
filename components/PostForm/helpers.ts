@@ -66,20 +66,41 @@ export async function addLinkToProfile(link, text) {
       .eq('id', user.id);
     if (data) {
       const previousData = data[0].linkContent;
-      const newData = {
-        id: previousData[previousData.length - 1].id + 1,
-        name: 'General link',
-        text: link,
-        type: 'link',
-        display: text,
-      };
-      previousData.push(newData);
-      const { data: da, error: err } = await supabase
-        .from('profiles')
-        .update({ linkContent: previousData }, { returning: 'minimal' })
-        .eq('id', user.id);
-      if (err) {
-        throw 'Error updating database';
+
+      if (previousData.length < 1) {
+        const { data, error } = await supabase
+          .from('profiles')
+          .update({
+            linkContent: [
+              {
+                id: 1,
+                name: 'General link',
+                text: link,
+                type: 'link',
+                display: text,
+              },
+            ],
+          })
+          .eq('id', user.id);
+        if (error) {
+          throw 'Error updating database with brand new item';
+        }
+      } else {
+        const newData = {
+          id: previousData[previousData.length - 1].id + 1,
+          name: 'General link',
+          text: link,
+          type: 'link',
+          display: text,
+        };
+        previousData.push(newData);
+        const { data: da, error: err } = await supabase
+          .from('profiles')
+          .update({ linkContent: previousData }, { returning: 'minimal' })
+          .eq('id', user.id);
+        if (err) {
+          throw 'Error updating the list of links';
+        }
       }
     }
   } catch (error) {
