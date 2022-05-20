@@ -75,7 +75,7 @@ module.exports = {
     delete: 'Delete Post',
     addImages: 'Add Images',
     maxFiles: "You can't upload more than 4 files",
-    addLink: 'Save link',
+    addLink: 'Add link',
   },
   // User public page
   public: {
@@ -134,5 +134,11 @@ module.exports = {
     description_remove:
       'This will permanently delete the link from your saved links and from your public profile page',
     confirm_remove: 'Yes, remove link',
+    save_order: 'Save',
+  },
+  tabs: {
+    messages: 'messages',
+    links: 'links',
+    profile: 'profile',
   },
 };

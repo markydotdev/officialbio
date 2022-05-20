@@ -13,7 +13,7 @@ const FormBox = styled('div', {
   backgroundColor: '$gray1',
   padding: '1rem',
   borderRadius: '$image',
-  boxShadow: '$lowMedium',
+  boxShadow: '$low',
 });
 const StyledForm = styled('form', {
   position: 'relative',
@@ -91,7 +91,7 @@ function PostForm({
       <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
       <FormBox>
         <StyledForm onSubmit={(e) => handleSubmit(e)} method='POST'>
-          {activeTab === 'link' && (
+          {activeTab === strings.tabs.links && (
             <LinkForm
               setLinkText={setLinkText}
               setLinkUrl={setLinkUrl}
@@ -99,7 +99,7 @@ function PostForm({
             />
           )}
 
-          {activeTab === 'text' && (
+          {activeTab === strings.tabs.messages && (
             <TextForm
               handleFiles={handleFiles}
               inputText={inputText}
@@ -107,7 +107,7 @@ function PostForm({
             />
           )}
 
-          {activeTab === 'profile' && <DescriptionForm />}
+          {activeTab === strings.tabs.profile && <DescriptionForm />}
           {/* Prevent implicit submission of the form with enter key*/}
           <button
             type='submit'
@@ -116,7 +116,7 @@ function PostForm({
             aria-hidden='true'
           ></button>
         </StyledForm>
-        {activeTab === 'text' && preview && (
+        {activeTab === strings.tabs.messages && preview && (
           <PreviewBox>
             {preview.map((image) => (
               <ImageContainer key={image} className='container'>

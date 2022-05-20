@@ -1,3 +1,4 @@
+import strings from '../../locales/en/strings';
 import { styled } from '../../stitches.config';
 
 const TabGroup = styled('div', {
@@ -35,7 +36,11 @@ const Tab = styled('button', {
   },
 });
 
-const TYPE_OF_TABS = ['text', 'link', 'profile'];
+const TYPE_OF_TABS = [
+  strings.tabs.messages,
+  strings.tabs.links,
+  strings.tabs.profile,
+];
 
 const Tabs = ({ activeTab, setActiveTab }) => {
   const handleTabChange = (type) => {

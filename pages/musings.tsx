@@ -15,6 +15,7 @@ import {
   removePublicMusing,
 } from '../utils/post';
 import { supabase } from '../utils/supabaseClient';
+import strings from '../locales/en/strings';
 
 export default function Musings({ user, guest }) {
   const [posts, setPosts] = useState(null);
@@ -136,7 +137,7 @@ export default function Musings({ user, guest }) {
         refreshLinks={refreshLinks}
       />
 
-      {posts && activeTab === 'text' && (
+      {posts && activeTab === strings.tabs.messages && (
         <Message
           removePost={removePost}
           publishPost={publishPost}
@@ -145,7 +146,7 @@ export default function Musings({ user, guest }) {
         />
       )}
 
-      {links && activeTab === 'link' && (
+      {links && activeTab === strings.tabs.links && (
         <ListOfLinks links={links} removeLink={removeLink} />
       )}
     </Layout>
