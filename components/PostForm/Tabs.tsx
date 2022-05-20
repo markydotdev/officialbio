@@ -17,8 +17,12 @@ const Tab = styled('button', {
   padding: '1rem',
   margin: '0.1rem',
   border: '2px solid transparent',
-  borderRadius: '99px',
+  borderRadius: '$image',
   transition: '$main',
+  backgroundColor: '$gray4',
+  '& + &': {
+    marginLeft: '0.5rem',
+  },
   '&:hover': {
     backgroundColor: '$gray1',
     transform: 'scale(1.01)',
