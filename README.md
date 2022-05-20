@@ -13,12 +13,15 @@ There is nothing to install, just visit [OfficialBio](https://officialb.io) and 
 ---
 # For Developers
 
-## Contributing
+>**Warning**  
+>Project in active development, additional contribution guidelines will be provided when closer to a stable release
+
+<!-- ## Contributing
 
 Important notes:
 
-* Code structure follows... TBA
-
+* Code structure follows... TBA -->
+<!-- 
 ### Forking
 
 TBA
@@ -45,4 +48,4 @@ TBA
 
 ### Pushing
 
-TBA
+TBA -->
