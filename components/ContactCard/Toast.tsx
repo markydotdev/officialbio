@@ -24,7 +24,6 @@ const ToastRoot = styled(ToastBase.Root, {
   borderRadius: '$image',
   padding: '$button',
   boxShadow: '$high',
-  width: '390px',
   margin: '0 auto',
 });
 const ToastTitle = styled(ToastBase.Title, {
