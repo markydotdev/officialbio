@@ -16,9 +16,12 @@ const Container = styled('div', {
     flexDirection: 'row',
   },
 });
-const Subtitle = styled('h2', {
-  margin: 0,
-  marginTop: '0.5rem',
+const Subtitle = styled('label', {
+  display: 'block',
+  fontSize: '$lg',
+  '&:not(:first-of-type)': {
+    marginTop: '0.5rem',
+  },
 });
 const AvatarContainer = styled('div', {
   display: 'inline-flex',
@@ -46,13 +49,23 @@ const BASE_INPUT_STYLES = {
   borderRadius: '$image',
 };
 const NameInput = styled('input', {
-  width: '100%',
+  '@supports (width: -moz-available)': {
+    width: '-moz-available',
+  },
+  '@supports (width: -webkit-fill-available)': {
+    width: '-webkit-fill-available',
+  },
   ...BASE_INPUT_STYLES,
 });
 const TextBox = styled('textarea', {
   resize: 'none',
-  width: '100%',
   height: '150px',
+  '@supports (width: -moz-available)': {
+    width: '-moz-available',
+  },
+  '@supports (width: -webkit-fill-available)': {
+    width: '-webkit-fill-available',
+  },
   ...BASE_INPUT_STYLES,
 });
 const ButtonGroup = styled('div', {
@@ -119,12 +132,13 @@ const AvatarSection = ({ avatar, setAvatar }) => {
 const NameSection = ({ name, setName }) => {
   return (
     <>
-      <Subtitle>{strings.account.name}</Subtitle>
+      <Subtitle htmlFor='name-input'>{strings.account.name}</Subtitle>
       <NameInput
         type='text'
         required
         value={name}
         onChange={(e) => setName(e.target.value)}
+        id='name-input'
       />
     </>
   );
@@ -133,8 +147,12 @@ const NameSection = ({ name, setName }) => {
 const Bio = ({ description, setDesc }) => {
   return (
     <>
-      <Subtitle>{strings.account.description}</Subtitle>
-      <TextBox value={description} onChange={(e) => setDesc(e.target.value)} />
+      <Subtitle htmlFor='bio-input'>{strings.account.description}</Subtitle>
+      <TextBox
+        value={description}
+        onChange={(e) => setDesc(e.target.value)}
+        id='bio-input'
+      />
     </>
   );
 };

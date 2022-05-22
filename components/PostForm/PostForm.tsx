@@ -38,13 +38,18 @@ const UploadPreview = styled('img', {
 });
 export const BaseInput = styled('input', {
   borderRadius: '$image',
-  width: '-webkit-fill-available',
   height: '3rem',
   margin: '0.25rem 0 0 0',
   padding: '0.5em',
   border: '0',
   backgroundColor: '$gray4',
   fontSize: '$base',
+  '@supports (width: -moz-available)': {
+    width: '-moz-available',
+  },
+  '@supports (width: -webkit-fill-available)': {
+    width: '-webkit-fill-available',
+  },
 });
 export const StyledLabel = styled(Label.Root, {
   fontSize: '$base',

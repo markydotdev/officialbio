@@ -16,6 +16,7 @@ import {
 } from '../utils/post';
 import { supabase } from '../utils/supabaseClient';
 import strings from '../locales/en/strings';
+import Head from 'next/head';
 
 export default function Musings({ user, guest }) {
   const [posts, setPosts] = useState(null);
@@ -120,39 +121,49 @@ export default function Musings({ user, guest }) {
 
   if (guest) {
     return (
-      <Layout>
-        <AuthForm />
-      </Layout>
+      <>
+        <Head>
+          <title>Sign In | OfficialBio</title>
+        </Head>
+        <Layout>
+          <AuthForm />
+        </Layout>
+      </>
     );
   }
 
   return (
-    <Layout>
-      <PostForm
-        onSubmit={onSubmit}
-        inputText={inputText}
-        setInputText={setInputText}
-        setUploads={setUploads}
-        setLinkText={setLinkText}
-        setLinkUrl={setLinkUrl}
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        refreshLinks={refreshLinks}
-      />
-
-      {posts && activeTab === strings.tabs.messages && (
-        <Message
-          removePost={removePost}
-          publishPost={publishPost}
-          privatePost={privatePost}
-          posts={posts}
+    <>
+      <Head>
+        <title>Musings | OfficialBio</title>
+      </Head>
+      <Layout>
+        <PostForm
+          onSubmit={onSubmit}
+          inputText={inputText}
+          setInputText={setInputText}
+          setUploads={setUploads}
+          setLinkText={setLinkText}
+          setLinkUrl={setLinkUrl}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          refreshLinks={refreshLinks}
         />
-      )}
 
-      {links && activeTab === strings.tabs.links && (
-        <ListOfLinks links={links} removeLink={removeLink} />
-      )}
-    </Layout>
+        {posts && activeTab === strings.tabs.messages && (
+          <Message
+            removePost={removePost}
+            publishPost={publishPost}
+            privatePost={privatePost}
+            posts={posts}
+          />
+        )}
+
+        {links && activeTab === strings.tabs.links && (
+          <ListOfLinks links={links} removeLink={removeLink} />
+        )}
+      </Layout>
+    </>
   );
 }
 
