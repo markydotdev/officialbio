@@ -5,7 +5,7 @@ const StyledButton = styled('button', {
   border: '1px solid transparent',
   backgroundColor: '$gray12',
   color: '$gray1',
-  height: '2.7rem',
+  height: '2.5rem',
   borderRadius: '$button',
   fontSize: '$base',
   minWidth: '$button',

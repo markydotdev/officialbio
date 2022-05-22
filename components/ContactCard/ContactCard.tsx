@@ -82,7 +82,7 @@ const ContactCard = ({ name, avatar }) => {
   return (
     <CardFlex>
       <div>
-        <Avatar url={avatar} size={120} type='square' initials={undefined} />
+        <Avatar url={avatar} size={50} type='square' initials={undefined} />
       </div>
       <CardArticle>
         <Title>{name}</Title>
