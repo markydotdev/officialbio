@@ -68,9 +68,9 @@ const globalStyles = globalCss({
     },
   ],
   html: {
-    boxSizing: 'border-box',
     backgroundColor: '$gray4',
     height: '100vh',
+    overflowX: 'hidden',
   },
   '*, *:before, *:after': {
     boxSizing: 'inherit',
