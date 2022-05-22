@@ -6,7 +6,6 @@ import { CSS } from '@dnd-kit/utilities';
 
 const LinkBox = styled('div', {
   display: 'flex',
-  width: '100%',
   justifyContent: 'space-between',
   alignItems: 'center',
   marginTop: '1rem',
