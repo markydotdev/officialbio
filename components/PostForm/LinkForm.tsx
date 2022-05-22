@@ -34,7 +34,6 @@ function LinkForm({ refreshLinks, setLinkText, setLinkUrl }) {
       <BaseInput
         id='link'
         type='url'
-        placeholder='https://google.com'
         required
         onChange={(e) => setLink(e.target.value)}
       />
@@ -45,7 +44,6 @@ function LinkForm({ refreshLinks, setLinkText, setLinkUrl }) {
       <BaseInput
         id='link-text'
         type='text'
-        placeholder='Visit google!'
         required
         onChange={(e) => setText(e.target.value)}
       />
