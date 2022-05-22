@@ -43,13 +43,16 @@ export const BaseInput = styled('input', {
   margin: '0.25rem 0 0 0',
   padding: '0.5em',
   border: '0',
-  backgroundColor: '$gray5',
+  backgroundColor: '$gray4',
   fontSize: '$base',
 });
 export const StyledLabel = styled(Label.Root, {
   fontSize: '$base',
   fontWeight: 500,
   userSelect: 'none',
+});
+const HiddenButton = styled('button', {
+  display: 'none',
 });
 
 function PostForm({
@@ -109,12 +112,7 @@ function PostForm({
 
           {activeTab === strings.tabs.profile && <DescriptionForm />}
           {/* Prevent implicit submission of the form with enter key*/}
-          <button
-            type='submit'
-            disabled
-            style={{ display: 'none' }}
-            aria-hidden='true'
-          ></button>
+          <HiddenButton type='submit' disabled aria-hidden='true' />
         </StyledForm>
         {activeTab === strings.tabs.messages && preview && (
           <PreviewBox>
