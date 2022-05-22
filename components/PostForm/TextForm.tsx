@@ -7,7 +7,6 @@ const StyledInputSection = styled('div', {
 });
 const StyledInput = styled('textarea', {
   boxShadow: `rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset`,
-  width: '-webkit-fill-available',
   height: '4em',
   margin: '0.25rem 0 0 0',
   padding: '0.5em',
@@ -19,6 +18,9 @@ const StyledInput = styled('textarea', {
   borderRadius: '$image',
   '@supports (width: -moz-available)': {
     width: '-moz-available',
+  },
+  '@supports (width: -webkit-fill-available)': {
+    width: '-webkit-fill-available',
   },
 });
 const AddImagesButton = styled('input', {
