@@ -135,6 +135,9 @@ module.exports = {
       'This will permanently delete the link from your saved links and from your public profile page',
     confirm_remove: 'Yes, remove link',
     save_order: 'Save',
+    title: 'Order of links',
+    subtitle_explainer:
+      'Order set below will be how the links are ordered on your public page',
   },
   tabs: {
     messages: 'messages',

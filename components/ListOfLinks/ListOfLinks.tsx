@@ -26,6 +26,15 @@ const ButtonSpacer = styled('div', {
   justifyContent: 'center',
   alignItems: 'center',
 });
+const Title = styled('h2', {
+  margin: 0,
+  paddingTop: '1rem',
+  paddingLeft: '1rem',
+});
+const Subtitle = styled('p', {
+  margin: 0,
+  paddingLeft: '1rem',
+});
 
 const Sortables = ({ modifiers, sensors, items, children, handleDragEnd }) => {
   return (
@@ -84,6 +93,8 @@ const ListOfLinks = ({ links, removeLink }) => {
 
   return (
     <>
+      <Title>{strings.linkPage.title}</Title>
+      <Subtitle>{strings.linkPage.subtitle_explainer}</Subtitle>
       <Sortables
         items={listOfLinks.map((item) => String(item.id))}
         sensors={sensors}
