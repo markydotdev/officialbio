@@ -42,8 +42,11 @@ export default function Musings({ user, guest }) {
   async function initialize() {
     const data = await fetchMusings();
     setPosts(data);
+    if (user) {
+      const links = await fetchLinks(user.id);
+      setLinks(links);
+    }
     const links = await fetchLinks(user.id);
-    setLinks(links);
     setUploads(null);
   }
 
