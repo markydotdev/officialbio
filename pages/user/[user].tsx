@@ -7,6 +7,7 @@ import PublicMessage from '../../components/PublicMessage';
 import strings from '../../locales/en/strings';
 import { styled } from '../../stitches.config';
 import { supabase } from '../../utils/supabaseClient';
+import Footer from '../../components/Layout/Footer';
 
 const ReturnHome = styled('a', {
   backgroundColor: '$gray12',
@@ -21,11 +22,12 @@ const ReturnHome = styled('a', {
     border: '2px solid $gray12',
   },
 });
+const AlternateLayout = styled('div', {});
 
 function UserPage({ user, avatar, postData, links }) {
   if (postData) {
     return (
-      <Layout>
+      <AlternateLayout>
         <ContactCard name={user} avatar={avatar} />
 
         <ContactExtras links={links} />
@@ -35,7 +37,9 @@ function UserPage({ user, avatar, postData, links }) {
           .map((post) => (
             <PublicMessage key={post.id} post={post} />
           ))}
-      </Layout>
+
+        <Footer minimal={true} />
+      </AlternateLayout>
     );
   }
   return (
