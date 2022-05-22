@@ -23,7 +23,7 @@ export default function Musings({ user, guest }) {
   const [uploads, setUploads] = useState(null);
   const [linkText, setLinkText] = useState('');
   const [linkUrl, setLinkUrl] = useState('');
-  const [activeTab, setActiveTab] = useState('text');
+  const [activeTab, setActiveTab] = useState(strings.tabs.messages);
   const [links, setLinks] = useState(null);
 
   useEffect(() => {
