@@ -14,7 +14,7 @@ function Layout({ children }) {
     <>
       <NavMenu />
       <Container>{children}</Container>
-      <Footer />
+      <Footer minimal={false} />
     </>
   );
 }
