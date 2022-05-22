@@ -24,10 +24,10 @@ export const { styled, globalCss, keyframes, theme, css } = createStitches({
       main: '1rem',
     },
     space: {
-      button: '0.5rem 1rem',
+      button: '0.25rem 0.5rem',
     },
     sizes: {
-      button: '8em',
+      button: '12ch',
     },
     transitions: {
       main: 'all 0.1s ease-in-out',
