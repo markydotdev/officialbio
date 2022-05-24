@@ -45,7 +45,7 @@ function UploadButton({ first, loading, onUpload }: UploadProps) {
           }}
           type='file'
           id='single'
-          accept='image/*'
+          accept='image/jpg'
           onChange={onUpload}
           disabled={loading}
         />
@@ -66,7 +66,7 @@ function UploadButton({ first, loading, onUpload }: UploadProps) {
         }}
         type='file'
         id='single'
-        accept='image/*'
+        accept='image/jpg'
         onChange={onUpload}
         disabled={loading}
       />

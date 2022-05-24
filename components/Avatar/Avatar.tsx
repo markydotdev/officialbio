@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import * as BaseAvatar from '@radix-ui/react-avatar';
 
 import { styled } from '../../stitches.config';
 import { DEFAULT_AVATARS_BUCKET } from '../../utils/constants';
 import { supabase } from '../../utils/supabaseClient';
+import { UserContext } from 'utils/UserContext';
 
 const StyledBase = styled(BaseAvatar.Root, {
   display: 'inline-flex',
@@ -36,6 +37,8 @@ const StyledFallback = styled(BaseAvatar.Fallback, {
 });
 
 function Avatar({ url, size, type, initials }) {
+  const userId = useContext(UserContext);
+  console.log(userId);
   const [avatarUrl, setAvatarUrl] = useState(null);
 
   useEffect(() => {
@@ -46,9 +49,9 @@ function Avatar({ url, size, type, initials }) {
     try {
       const { data, error } = await supabase.storage
         .from(DEFAULT_AVATARS_BUCKET)
-        .createSignedUrl(path, 120);
+        .getPublicUrl(`${userId}/${userId}.jpg`);
       if (data) {
-        setAvatarUrl(data.signedURL);
+        setAvatarUrl(data.publicURL);
       }
     } catch (error) {
       console.log('Error downloading image: ', error.message);

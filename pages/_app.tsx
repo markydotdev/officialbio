@@ -2,12 +2,10 @@ import type { AppProps } from 'next/app';
 import React, { useEffect, useState } from 'react';
 
 import { IdProvider } from '@radix-ui/react-id';
-import { SupabaseClient } from '@supabase/supabase-js';
-
 import { globalCss } from '../stitches.config';
 import { supabase } from '../utils/supabaseClient';
+import { UserContext } from 'utils/UserContext';
 
-import type { User } from '@supabase/supabase-js';
 const globalStyles = globalCss({
   '@font-face': [
     {
@@ -99,16 +97,6 @@ const globalStyles = globalCss({
   main: {
     flex: 1,
   },
-});
-
-type SupabaseContext = {
-  sb: SupabaseClient;
-  user: User | null;
-};
-
-export const UserContext = React.createContext<SupabaseContext>({
-  sb: supabase,
-  user: null,
 });
 
 function MyApp({ Component, pageProps }: AppProps) {

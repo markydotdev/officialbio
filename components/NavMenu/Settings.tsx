@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from 'react';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 import strings from '../../locales/en/strings';
-import { UserContext } from '../../pages/_app';
+import { UserContext } from 'utils/UserContext';
 import { styled } from '../../stitches.config';
 import { supabase } from '../../utils/supabaseClient';
 import Tooltip from '../Tooltip';
