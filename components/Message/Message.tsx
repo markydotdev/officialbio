@@ -8,7 +8,6 @@ import MessageImage from './MessageImage';
 
 const StyledPostBox = styled('div', {
   display: 'flex',
-  width: '100%',
   flexDirection: 'column',
   justifyContent: 'space-between',
   marginTop: '1rem',
