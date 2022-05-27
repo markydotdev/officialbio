@@ -1,10 +1,16 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
+import { getCssText } from '../stitches.config';
 
 class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head />
+        <Head>
+          <style
+            id='stitches'
+            dangerouslySetInnerHTML={{ __html: getCssText() }}
+          />
+        </Head>
         <body>
           <Main />
           <NextScript />
