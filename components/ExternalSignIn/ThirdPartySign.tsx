@@ -23,9 +23,12 @@ const ThirdPartySign = ({ id, name, brand }) => {
   const handleThirdPartyLogin = async (provider) => {
     try {
       setLoading(true);
-      const { user, session, error } = await supabase.auth.signIn({
-        provider: provider,
-      });
+      const { user, session, error } = await supabase.auth.signIn(
+        {
+          provider: provider,
+        },
+        { redirectTo: process.env.NEXT_PUBLIC_URL }
+      );
       if (error) throw error;
     } catch (error) {
       alert(error.error_description || error.message);

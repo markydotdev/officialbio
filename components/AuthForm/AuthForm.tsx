@@ -77,7 +77,7 @@ function AuthForm({}) {
       setLoading(true);
       const { error, user } = await supabase.auth.signIn(
         { email },
-        { redirectTo: 'http://localhost:3000/setup' }
+        { redirectTo: `${process.env.NEXT_PUBLIC_URL}/setup` }
       );
       if (error) throw error;
       setPrompt({
