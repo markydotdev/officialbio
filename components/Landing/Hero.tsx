@@ -6,7 +6,7 @@ const HeroBox = styled('div', {
   backgroundColor: 'white',
   borderRadius: '$image',
   padding: '2rem',
-  height: '40vh',
+  height: '50vh',
   overflow: 'hidden',
   position: 'relative',
   boxShadow: '$low',
