@@ -87,7 +87,7 @@ const globalStyles = globalCss({
     },
   },
   '#__next': {
-    minHeight: '100%',
+    minHeight: 'calc(100% - 1rem)',
     display: 'flex',
     flexDirection: 'column',
   },
