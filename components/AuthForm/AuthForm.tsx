@@ -10,9 +10,13 @@ const AuthContainer = styled('section', {
   display: 'flex',
   flexDirection: 'column',
   backgroundColor: '$gray1',
-  padding: '1rem',
-  borderRadius: '$button',
+  padding: '2rem',
+  borderRadius: '$image',
   boxShadow: '$low',
+  '@lg': {
+    width: '500px',
+    margin: '0 auto',
+  },
 });
 const Header = styled('h2', {
   fontSize: '$lg',
@@ -23,7 +27,6 @@ const Subtitle = styled('h3', {
   fontSize: '$base',
 });
 const EmailInput = styled('input', {
-  width: '100%',
   backgroundColor: '$gray5',
   border: 'none',
   padding: '1rem 0.75rem',
