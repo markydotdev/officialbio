@@ -8,6 +8,8 @@ import {
   blueDark,
   greenDark,
   redDark,
+  violet,
+  violetDark,
 } from '@radix-ui/colors';
 
 export const { styled, globalCss, keyframes, theme, css, getCssText } =
@@ -18,6 +20,7 @@ export const { styled, globalCss, keyframes, theme, css, getCssText } =
         ...gray,
         ...green,
         ...red,
+        ...violet,
       },
       radii: {
         button: '0.25rem',
@@ -74,5 +77,6 @@ export const darkTheme = createTheme({
     ...blueDark,
     ...greenDark,
     ...redDark,
+    ...violetDark,
   },
 });

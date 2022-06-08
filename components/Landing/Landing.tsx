@@ -1,30 +1,51 @@
 import strings from '../../locales/en/strings';
 import Feature from './Feature';
-import Start from './Start';
+import Hero from './Hero';
 import { styled } from '../../stitches.config';
 
-const Box = styled('div', {
-  height: '45vh',
-  overflowY: 'scroll',
-  scrollSnapType: 'y mandatory',
+const LandingContainer = styled('section', {
+  margin: '0 auto',
+  '@xl': {
+    width: '750px',
+  },
+  '@xxl': {
+    width: '900px',
+  },
 });
-const Snap = styled('div', {
-  height: '100%',
-  scrollSnapAlign: 'start',
+
+const FeatureGrid = styled('div', {
+  display: 'grid',
+  gap: '1rem',
+  marginTop: '1rem',
+  '@lg': {
+    gridTemplateColumns: 'repeat(2, 1fr)',
+  },
+  '@xxl': {
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    '& > div:nth-child(2)': {
+      gridColumn: '2 / -1',
+    },
+  },
+  '& > div:nth-child(3)': {
+    gridColumn: '1 / -1',
+  },
 });
 
 function Landing() {
   return (
-    <>
-      <Start>{strings.start}</Start>
-      <Box>
+    <LandingContainer>
+      <Hero
+        title={strings.landing.title}
+        subtitle={strings.landing.subtitle}
+        prompt={strings.landing.prompt}
+      />
+
+      <FeatureGrid>
         {strings.features.map((feature) => (
-          <Snap key={feature.id}>
-            <Feature {...feature} />
-          </Snap>
+          <Feature {...feature} key={feature.id} />
         ))}
-      </Box>
-    </>
+      </FeatureGrid>
+    </LandingContainer>
   );
 }
 

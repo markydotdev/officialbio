@@ -2,43 +2,56 @@ import { styled } from '../../stitches.config';
 
 const FeatureContainer = styled('div', {
   display: 'flex',
-  margin: '0.5rem 0',
+  flexDirection: 'column',
+  backgroundColor: 'white',
+  borderRadius: '$image',
+  padding: '2rem',
+  margin: '0 auto',
+  boxShadow: '$low',
 });
 const FeatureText = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
   flex: 2,
 });
 const FeatureTitle = styled('h3', {
   margin: '0',
   fontSize: '$lg',
   fontFamily: '$alt',
-  fontWeight: '600',
+  fontWeight: '800',
+  variants: {
+    color: {
+      purple: {
+        color: '$violet10',
+      },
+      red: {
+        color: '$red10',
+      },
+      green: {
+        color: '$green10',
+      },
+    },
+  },
 });
 const FeatureDesc = styled('p', {
-  fontWeight: '300',
-});
-const ImageContainer = styled('div', {
-  flex: 1,
+  fontWeight: '400',
+  marginTop: '0.25rem',
+  marginBottom: '1rem',
 });
 const FeatureImage = styled('img', {
   width: '100%',
   height: '100%',
   objectFit: 'contain',
+  flex: 2,
 });
 
-const Feature = ({ name, summary, image }) => {
+const Feature = ({ name, summary, image, color }) => {
   return (
     <FeatureContainer>
       <FeatureText>
-        <FeatureTitle>{name}</FeatureTitle>
+        <FeatureTitle color={color}>{name}</FeatureTitle>
         <FeatureDesc>{summary}</FeatureDesc>
       </FeatureText>
 
-      <ImageContainer>
-        <FeatureImage src={image} alt={name} />
-      </ImageContainer>
+      <FeatureImage src={image} alt={name} />
     </FeatureContainer>
   );
 };

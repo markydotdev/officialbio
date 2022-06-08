@@ -52,6 +52,7 @@ module.exports = {
       summary:
         'Link all of your important accounts in one place, all without any of your important data leaving the original services.',
       image: '/hero-images/woman-dog-selfie.png',
+      color: 'purple',
     },
     {
       id: 2,
@@ -59,12 +60,14 @@ module.exports = {
       summary:
         'By publishing a musing, you get to stay in control of what select posts appear on your page. No more having to update links!',
       image: '/hero-images/social.png',
+      color: 'red',
     },
     {
       id: 3,
       name: 'Showcase Your Best',
       summary: 'By highlighting a post, you get to show off what you do best.',
       image: '/hero-images/likes.png',
+      color: 'green',
     },
   ],
   // Musings page
