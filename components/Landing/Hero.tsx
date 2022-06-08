@@ -55,6 +55,7 @@ const HeroImage = styled('img', {
   width: '100%',
   top: '60%',
   left: 0,
+  pointerEvents: 'none',
   '@md': {
     top: '50%',
   },

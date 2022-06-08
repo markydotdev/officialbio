@@ -41,6 +41,7 @@ const FeatureImage = styled('img', {
   height: '100%',
   objectFit: 'contain',
   flex: 2,
+  pointerEvents: 'none',
 });
 
 const Feature = ({ name, summary, image, color }) => {
