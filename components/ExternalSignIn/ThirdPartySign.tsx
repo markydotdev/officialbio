@@ -30,7 +30,7 @@ const ThirdPartySign = ({ id, name, brand }) => {
         {
           provider: provider,
         },
-        { redirectTo: process.env.NEXT_PUBLIC_URL }
+        { redirectTo: process.env.NEXT_PUBLIC_REDIRECT_PAGE }
       );
       if (error) throw error;
     } catch (error) {
