@@ -99,7 +99,7 @@ function Settings() {
   return (
     <DropdownMenu.Root>
       <Tooltip side={false} message={strings.settings.settings}>
-        <StyledTrigger>
+        <StyledTrigger data-testid='settings-button'>
           <StyledMenuSvg
             width='24'
             height='24'
