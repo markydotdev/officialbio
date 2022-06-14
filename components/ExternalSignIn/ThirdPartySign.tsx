@@ -5,13 +5,16 @@ import { supabase } from '../../utils/supabaseClient';
 
 const LoginButton = styled('button', {
   textTransform: 'capitalize',
-  border: '1px solid transparent',
+  border: '1px solid $gray12',
   borderRadius: '$button',
   padding: '1rem',
   margin: '0.5rem 0',
-  color: '$gray1',
+  color: '$gray12',
   cursor: 'pointer',
   fontWeight: 'bold',
+  fontFamily: '$body',
+  fontSize: '$base',
+  minWidth: '8ch',
   '&:hover': {
     backgroundColor: 'transparent',
   },
@@ -42,7 +45,7 @@ const ThirdPartySign = ({ id, name, brand }) => {
       onClick={() => handleThirdPartyLogin(name)}
       type='button'
       css={{
-        backgroundColor: brand,
+        backgroundColor: 'transparent',
         '&:hover': {
           color: brand,
           border: `1px solid ${brand}`,

@@ -15,7 +15,7 @@ const AuthContainer = styled('section', {
   boxShadow: '$low',
   '@lg': {
     width: '500px',
-    margin: '0 auto',
+    margin: 'auto',
   },
 });
 const Header = styled('h2', {
@@ -38,6 +38,8 @@ const EmailSubmit = styled('button', {
   border: '1px solid transparent',
   borderRadius: '$button',
   fontWeight: 'bold',
+  fontFamily: '$body',
+  fontSize: '$base',
   marginTop: '1rem',
   padding: '1rem',
   cursor: 'pointer',
@@ -49,10 +51,9 @@ const EmailSubmit = styled('button', {
 });
 const ThirdPartySpacer = styled('div', {
   display: 'flex',
-  flexDirection: 'column',
-  '& > button + button': {
-    marginTop: '0.5rem',
-  },
+  flexWrap: 'wrap',
+  gap: '1rem',
+  justifyContent: 'center',
 });
 
 function AlertMessage({ active, message, error, handleClose }) {
@@ -123,12 +124,12 @@ function AuthForm({}) {
           // eslint-disable-next-line @next/next/no-img-element
           <img className='loader' src='loader.svg' alt='loading bar' />
         ) : (
-          <span>Send magic link</span>
+          <span>Send Magic Link</span>
         )}
       </EmailSubmit>
       <Subtitle>{strings.sign.alternative}</Subtitle>
       <ThirdPartySpacer>
-        <ExternalSignIn connectedAccs={undefined} contentLoaded={undefined} />
+        <ExternalSignIn connectedAccs={undefined} />
       </ThirdPartySpacer>
 
       <AlertMessage

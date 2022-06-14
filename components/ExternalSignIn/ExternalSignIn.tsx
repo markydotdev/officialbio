@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import strings from '../../locales/en/strings';
 import { styled } from '../../stitches.config';
@@ -31,26 +31,11 @@ const initialState = [
   },
 ];
 
-const ExternalSignIn = ({ connectedAccs, contentLoaded }) => {
+const ExternalSignIn = ({ connectedAccs }) => {
   const [enabled, setEnabled] = useState(initialState);
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [timer, setTimer] = useState(null);
   const user = supabase.auth.user();
-
-  useEffect(() => {
-    // Retrieving user's third party accounts on load
-    // const fetchExternalConnections = async () => {
-    //   const { data, error } = await supabase
-    //     .from('profiles')
-    //     .select('external_connections')
-    //     .eq('id', user.id);
-    //   const { external_connections } = data[0];
-    //   setEnabled(external_connections);
-    // };
-    // if (user !== null) {
-    //   fetchExternalConnections();
-    // }
-  }, [user]);
 
   const sendToDb = async () => {
     console.log('sent to db');
