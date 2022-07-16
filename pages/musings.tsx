@@ -17,6 +17,7 @@ import {
 import { supabase } from '../utils/supabaseClient';
 import strings from '../locales/en/strings';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 export default function Musings({ user, guest }) {
   const [posts, setPosts] = useState(null);
@@ -26,6 +27,7 @@ export default function Musings({ user, guest }) {
   const [linkUrl, setLinkUrl] = useState('');
   const [activeTab, setActiveTab] = useState(strings.tabs.messages);
   const [links, setLinks] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     const tab = localStorage.getItem('active-tab');
@@ -118,16 +120,7 @@ export default function Musings({ user, guest }) {
   }
 
   if (guest) {
-    return (
-      <>
-        <Head>
-          <title>Sign In | OfficialBio</title>
-        </Head>
-        <Layout>
-          <AuthForm />
-        </Layout>
-      </>
-    );
+    router.push('/sign_in');
   }
 
   return (
