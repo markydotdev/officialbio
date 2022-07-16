@@ -1,10 +1,10 @@
 import AuthForm from '../components/AuthForm';
 import Layout from '../components/Layout';
 
-export default function SignIn() {
+export default function Create() {
   return (
     <Layout>
-      <AuthForm isCreation={false} />
+      <AuthForm isCreation={true} />
     </Layout>
   );
 }

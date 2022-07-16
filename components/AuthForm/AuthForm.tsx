@@ -1,10 +1,11 @@
 import { useState } from 'react';
-
+import bcrypt from 'bcryptjs';
 import strings from '../../locales/en/strings';
 import { styled } from '../../stitches.config';
 import { supabase } from '../../utils/supabaseClient';
 import ExternalSignIn from '../ExternalSignIn';
 import Prompt from '../Prompt';
+import Link from 'next/link';
 
 const AuthContainer = styled('section', {
   display: 'flex',
@@ -20,13 +21,33 @@ const AuthContainer = styled('section', {
 });
 const Header = styled('h2', {
   fontSize: '$lg',
+  display: 'inline-flex',
+  justifyContent: 'space-between',
+});
+const AlternatePageLink = styled('a', {
+  color: '$blue11',
+  borderBottom: '2px solid $blue11',
+  transition: 'all ease 0.25s',
+  '&:hover': {
+    color: '$gray12',
+    borderBottom: '2px solid $gray12',
+  },
 });
 const Subtitle = styled('h3', {
   fontFamily: '$body',
   fontWeight: 'normal',
   fontSize: '$base',
+  marginTop: '2rem',
+  marginBottom: '0.5rem',
 });
 const EmailInput = styled('input', {
+  backgroundColor: '$gray5',
+  border: 'none',
+  padding: '1rem 0.75rem',
+  borderRadius: '$button',
+});
+const PassInput = styled('input', {
+  marginTop: '0.5rem',
   backgroundColor: '$gray5',
   border: 'none',
   padding: '1rem 0.75rem',
@@ -67,28 +88,46 @@ function AlertMessage({ active, message, error, handleClose }) {
   );
 }
 
-function AuthForm({}) {
+interface AuthProps {
+  isCreation: boolean;
+}
+
+function AuthForm({ isCreation }: AuthProps) {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [prompt, setPrompt] = useState({
     enabled: false,
     message: '',
     error: false,
   });
 
-  const handleLogin = async (email) => {
+  const handleLogin = async (email, password) => {
     try {
       setLoading(true);
-      const { error, user } = await supabase.auth.signIn(
-        { email },
-        { redirectTo: `${process.env.NEXT_PUBLIC_URL}/setup` }
-      );
-      if (error) throw error;
-      setPrompt({
-        enabled: true,
-        message: 'Check your email for the magic link',
-        error: false,
-      });
+      const hashed = await bcrypt.hash(password, 8);
+      if (isCreation) {
+        const { error, user } = await supabase.auth.signUp(
+          { email, password: hashed },
+          {
+            redirectTo: `${process.env.NEXT_PUBLIC_URL}/setup`,
+          }
+        );
+        if (error) throw error;
+        setPrompt({
+          enabled: true,
+          message: 'Check your email for verification',
+          error: false,
+        });
+      } else {
+        const { error, user } = await supabase.auth.signIn(
+          { email, password: hashed },
+          {
+            redirectTo: `${process.env.NEXT_PUBLIC_URL}/musings`,
+          }
+        );
+        if (error) throw error;
+      }
     } catch (error) {
       console.log('Error thrown:', error.message);
       setPrompt({ enabled: true, message: error.message, error: true });
@@ -101,9 +140,69 @@ function AuthForm({}) {
     setPrompt({ enabled: false, message: '', error: false });
   };
 
+  if (isCreation) {
+    return (
+      <AuthContainer>
+        <Header>
+          {strings.makeAccount.header}
+          <Link passHref href='/sign_in'>
+            <AlternatePageLink>{strings.sign.header}</AlternatePageLink>
+          </Link>
+        </Header>
+        <Subtitle>{strings.makeAccount.explanation}</Subtitle>
+        <EmailInput
+          className='inputField'
+          type='email'
+          placeholder='name@email.com'
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <PassInput
+          type='password'
+          minLength={6}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder='password (min 6 characters)'
+        />
+        <EmailSubmit
+          onClick={(e) => {
+            e.preventDefault();
+            handleLogin(email, password);
+          }}
+          className={'button block'}
+          disabled={loading}
+          aria-label={strings.sign.header}
+          type='submit'
+        >
+          {loading ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img className='loader' src='loader.svg' alt='loading bar' />
+          ) : (
+            <span>{strings.makeAccount.header}</span>
+          )}
+        </EmailSubmit>
+        <Subtitle>{strings.makeAccount.alternative}</Subtitle>
+        <ThirdPartySpacer>
+          <ExternalSignIn connectedAccs={undefined} />
+        </ThirdPartySpacer>
+
+        <AlertMessage
+          active={prompt.enabled}
+          message={prompt.message}
+          error={prompt.error}
+          handleClose={handleClose}
+        />
+      </AuthContainer>
+    );
+  }
+
   return (
     <AuthContainer>
-      <Header>{strings.sign.header}</Header>
+      <Header>
+        {strings.sign.header}
+        <Link passHref href='/create'>
+          <AlternatePageLink>{strings.makeAccount.header}</AlternatePageLink>
+        </Link>
+      </Header>
       <Subtitle>{strings.sign.explanation}</Subtitle>
       <EmailInput
         className='inputField'
@@ -112,19 +211,27 @@ function AuthForm({}) {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
+      <PassInput
+        type='password'
+        minLength={6}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder='password (min 6 characters)'
+      />
       <EmailSubmit
         onClick={(e) => {
           e.preventDefault();
-          handleLogin(email);
+          handleLogin(email, password);
         }}
         className={'button block'}
         disabled={loading}
+        aria-label={strings.sign.header}
+        type='submit'
       >
         {loading ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img className='loader' src='loader.svg' alt='loading bar' />
         ) : (
-          <span>Send Magic Link</span>
+          <span>{strings.sign.header}</span>
         )}
       </EmailSubmit>
       <Subtitle>{strings.sign.alternative}</Subtitle>

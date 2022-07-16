@@ -94,9 +94,13 @@ module.exports = {
   // Sign in page
   sign: {
     header: 'Sign In',
-    explanation:
-      'Enter your email to receive your Magic Link to log in seamlessly',
+    explanation: 'Enter your email and password to sign in',
     alternative: 'Or sign in through one of the providers listed below',
+  },
+  makeAccount: {
+    header: 'Create an account',
+    explanation: 'Enter your email and password to create your account',
+    alternative: 'or sign in through one of the providers listed below',
   },
   // Profile page
   account: {
