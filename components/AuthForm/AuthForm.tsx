@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import bcrypt from 'bcryptjs';
 import strings from '../../locales/en/strings';
 import { styled } from '../../stitches.config';
 import { supabase } from '../../utils/supabaseClient';
@@ -107,10 +106,9 @@ function AuthForm({ isCreation }: AuthProps) {
   const handleLogin = async (email, password) => {
     try {
       setLoading(true);
-      const hashed = await bcrypt.hash(password, 8);
       if (isCreation) {
         const { error, user } = await supabase.auth.signUp(
-          { email, password: hashed },
+          { email, password: password },
           {
             redirectTo: `${process.env.NEXT_PUBLIC_URL}/setup`,
           }
@@ -123,7 +121,7 @@ function AuthForm({ isCreation }: AuthProps) {
         });
       } else {
         const { error, user } = await supabase.auth.signIn(
-          { email, password: hashed },
+          { email, password: password },
           {
             redirectTo: `${process.env.NEXT_PUBLIC_URL}/musings`,
           }
@@ -131,7 +129,6 @@ function AuthForm({ isCreation }: AuthProps) {
         if (error) throw error;
       }
     } catch (error) {
-      console.log('Error thrown:', error.message);
       setPrompt({ enabled: true, message: error.message, error: true });
     } finally {
       setLoading(false);
@@ -167,7 +164,6 @@ function AuthForm({ isCreation }: AuthProps) {
         />
         <EmailSubmit
           onClick={(e) => {
-            e.preventDefault();
             handleLogin(email, password);
           }}
           className={'button block'}
@@ -217,7 +213,6 @@ function AuthForm({ isCreation }: AuthProps) {
       />
       <EmailSubmit
         onClick={(e) => {
-          e.preventDefault();
           handleLogin(email, password);
         }}
         className={'button block'}
