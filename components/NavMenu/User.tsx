@@ -55,7 +55,14 @@ const SignInLabel = styled('a', {
 function User({ name, avatar }) {
   return (
     <AvatarItem>
-      <Link href={`/user/${name}`} passHref>
+      <Link
+        href={{
+          pathname: `/user/preview/${name}`,
+          query: { user: name },
+        }}
+        as={`/user/preview/${name}`}
+        passHref
+      >
         <AvatarGroup>
           {name && (
             <Tooltip side={undefined} message={strings.settings.userTooltip}>
