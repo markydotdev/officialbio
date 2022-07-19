@@ -11,7 +11,7 @@ const AuthContainer = styled('section', {
   display: 'flex',
   flexDirection: 'column',
   backgroundColor: '$gray1',
-  padding: '2rem',
+  padding: '1.5rem',
   borderRadius: '$image',
   boxShadow: '$low',
   '@lg': {
@@ -20,9 +20,11 @@ const AuthContainer = styled('section', {
   },
 });
 const Header = styled('h2', {
-  fontSize: '$lg',
+  fontSize: '$base',
   display: 'inline-flex',
+  flexWrap: 'wrap',
   justifyContent: 'space-between',
+  alignItems: 'baseline',
 });
 const AlternatePageLink = styled('a', {
   color: '$blue11',
@@ -73,8 +75,8 @@ const EmailSubmit = styled('button', {
 const ThirdPartySpacer = styled('div', {
   display: 'flex',
   flexWrap: 'wrap',
-  gap: '1rem',
-  justifyContent: 'center',
+  gap: '0.25rem',
+  justifyContent: 'space-evenly',
 });
 
 function AlertMessage({ active, message, error, handleClose }) {
