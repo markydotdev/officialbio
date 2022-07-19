@@ -38,7 +38,6 @@ const StyledFallback = styled(BaseAvatar.Fallback, {
 
 function Avatar({ url, size, type, initials }) {
   const userId = useContext(UserContext);
-  console.log(userId);
   const [avatarUrl, setAvatarUrl] = useState(null);
 
   useEffect(() => {
