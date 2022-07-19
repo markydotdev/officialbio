@@ -66,8 +66,12 @@ const ContactCard = ({ name, avatar }) => {
   const shareLink = () => {
     clear();
 
-    navigator.clipboard.writeText(window.location.href);
-    console.log(window.location.href);
+    // Editing the copied link to handle whenever it's copied from preview page
+    const editedLink = window.location.href.split('/');
+    const user = editedLink[editedLink.length - 1];
+
+    navigator.clipboard.writeText(window.location.origin + '/user/' + user);
+    console.log(window.location.origin + '/user/' + user);
 
     setStatus(true);
     setOpen(true);
