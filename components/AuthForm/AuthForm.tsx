@@ -182,10 +182,6 @@ function AuthForm({ isCreation }: AuthProps) {
             <span>{strings.makeAccount.header}</span>
           )}
         </EmailSubmit>
-        <Subtitle>{strings.makeAccount.alternative}</Subtitle>
-        <ThirdPartySpacer>
-          <ExternalSignIn connectedAccs={undefined} />
-        </ThirdPartySpacer>
 
         <AlertMessage
           active={prompt.enabled}
