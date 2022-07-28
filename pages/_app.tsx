@@ -1,7 +1,6 @@
 import type { AppProps } from 'next/app';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { IdProvider } from '@radix-ui/react-id';
 import { globalCss } from '../stitches.config';
 import { supabase } from '../utils/supabaseClient';
 import { UserContext } from 'utils/UserContext';
@@ -140,11 +139,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   globalStyles();
   return (
-    <IdProvider>
-      <UserContext.Provider value={userId}>
-        <Component {...pageProps} />
-      </UserContext.Provider>
-    </IdProvider>
+    <UserContext.Provider value={userId}>
+      <Component {...pageProps} />
+    </UserContext.Provider>
   );
 }
 export default MyApp;
