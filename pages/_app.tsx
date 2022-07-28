@@ -1,4 +1,3 @@
-import type { AppProps } from 'next/app';
 import { useEffect, useState } from 'react';
 
 import { globalCss } from '../stitches.config';
@@ -98,7 +97,7 @@ const globalStyles = globalCss({
   },
 });
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }) {
   const [userId, setUserId] = useState(null);
 
   useEffect(() => {
