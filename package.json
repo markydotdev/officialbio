@@ -2,10 +2,11 @@
   "name": "@ob/mono",
   "version": "2.0.0",
   "description": "",
-  "main": "index.js",
   "private": true,
   "workspaces": [
-    "./apps/*"
+    "apps/bio-core/*",
+    "apps/pub-bio/*",
+    "apps/shared/*"
   ],
   "scripts": {
     "comps": "cd apps/shared && npm run build",
