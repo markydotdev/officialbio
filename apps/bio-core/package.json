@@ -42,5 +42,5 @@
   "description": "[OfficialBio](https://officialb.io) is a link sharing app where you can also post updates and link any relevant social media accounts.",
   "main": "next.config.js",
   "author": "",
-  "license": "ISC"
+  "license": "AGPL-3.0-or-later"
 }
