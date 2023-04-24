@@ -4,9 +4,9 @@
   "description": "",
   "private": true,
   "workspaces": [
-    "apps/bio-core/*",
-    "apps/pub-bio/*",
-    "apps/shared/*"
+    "apps/bio-core",
+    "apps/shared",
+    "apps/pub-bio"
   ],
   "scripts": {
     "comps": "cd apps/shared && npm run build",
