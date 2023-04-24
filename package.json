@@ -14,10 +14,10 @@
     "lint:comps": "cd apps/shared && npm run lint",
     "lint:pub": "cd apps/pub-bio && npm run lint",
     "lint:core": "cd apps/bio-core && npm run lint",
+    "dev:core": "npm run comps && npm run core",
+    "dev:pub": "npm run comps && npm run pub",
     "build:comps": "cd apps/shared && npm run build",
     "build:pub": "cd apps/pub-bio && npm run build",
-    "build:core": "cd apps/bio-core && npm run build",
-    "dev:core": "npm run comps && npm run core",
-    "dev:pub": "npm run comps && npm run pub"
+    "build:core": "npm run build:comps && cd apps/bio-core && npm run build"
   }
 }
