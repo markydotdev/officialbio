@@ -1,23 +1,13 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document';
-import { getCssText } from '../stitches.config';
+import { Head, Html, Main, NextScript } from 'next/document';
 
-class MyDocument extends Document {
-  render() {
-    return (
-      <Html>
-        <Head>
-          <style
-            id='stitches'
-            dangerouslySetInnerHTML={{ __html: getCssText() }}
-          />
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    );
-  }
+export default function Document() {
+  return (
+    <Html lang='en'>
+      <Head />
+      <body>
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
+  );
 }
-
-export default MyDocument;
